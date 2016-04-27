@@ -1,0 +1,219 @@
+#nyheder-carousel-large {
+  background-color: #fff;
+  border-radius: 3px 3px;
+  .carousel-title {
+    margin-top:  20px;
+    a.btn {
+      margin: 20px 0;
+      padding: 5px 15px;
+      font-size: 14px;
+    }
+  }
+  img {
+    max-width: 100%;
+  }
+  .title {
+    font-size: 24px;
+  }
+  ol.carousel-indicators {
+    right: 0;
+    text-align: right;
+    bottom: 5px;
+    margin-left: 0;
+    width: 100%;
+    left: 0;
+    li {
+      height: 18px;
+      width: 18px;
+      border: 3px solid #e4e3e0;
+      margin: 1px;
+      &.active {
+        background-color: #7ebb00;
+      }
+    }
+  }
+}
+.page-nyheder h1 {
+  text-transform: inherit;
+}
+.nyheder-seperator {
+  clear: both;
+  height: 20px;
+}
+.front-s-news-item-text {
+  padding:  10px 0;
+  .news-title {
+    font-size: @font-size-h2;
+    color: @text-color;
+    &:hover {
+      color: @link-hover-color;
+      text-decoration: none
+    }
+  }
+  p {
+    color: #595d63;
+  }
+}
+
+#svendborg_tabs {
+  min-height: 298px;
+  .view-content {
+    background-color: #fff;
+    padding: 25px 0px 10px 0px;
+    min-height: 199px;
+    .quicktabs-row-border {
+      border-bottom: 1px solid #dfded7;
+      padding-bottom: 10px;
+    }
+  }
+  .view-footer {
+    background-color: #fff;
+    padding: 0px 0px 25px 0px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    text-align: center;
+    a {
+      text-decoration: none;
+      color: #fff;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  ul.quicktabs-tabs {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 0px 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    display: block;
+    height: 56px;
+    #gradient > .vertical(@gradient-light, @gradient-dark, 0%, 100%);
+    li {
+      padding: 0;
+      position: relative;
+      display: block;
+      width: 25%;
+      float: left;
+      height: 56px;
+      text-align: center;
+      vertical-align: middle;
+      white-space: normal;
+      .pretty-buttons(@btn-primary-color, @gradient-light, darken(@gradient-light, 10%));
+      &.active {
+          #gradient > .vertical(@brand-lightgreen, @brand-darkgreen, 0%, 100%);
+          &:after {
+            content: " ";
+            display: table;
+            z-index: 40;
+
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+
+            margin-left: -@spotbox-arrow-width / 2;
+            .sprite(@panel-arrow-green-big);
+          }
+      }
+      &.tab-0 {
+        border-top-left-radius: 3px;
+      }
+      &.tab-3.last {
+        border-top-right-radius: 3px;
+      }
+      .bubble {
+        .bubble(0px,56px);
+      }
+      a {
+        padding: 13px 0px;
+        color: #fff;
+        display: inline-block;
+        word-break: break-word;
+        width: 60px;
+        &:hover{
+          text-decoration: none;
+        }
+        @media (min-width:421px) and (max-width:765px) {
+          width: 65px;
+        }
+        @media (min-width:766px) and (max-width:1000px) {
+          font-size: 13px;
+        }
+        @media (max-width:420px) {
+          font-size: 13px;
+        }
+        @media (min-width:1001px) {
+          width: 65px;
+        }
+        &:focus {
+          outline: none;
+          text-decoration: none;
+        }
+
+      }
+    }
+  }
+  .views-row {
+    display: table;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 10px;
+    img {
+      border-radius: 50%;
+      border: 3px solid #ccc;
+    }
+    h4 {
+      text-transform: inherit;
+      font-weight: bold;
+      font-size: 1.2em;
+      line-height: 1.4em;
+      margin-top: 0px;
+      a {
+        color: @brand-blacknblue;
+        text-decoration: none;
+        &:hover {
+          color: @link-hover-color;
+        }
+      }
+    }
+    .quicktabs-nyheder-row {
+      min-height: 67px;
+    }
+  }
+}
+
+//filter buttons
+#block-views-news-filter-block {
+  .panel {
+    margin-bottom: 0;
+    border-bottom: 1px solid #dfded7;
+    border-radius: 4px 4px 0 0;
+    .panel-heading {
+      padding:  20px 19px;
+    }
+    .view-id-news_filter {
+      margin: 30px 0 20px 0;
+      #filter-all,
+      .filter-link {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+}
+.menu-block-wrapper ul {
+  padding: 0;
+  margin: 0;
+  border-radius: 0 0 4px 4px;
+  background: white;
+  list-style: none;
+  li {
+    border-bottom: 1px solid #dfded7;
+    a {
+
+      font-size: 15px;
+      color: @text-color;
+    }
+  }
+}

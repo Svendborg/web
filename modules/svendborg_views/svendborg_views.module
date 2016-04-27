@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg - ustream video feature.
+ */
+
+include_once 'svendborg_views.features.inc';

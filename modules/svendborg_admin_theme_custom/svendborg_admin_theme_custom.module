@@ -1,0 +1,23 @@
+<?php
+function svendborg_admin_theme_custom_preprocess_html(&$variables) {
+  // Add conditional stylesheets for node/term edit pages on admin theme.
+  $node_add = (arg(0) == 'node' && arg(1) == 'add');
+  $node_edit = (arg(0) == 'node' && arg(2) == 'edit');
+  $taxonomy_add = (arg(2) == 'taxonomy' && arg(4) == 'add');
+  $taxonomy_edit =  (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2)) && arg(3) == 'edit');
+
+  if ($node_add || $node_edit || $taxonomy_add || $taxonomy_edit) {
+    drupal_add_css(drupal_get_path('module', 'svendborg_admin_theme_custom') . '/admin_theme_custom.css');
+  }
+}
+
+/**
+ * Implements hook_library_alter().
+ */
+function svendborg_admin_theme_custom_library_alter(&$libraries, $module) {
+  if ($module == 'media') {
+    $path = drupal_get_path('module', 'svendborg_admin_theme_custom');
+    $libraries['media_browser_page']['css'][$path . '/admin_theme_custom.css']['group'] = CSS_DEFAULT;
+  }
+}
+

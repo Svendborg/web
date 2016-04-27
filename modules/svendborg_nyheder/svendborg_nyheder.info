@@ -1,0 +1,4 @@
+name = Svendborg Nyheder
+description = Modul til håndtering af nyheder
+core = 7.x
+

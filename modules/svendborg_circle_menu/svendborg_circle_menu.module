@@ -1,0 +1,99 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg circle menu module.
+ */
+/**
+ * Implements hook_menu().
+ */
+function svendborg_circle_menu_menu() {
+
+  $items['admin/config/administration/front_circle_menu'] = array(
+    'title' => 'Front circle menu',
+    'description' => 'Configure front page circle menu (alt, title)',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('svendborg_circle_menu_settings_form'),
+    'type' => MENU_NORMAL_ITEM,
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+/**
+ * Settings form.
+ */
+function svendborg_circle_menu_settings_form($form, $form_state) {
+  $menu_links = svendborg_circle_menu_get_menu_link();
+  foreach ($menu_links as $menus) {
+    foreach ($menus as $key => $menu_item) {
+      $form['front_menu_' . $menu_item['title']] = array(
+        '#title' => $menu_item['title'],
+        '#type' => 'textfield',
+        '#default_value' => variable_get('front_menu_' . $menu_item['title'], $menu_item['title']),
+        '#description' => t('Tekst for menu link'),
+      );
+    }
+  }
+  $form['text_duration_time'] = array(
+    '#title' => 'Tekst varighed i sekunder',
+    '#type' => 'textfield',
+    '#default_value' => variable_get('text_duration_time', '5'),
+    '#description' => t('F.esk. 5 sek'),
+  );
+
+  return system_settings_form($form);
+}
+/**
+ * Retrive circle menu link.
+ */
+function svendborg_circle_menu_get_menu_link() {
+  $front_big_menu = '';
+  $tree = menu_tree_all_data('menu-indholdsmenu', $link = NULL, $max_depth = 3);
+
+  foreach ($tree as $key => $menu_item) {
+    $title = $menu_item['link']['link_title'];
+    $path = drupal_get_path_alias($menu_item['link']['link_path']);
+
+    if (strpos($title, 'Kommunen') !== false) {
+      $menu_links[0] = array('mlid' => array('title' => $title, 'path' => $path));    }
+    elseif (strpos($title, 'Borger') !== false){
+      $menu_links[1] = array('mlid' => array('title' => $title, 'path' => $path));
+    }
+    elseif (strpos($title, 'Erhverv') !== false){
+      $menu_links[2] = array('mlid' => array('title' => $title, 'path' => $path));
+    }
+    elseif (strpos($title, 'Politik') !== false){
+      $menu_links[3] = array('mlid' => array('title' => $title, 'path' => $path));
+    }
+  }
+  ksort($menu_links);
+  return $menu_links;
+}
+/**
+ * Retrieve front page circle menu markup.
+*/
+function svendborg_circle_menu_get_menu_link_markup() {
+  $menu_links = svendborg_circle_menu_get_menu_link();
+
+  foreach ($menu_links as $menus) {
+    foreach ($menus as $key => $menu_item) {
+      $title = variable_get('front_menu_' . $menu_item['title'], $menu_item['title']);
+
+      $front_big_menu .= '<div class="menu-' . $key . ' front-indholsdmenu col-md-3 col-sm-3 col-xs-12">';
+      $front_big_menu .= '<h2 class="menu-front ' . $menu_item['title'] . '">';
+      $front_big_menu .= '<a title="' . $title . '" href="' . $menu_item['path'] . '" class="' . $menu_item['title'] . '">' . $menu_item['title'] . '</a>';
+      $front_big_menu .= '</h2></div>';
+    }
+  }
+  $css = 'div#ToolTipDiv {
+      Position: absolute;
+      border: 1px solid #e5e5e5;
+      background-color: #fff;
+      border-radius: 2px 2px;
+      display: none;
+      padding: 2px 2px;
+    }';
+  $sec = variable_get('text_duration_time', 5);
+  drupal_add_css($css, 'inline');
+  drupal_add_js(array('text_duration_time' => $sec), 'setting');
+  return $front_big_menu;
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg Kulturkalender feature.
+ */
+
+include_once 'svendborg_kulturkalender.features.inc';

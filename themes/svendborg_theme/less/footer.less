@@ -1,0 +1,115 @@
+// Insert your styling here.
+// Mixins
+.size-height(@height) {
+  height: @height;
+}
+.no-padding-right(){
+  padding-right: 0px;
+}
+.footer-background(@repeat,@width,@height){
+  background-repeat: @repeat;
+  background-size:@width @height;
+}
+footer {
+  background: white;
+}
+.footer-bg-image img {
+  width: 100%;
+}
+#footer-menu {
+  background-image: url('../images/footer_menu_bg.png');;
+  .footer-background(repeat-x, 100px, 100%);
+  .size-height(100%);
+}
+.footer-menu {
+  background-image: url('../images/footer_menu_level2.png');
+  .footer-background(repeat-x, 100px, 100%);
+  padding-bottom: 30px;
+  padding-top: 30px;
+  .size-height(100%);
+}
+h2.menu-footer {
+
+  a{
+    color: #fff;
+    font-size: 24px;
+    text-transform: none;
+    padding-top: 80px;
+    display: block;
+    font-weight: 600;
+    background-repeat: no-repeat;
+    &:hover {
+      text-decoration: none;
+    }
+    &.Borger {
+      background-image: url('../images/footer_borger.png');
+    }
+    &.Erhverv {
+      background-image: url('../images/footer_erhverv.png');
+    }
+    &.Politik {
+      background-image: url('../images/footer_politik.png');
+    }
+    &.Kommunen {
+      background-image: url('../images/footer_kommune.png');
+    }
+  }
+}
+.footer-indholsdmenu {
+  .nav > li > a{
+    color: #99c1da;
+    padding: 0;
+
+    &:hover {
+      text-decoration: underline;
+      background: none;
+    }
+  }
+}
+#footer-contacts {
+  margin: 25px 0 50px 0;
+  .social-icons {
+    margin: 35px 0 15px 0;
+  }
+  .footer-address {
+    margin-top: 50px;
+    span {
+      margin-left: 70px;
+      font-size: 14px
+    }
+    a {
+      font-size: 14px;
+      color: @brand-lightblue;
+    }
+  }
+  .container {
+    @media all and (max-width: 1200px) and (min-width:970px) {
+      .no-padding-right();
+    }
+  }
+
+}
+.social-icons {
+  a {
+    background-repeat: no-repeat;
+    font-size:0;
+    padding:  20px 1px 20px 40px;
+    display: inline-block;
+    width: 40px;
+    &.footer_fb{
+      background-image: url('../images/footer_fb.png');
+    }
+    &.footer_twitter {
+      background-image: url('../images/footer_twitter.png');
+    }
+    &.footer_googleplus{
+      background-image: url('../images/footer_googleP.png');
+    }
+    &.footer_linkedin {
+      background-image: url('../images/footer_linkedin.png');
+    }
+    &.footer_flickr {
+      background-image: url('../images/footer_flickr.png');
+    }
+  }
+}

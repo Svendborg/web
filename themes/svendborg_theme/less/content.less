@@ -1,0 +1,554 @@
+// Insert your styling here.
+
+.webform-client-form {
+
+	.webform-actions {
+		padding-top: 15px;
+		padding-bottom: 10px;
+	}
+}
+
+.page-node-edit,
+.page-node-add {
+  .region-content section {
+    background-color: #FFF;
+    padding: 10px;
+  }
+  h1.page-header {
+    display: block;
+  }
+
+  .form-control {
+    color: black;
+  }
+}
+
+// Default show for a node with 3 columns.
+body.page-node,
+body.page-taxonomy-term.term-is-not-top {
+  h1.page-header {
+      padding: 15px;
+      margin: 0;
+      margin-top: 14px;
+      font-size: @font-size-h1;
+      font-family: @headings-font-family;
+      text-transform: initial;
+      color: @text-color;
+      font-weight: 600;
+      a{
+        color: @text-color;
+        text-transform: initial;
+        font-family: @headings-font-family;
+        font-size: @font-size-h1;
+        @media (max-width:460px) {
+          font-size: 1.3em;
+        }
+      }  }
+    h1.page-header.region-content {
+    display: none;
+  }
+  article,
+  div.node-os2web-borger-dk-article,
+  div.node-os2web-base-news {
+    background: white;
+    border-radius: 0 0 4px 4px;
+    margin-bottom: @grid-gutter-width;
+
+    // This is a serious hack to force anchors below the fixed header.
+    // See http://css-tricks.com/hash-tag-links-padding/
+    a, h1, h2, h3, h4, h5, h6 {
+      &[id]:before {
+        display: block;
+        content: " ";
+        margin-top: -100px;
+        height: 100px;
+        visibility: hidden;
+      }
+    }
+
+    p {
+      line-height: 1.6em;
+    }
+
+    header h2, header h1 {
+      margin: 0;
+      margin-top: 14px;
+      font-size: @font-size-h1;
+      font-family: @headings-font-family;
+      text-transform: initial;
+      color: @text-color;
+      font-weight: 600;
+      a{
+        color: @text-color;
+        text-transform: initial;
+        font-family: @headings-font-family;
+        font-size: @font-size-h1;
+        @media (max-width:460px) {
+          font-size: 1.3em;
+        }
+      }
+    }
+	header h1 {padding: 14px;}
+    .wrap,
+    header h2,
+    #borger_dk_header {
+      padding: 15px;
+    }
+    .inner {
+      padding: 15px 0px;
+    }
+    header time {
+      padding: 15px 30px;
+      text-align: right;
+      display: block;
+
+      i {
+        display: inline-block;
+        zoom: 1;
+        *display: inline;
+        margin-right: 5px;
+        .sprite(@node-created-at-icon);
+      }
+    }
+
+    .field-name-field-os2web-base-field-image {
+      .field-slideshow {
+        margin: 0 auto;
+        .field-slideshow-caption {
+          display: none;
+        }
+      }
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+    .borger_dk_header_text,
+    .field-name-field-os2web-base-field-summary .field-item {
+      font-family: @headings-font-family;
+      font-size: @font-size-intro-text;
+      line-height: 1.1em;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    .borger_dk_header_text {
+      margin-bottom: 0px;
+    }
+    .borger_dk_body_intro_text {
+      margin-bottom: 20px;
+      .intro_text_text {
+        width: 70%;
+        display: inline-block;
+      }
+      .intro_text_buttons {
+        float: right;
+      }
+      .gplus_gminus {
+        margin-left: 5px;
+      }
+      .gplus_button {
+        .sprite(@gplus);
+        display: inline-block;
+        font-size: 0;
+        vertical-align: middle;
+      }
+      .gminus_button {
+        .sprite(@gminus);
+        display: inline-block;
+        font-size: 0;
+        vertical-align: middle;
+      }
+    }
+    #borger_dk-body {
+      clear: both;
+      .microArticle {
+        padding: 10px 10px;
+        background-color: #e3e3e3;
+        border-radius: 5px;
+        margin-bottom: 5px;
+      }
+      div.mArticle {
+        padding-top: 10px;
+      }
+      h2,
+      h3 {
+        display: inline-block;
+        width: 90%;
+        border-top: none;
+        margin-top: 0;
+        text-transform: inherit;
+        font-weight: bold;
+        font-size: 16px;
+        background: none;
+      }
+      a.gplus {
+        display: inline-block;
+        .sprite(@gplus);
+        font-size: 0;
+        vertical-align: middle;
+        float: right;
+      }
+      a.gminus {
+        display: inline-block;
+        .sprite(@gminus);
+        font-size: 0;
+        vertical-align: middle;
+        float: right;
+      }
+    }
+    .media-youtube-video iframe,
+    .media-ustream-video iframe {
+      max-width: 100%;
+    }
+  }
+  .nav-tabs {
+    margin-bottom: 0;
+  }
+
+  .field-name-field-os2web-base-field-media {
+    .field-label {
+      &:extend(h4);
+      text-transform: none;
+    }
+    .field-item {
+      border-top: 1px solid @brand-warmgray;
+      padding: 5px 0;
+
+      .file-icon {
+        // This overrides the file-icon and replaces it with an download icon.
+        .sprite(@download-icon);
+        padding-left: @download-icon-width;
+      }
+
+      a {
+        margin-left: 10px;
+        color: @brand-blacknblue;
+      }
+    }
+  }
+  .field-type-text-long img {
+    max-width: 100%;
+    height: auto;
+  }
+  .region-content.col-sm-6,
+  .region-content.col-md-6 {
+    .borger_dk_body_intro_text {
+      .intro_text_text {
+        width: 50%;
+      }
+    }
+  }
+  div.field-name-field-os2web-paragraphs {
+    .panel-body {
+      ul {
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        -webkit-padding-start: 40px;
+        list-style-type: disc;
+      }
+    }
+  }
+}
+
+// These rules target the article when we have two sidebars.
+body.page-node,
+body.page-taxonomy-term.term-is-not-top {
+  // Somehow .two-sidebars class are sometimes wrongly set, so we targeted it
+  // also by seeing after the col-md-XX classes on region-content.
+  &.two-sidebars,
+  .region-content.col-sm-6,
+  .region-content.col-md-6 {
+    article,
+    div.node-os2web-borger-dk-article,
+    div.node-os2web-base-news {
+      .field-name-field-os2web-borger-dk-image img,
+      .field-name-field-os2web-base-field-image img {
+        border-radius: 4px 4px 0 0;
+      }
+    }
+  }
+
+  &.one-sidebar,
+  .region-content.col-sm-6,
+  .region-content.col-md-6 {
+    article,
+    div.node-os2web-borger-dk-article,
+    div.node-os2web-base-news {
+      // .one-sidebar
+    }
+  }
+
+  &.no-sidebars,
+  .region-content.col-sm-12,
+  .region-content.col-md-12 {
+    article,
+    div.node-os2web-borger-dk-article,
+    div.node-os2web-base-news {
+      // .no-sidebars
+    }
+  }
+}
+
+// Overrides for the node display.
+.page-taxonomy,
+.page-node {
+  .region-content.col-sm-9,
+  .region-content.col-md-9,
+  .region-content.col-sm-12,
+  .region-content.col-md-12 {
+
+    article {
+      .wrap,
+      header {
+        margin: 0 auto;
+      }
+
+      .field-name-field-os2web-base-field-image {
+        padding: 0 15px;
+      }
+    }
+  }
+
+  // With left sidebar
+  .region-content.col-sm-9,
+  .region-content.col-md-9 {
+
+    article {
+      .wrap,
+      header {
+        width: 77.77777776%;
+      }
+    }
+  }
+
+  // Full width, without left menu and right sidebar.
+  .region-content.col-sm-12,
+  .region-content.col-md-12 {
+
+    article {
+      .wrap,
+      header {
+        width: 83.33333333%;
+        // &:extend(.col-sm-10);
+        // &:extend(.col-sm-offset-1);
+      }
+    }
+  }
+}
+.region-content {
+  .taxonomy-term-description a,
+  .field-name-body a {
+    font-weight: 400;
+    color: @brand-lightblue;
+    &:hover,
+    &:active {
+      color: @brand-darkblue;
+    }
+  }
+}
+.wrap {
+  img {
+    max-width: 100%;
+  }
+  hr {
+    border-color: @brand-blacknblue;
+  }
+}
+.link_here {
+  padding-top: 135px;
+  margin-top: -135px;
+  display: block;
+}
+.view-nypostliste .view-grouping-header { display: none}
+
+#borger_dk-body {
+  h2,
+  h3 {
+    border-top: none;
+    font-family: @headings-font-family;
+    font-size: @font-size-h4 !important;
+    margin-bottom: 2px;
+    padding-top: 1px;
+  }
+}
+
+div.microArticle,
+body.page-node article #borger_dk-body .microArticle {
+	background-color: #E2E1DC;
+	a {color: @link-color;&:hover {color: @link-hover-color}}
+	ul { padding-left: @padding-large-horizontal}
+}
+
+
+
+.os2web_borger_dk_selfservi {
+  clear: both;
+  padding: 0;
+  background-color: transparent;
+  border-radius: none;
+ h3 {
+  color: @gray-dark;
+  margin-top: @padding-large-vertical;
+  margin-bottom: @padding-small-vertical;
+  border-bottom: none;}
+  ul { padding-left: 18px;}
+  a,a:link, ul li a {  color: @link-color;
+  font-size: @font-size-base;
+  &:hover {color: @link-hover-color}
+}}
+
+.borger_dk-field_os2web-borger-dk-pre_text,
+.borger_dk-field_os2web-borger-dk-post_text {
+  margin: @padding-base-vertical auto;
+}
+
+.borger_dk_body_intro_text {
+  font-size: @font-size-h4;
+}
+
+
+.borger_dk-field_os2web-borger-dk-recommend,
+.borger_dk-field_os2web-borger-dk-legislati,
+.borger_dk-field_os2web-borger-dk-shortlist {
+  margin-top: @padding-base-vertical ; 
+  background-color: #FFF;
+  border-radius: none;
+  padding:0;
+a {color: @link-color; &:hover {color: @link-hover-color}}
+
+h3 {
+  border-bottom:none;
+  font-family: @headings-font-family;
+  font-size: @font-size-h3;
+  font-weight: @headings-font-weight;}
+h4 {font-family: @headings-font-family;
+  font-size: @font-size-h4;
+  font-weight: @headings-font-weight;
+  border-top: 1px solid @brand-warmgray;
+  padding-top: 10px;}
+  ul { padding-left: 18px;}
+}
+
+.borger_dk-field_os2web-borger-dk-byline {
+  font-family: @headings-font-family;
+  float: right;
+  padding-right: @padding-large-horizontal;
+}
+
+.webform-client-form {
+		.gul {
+			padding: @padding-base-vertical @padding-base-horizontal;
+			background-color: @state-warning-bg;
+			color: @state-warning-text;
+			border: 1px solid @state-warning-border;		
+			border-radius: @border-radius-base;
+			-webkit-border-radius: @border-radius-base;
+			-moz-border-radius:  @border-radius-base;
+		}
+		.groen {
+			padding: @padding-base-vertical @padding-base-horizontal;
+			background-color: @state-success-bg;
+			color: @state-success-text;
+			border: 1px solid @state-success-border;		
+			border-radius: @border-radius-base;
+			-webkit-border-radius: @border-radius-base;
+			-moz-border-radius:  @border-radius-base;
+		}
+		.blaa {
+			padding: @padding-base-vertical @padding-base-horizontal;
+			background-color: @state-info-bg;
+			color: @state-info-text;
+			border: 1px solid @state-info-border;		
+			border-radius: @border-radius-base;
+			-webkit-border-radius: @border-radius-base;
+			-moz-border-radius:  @border-radius-base;
+		}
+		.graa {
+			padding: @padding-base-vertical @padding-base-horizontal;
+			background-color: @well-bg;
+			border: 1px solid @well-border;		
+			border-radius: @border-radius-base;
+			-webkit-border-radius: @border-radius-base;
+			-moz-border-radius:  @border-radius-base; 
+		}
+	.webform-component {
+		input.form-file { padding: 0px 0px}
+		.btn { line-height: 1.14}
+	}
+	.webform-component-fieldset legend.panel-heading{ display: none;}
+}
+
+/* Job postings */
+.jobs-block {
+  .views-field {
+    margin-bottom: 10px;
+  }
+
+  .views-field-field-os2web-ofir-apply-link a {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+.view-id-job_liste {
+
+  .view-filters {
+    margin-top: 25px;
+  }
+
+  .job-title-teaser a {
+    color: @brand-lightblue;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .views-row {
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .views-row:not(.views-row-last) {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .field-name-field-os2web-ofir-job-text {
+    margin-bottom: 10px;
+  }
+
+  .field-name-field-os2web-ofir-category {
+    margin-bottom: 5px;
+  }
+}
+
+.os2web-list {
+  &.bg-white {
+    padding: @padding-base-vertical*2;
+    .views-row {
+      .smallteaser {
+        padding: @padding-base-vertical*2 0;
+        .node-title {
+          color: @brand-lightblue;
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+      &.views-row-last {
+        padding-bottom: 0;
+      }
+      &.views-row-first {
+        padding-top: 0;
+      }
+    }
+    .views-row:not(.views-row-last) {
+      .smallteaser {
+        border-bottom: 1px solid #ddd;
+      }
+    }
+  }
+}
+
+.page-kommunen-job .region-content {
+  .bg-white;
+}

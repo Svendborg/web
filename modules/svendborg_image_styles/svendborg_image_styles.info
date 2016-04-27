@@ -1,0 +1,12 @@
+name = Svendborg Image Styles
+description = Has all our Svendborg specifik image styles.
+core = 7.x
+package = Svendborg
+version = 7.x-1.0
+project = svendborg_image_styles
+dependencies[] = epsacrop
+dependencies[] = image
+features[features_api][] = api:2
+features[image][] = svendborg_content_image
+features[image][] = svendborg_spotbox
+project path = profiles/os2web/modules

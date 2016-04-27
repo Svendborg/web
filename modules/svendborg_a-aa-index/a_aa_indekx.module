@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the A-AA Indekx feature.
+ */
+
+include_once 'a_aa_indekx.features.inc';

@@ -1,0 +1,301 @@
+
+
+// Pretty Buttons
+// Borrrowed from : https://gist.github.com/claviska/6117193
+.pretty-buttons(@color, @background-from, @background-to) {
+
+  color: @color;
+  #gradient > .vertical(@background-from, @background-to, 0%, 100%);
+  border: none;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    #gradient > .vertical(@background-to, @background-from, 0%, 100%);
+    color: @color;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @background-to;
+    }
+  }
+}
+a {
+  color: @text-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color:  @link-hover-color;
+  }
+}
+.white-and-round() {
+  background-color: #fff;
+  border-radius: 5px 5px;
+}
+
+.bottom-padding {
+  padding-bottom: @grid-gutter-width;
+}
+.extra-bottom-padding {
+  padding-bottom: @grid-gutter-width + 10px;
+}
+
+.square-round-thumbnail(@width) {
+  height: @width;
+  width: @width;
+  border-radius: @width / 2;
+  border: 3px solid @gray;
+}
+
+@call-to-action-height: 64px;
+// Call to action buttons like on portalsider.
+.call-to-action {
+  margin-bottom: 20px;
+
+  .inner {
+    position: relative;
+    border-radius: @call-to-action-height / 2;
+    background: white;
+    height: @call-to-action-height;
+    display: table;
+    width: 100%;
+
+    a {
+      padding: 0 34px 0 @call-to-action-height;
+      font-size: @font-size-h4;
+      font-family: @font-familiy-semibold;
+      color: @text-color;
+      display: table-cell;
+      vertical-align: middle;
+      line-height: 1.1;
+      // @todo only show certain number of lines, or adjust font-size to fit.
+    }
+
+
+    img {
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      .square-round-thumbnail(52px);
+    }
+  }
+
+  i {
+    position: absolute;
+    right: 20px;
+    top: @call-to-action-height / 2 - @nav-arrow-right-green-height / 2;
+
+    .sprite(@nav-arrow-right-green);
+  }
+}
+
+// Bootstrap Carrousel with Svendborg colors.
+.carousel {
+  .white-and-round();
+  padding: 10px 10px;
+  .carousel-title {
+    margin-top:  20px;
+    a.btn {
+      margin: 20px 0;
+      padding: 5px 15px;
+      font-size: 14px;
+    }
+  }
+  .carousel-indicators {
+    right: 15px;
+    text-align: right;
+    bottom: 0;
+    margin-left: inherit;
+    left: inherit;
+  }
+  .carousel-indicators li {
+    height: 18px;
+    width: 18px;
+    border: 3px solid #e4e3e0;
+    margin: 1px;
+    &.active {
+      background-color: #7ebb00;
+    }
+  }
+  .title {
+    font-size: 30px;
+  }
+  .carousel-inner > .item {
+    a > img,
+    > img {
+      @media (min-width: 992px) {
+        max-width: 60%;
+        display: inline;
+        float: left;
+      }
+      @media (max-width:active 991px) {
+        max-width: 100%;
+        display: block;
+        float: none;
+      }
+    }
+    > .carousel-caption {
+        @media (min-width: 992px) {
+          width: 40%;
+          float: left;
+        }
+        @media (max-width: 991px) {
+          width: 100%;
+          float: none;
+        }
+        right: 0;
+        left: initial;
+        position: static;
+        text-align: left;
+        padding: 10px 10px 10px 15px;
+        margin-top: 15px;
+        text-shadow: initial;
+      a {
+        font-size: @font-size-h2;
+        color: @text-color;
+        text-transform: initial;
+      }
+    }
+    .btn-primary {
+      margin-left: 15px;
+    }
+  }
+}
+
+.front-s-news-item-img {
+  position: relative;
+  &:before {
+    content: " ";
+    display: table;
+    z-index: 40;
+
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+
+    margin-left: -@spotbox-arrow-width / 2;
+
+    .sprite(@spotbox-arrow);
+  }
+  img {
+    max-width: 100%;
+  }
+}
+.front-s-news-item {
+  padding: 10px 10px;
+  background-color: #fff;
+  border-radius: 3px 3px;
+}
+.news-text-date{
+  text-align: center;
+  color: #fff;
+  .sprite(@date);
+  .news-date-inner {
+    width: 20px;
+  }
+  .news-date-day {
+    font-weight: bold;
+    font-size: 17px;
+    float: right;
+    width: 100%;
+    padding-left: 1px;
+    margin-top: 12px;
+    line-height: 12px;
+  }
+  .news-date-month {
+    text-transform: uppercase;
+    font-size: 12px;
+    float: right;
+    width: 100%;
+  }
+
+}
+
+.bubble(@top,@height) {
+  position: absolute;
+  top: @top;
+  width: 100%;
+  min-height: @height;
+  display: table;
+  span {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.item-text(@height) {
+  position: relative;
+  text-align: center;
+  min-height: @height;
+}
+.rss-icon {
+  .sprite(@rss);
+}
+
+.bg-white {
+  background: white;
+  border-radius:4px 4px;
+  margin-bottom: 20px;
+}
+.view.bg-white {
+  padding: 20px
+}
+
+.padding-20 {
+  padding: 20px 20px;
+}
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+.content-img-header img{
+  border-radius: 4px 4px 0 0;
+}
+.content_header_2 {
+  color: @text-color;
+  text-transform: initial;
+  font-family: @font-familiy-semibold;
+  font-size: @font-size-h1;
+}
+.page-search  {
+  .main-container {
+    .region.region-content {
+      .bg-white;
+      ol.search-results.apachesolr_search-results {
+        list-style: none;
+        padding-left: 0;
+      }
+    }
+  }
+}
+.node-postliste_import-form #edit-feeds .help,
+.node-postliste_import-form #edit-feeds .form-item-feeds-FeedsExcelParser-no-headers,
+.node-postliste_import-form #edit-feeds .form-item-feeds-FeedsExcelParser-all-worksheets,
+.node-postliste_import-form #edit-feeds .panel-heading,
+.page-nypostliste .view-grouping-header,
+.node-postliste_import-form .vertical-tabs
+ { display: none; }
+
+.front_menu_bg(@icon, @bg_width, @bg_height, @background-from, @background-to, @width, @height) {
+  background: url(@icon) @bg_width @bg_height no-repeat, -moz-linear-gradient(319deg, @background-from 55%, @background-to 120%); /* ff3.6+ */
+  background: url(@icon) @bg_width @bg_height no-repeat, -webkit-gradient(linear, left top, right bottom, color-stop(55%, @background-from), color-stop(120%, @background-to)); /* safari4+,chrome */
+  background: url(@icon) @bg_width @bg_height no-repeat, -webkit-linear-gradient(319deg, @background-from 55%, @background-to 120%); /* safari5.1+,chrome10+ */
+  background: url(@icon) @bg_width @bg_height no-repeat, -o-linear-gradient(319deg, @background-from 55%, @background-to 120%); /* opera 11.10+ */
+  background: url(@icon) @bg_width @bg_height no-repeat, -ms-linear-gradient(319deg, @background-from 55%, @background-to 120%); /* ie10+ */
+  background: url(@icon) @bg_width @bg_height no-repeat, linear-gradient(131deg, @background-from 55%, @background-to 120%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@background-from, endColorstr=@background-to,GradientType=1 ); /* ie6-9 */
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: @width;
+  height: @height;
+}

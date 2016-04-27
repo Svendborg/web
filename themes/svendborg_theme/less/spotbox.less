@@ -1,0 +1,63 @@
+.spotbox,
+div.panel-pane div.node.node-os2web-spotbox-box,
+div.node-os2web-spotbox-box {
+
+  background: white;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 20px;
+
+  img {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  h3 {
+    text-align: center;
+    font-weight: normal;
+    text-transform: none;
+    @media (max-width:460px) {
+      font-size: 14px;
+    }
+  }
+
+  .field-name-field-os2web-spotbox-big-image .field-item,
+  .field-name-field-os2web-spotbox-video .field-item {
+    position: relative;
+    &:before {
+      // Add an arrow to all panels bodies.
+
+      content: " ";
+      display: table;
+      z-index: 40;
+
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+
+      margin-left: -@spotbox-arrow-width / 2;
+
+      .sprite(@spotbox-arrow);
+
+    }
+  }
+  .field-name-field-os2web-spotbox-video iframe {
+    width: 100%;
+    height: auto;
+  }
+  // Use col-xx classes decide size of spotbox:
+  &.col-md-4 {
+    // Some other styles.
+  }
+}
+.caption {
+  .item-text {
+    position: relative;
+    min-height: 65px;
+    text-align: center;
+    .bubble {
+      .bubble(0px,65px);
+    }
+  }
+}

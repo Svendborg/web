@@ -1,0 +1,16 @@
+name = Svendborg Skjul Højre Sidebar
+description = Field for Hide Sidebar for Svendborg.dk
+core = 7.x
+package = Svendborg
+version = 7.x-1.0
+project = svendborg_hide_sidebar
+dependencies[] = features
+dependencies[] = list
+dependencies[] = options
+dependencies[] = os2web_base
+features[features_api][] = api:2
+features[field_base][] = field_svendborg_hide_sidebar
+features[field_instance][] = node-os2web_base_contentpage-field_svendborg_hide_sidebar
+features[field_instance][] = node-os2web_base_news-field_svendborg_hide_sidebar
+features[field_instance][] = node-os2web_borger_dk_article-field_svendborg_hide_sidebar
+mtime = 1449001046

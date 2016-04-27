@@ -1,0 +1,160 @@
+/**
+ * This file is only for really global styles. None specific styles.
+ */
+
+// H1-h6 tags
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+}
+
+h3,
+h6 {
+  font-weight: bold;
+}
+
+body {
+  background: url(../images/underside.jpg) no-repeat fixed;
+  background-size: cover;
+  .form-control {
+    color: black;
+    padding: 0px 12px;
+  }
+}
+
+
+.main-container {
+  border-bottom: 1px solid white;
+  background-image: rgba(223, 222, 215, 0.9); // #dfded7 Opacity 90%
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
+  border-right: 1px solid rgba(255, 255, 255, 0.8);
+}
+.not-front .main-container {
+  #gradient > .vertical-three-colors(#fff, rgba(223, 222, 215, 0.9), 250px, rgba(223, 222, 215, 0.9));
+}
+.main-container,
+.header_svendborg .region-navigation.container {
+  border-left: none; // Default on non-rgba browsers.
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  border-right: none; // Default on non-rgba browsers.
+  border-right: 1px solid rgba(255, 255, 255, 0.6);
+
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+
+// feedback form
+#block-feedback-form {
+  top:  170px;
+  right: 0px;
+  z-index: 900;
+  width: 27px;
+  .feedback-help {
+    font-size: 14px;
+  }
+  h2 {
+    font-size: 0;
+    span.feedback-link {
+      .sprite(@feedback-side);
+      font-size: 0;
+      float: left;
+      display: block;
+      span#feedback-form-toggle {
+        font-size: 0px;
+      }
+    }
+  }
+  .form-actions {
+    text-align: center;
+  }
+
+  .field-type-text {
+    label {
+      display: inline-block;
+      width: 52px;
+    }
+    input {
+      display: inline-block;
+      width: 78%;
+      border-radius: 0;
+      border: 2px solid #ccc;
+      height: 2.3em;
+    }
+  }
+  form {
+    opacity: 1;
+    border: 3px solid #85c500;
+    border-bottom-left-radius: 3px;
+    padding: 20px 20px;
+    width: 300px;
+    margin-left: 29px;
+  }
+  .resizable-textarea textarea {
+    border-radius: 0;
+  }
+  #feedback-status-message {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    padding: 0px 10px;
+    font-size: 18px;
+    height: 20px;
+    font-weight: bold;
+  }
+  .feedback-messages {
+    max-height: 125px;
+    overflow-y: scroll;
+  }
+  #feedback-submit.btn-default {
+    .pretty-buttons(@btn-primary-color, @brand-lightgreen, @btn-primary-bg);
+  }
+}
+
+// cittaslow
+#block-cittaslow-block {
+  top: 320px;
+  right: 0;
+  z-index: 950;
+  width: 51px;
+  position: fixed;
+  span.cittaslow-link {
+    .sprite(@citslow-open);
+    font-size: 0;
+    float: left;
+    display: block;
+    cursor: pointer;
+  }
+  #block-block-cittaslow{
+    opacity: 1;
+    border: 3px solid #EE9727;
+    border-bottom-left-radius: 3px;
+    padding: 20px 20px;
+    width: 300px;
+    margin-left: 51px;
+    background-color: #fff;
+    max-width: 300px;
+    margin-top: 49px;
+    button {
+      color:  #fff;
+      &:hover{
+        color: #fff;
+      }
+    }
+  }
+}
+
+.main-container .form-search {
+  input:focus {
+    border: 4px solid @brand-darkgreen;
+  }
+}
+
+// Photo gallery
+.photoswipe-gallery .field-item img {
+  margin-bottom: 20px;
+}

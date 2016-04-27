@@ -1,0 +1,322 @@
+// Styles modifing the panels.
+
+// Use default Bootstrap 3 panel classes.
+//
+// To have a panel with an arrow in it, set the class ``with-arrow`` on the
+// panel.
+//
+// If you want to simulate the heading of an panel in your own element use the
+// classes .like-panel and which type of panel with .like-panel-primary.
+
+
+
+.field-collection-view { 
+  margin: 0 0; 
+  padding: 0 0; 
+  border-bottom: none;
+  .panel {
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #E2E1DC;
+    .panel-heading {
+      text-align: left;
+      background-image: none;
+      color: #333;
+      background-color: #E2E1DC;
+      padding: 10px;
+    }
+    .panel-body {
+      border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+      background-color: #E2E1DC;
+    }
+    .field-name-field-os2web-paragraph-text,
+    .field-name-field-os2web-paragraph-ref .indlejret-indhold {
+      padding: 10px;
+      background-color: #E2E1DC;
+    }
+    &.collapsed {
+      .panel-heading {
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        }
+    }
+  }
+  .field-name-field-os2web-paragraph-text { 
+    padding: 10px 15px; 
+  }
+
+}
+
+.field-collection-view > .panel > .panel-heading a.panel-title::before {
+    display: table-cell;
+    float: right !important;
+    content: "–";
+    color: #FFF;
+    padding: 0 0;
+    width: 20px;
+    text-align: center;
+    vertical-align: middle;
+    height: 20px;
+    line-height: 16px;
+    background-color: #83C200;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    }
+.field-collection-view > .panel.collapsed > .panel-heading a.panel-title::before {
+    content: "+";
+    height: 20px;
+    line-height: 19px;
+    }
+    
+
+.panel {
+  border: none;
+
+  box-shadow: none;
+  &:last-child {
+    margin-bottom: 18px;
+  }
+  & > .panel-heading {
+    color: white;
+    border: none;
+    padding: 14px 19px;
+
+    h3 {
+      text-transform: none;
+      font-size: @font-size-h2;
+      font-weight: normal;
+    }
+
+    a.rss-icon {
+      display: block;
+      float: right;
+    }
+  }
+
+  &.with-arrow > .panel-body {
+    position: relative;
+    padding-top: @panel-arrow-blue-height + 3px;
+    &:before {
+      // Add an arrow to all panels bodies.
+
+      content: " ";
+      display: table;
+
+      position: absolute;
+      top: 0;
+      left: 50%;
+
+      margin-left: -@panel-arrow-blue-width / 2;
+
+      .sprite(@panel-arrow-blue);
+
+    }
+  }
+  &.with-big-arrow > .panel-body {
+    position: relative;
+    padding-top: @panel-arrow-blue-height + 3px;
+    &:before {
+      // Add an arrow to all panels bodies.
+      content: " ";
+      display: table;
+
+      position: absolute;
+      top: 0;
+      left: 48%;
+
+      margin-left: -@panel-arrow-blue-width / 2;
+
+      .sprite(@panel-arrow-green-big);
+
+    }
+  }
+
+  .panel-body {
+    padding: 0;
+
+    .panel-body-inner {
+      padding: 10px 19px;
+      font-weight: 400;
+      .field-name-field-os2web-contact-field-info a {
+        color: @brand-lightblue;
+        &:hover,
+        &:active {
+          color: @brand-darkblue;
+        }
+      }
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      border-radius: 0 0 4px 4px;
+      list-style: none;
+
+      li {
+        border-bottom: 1px solid @brand-warmgray;
+
+        a{
+          font-size: 15px;
+          color: @brand-blacknblue;
+        }
+      }
+    }
+    .field-name-body {
+      ul {
+        li {
+          padding-left: 10px;
+          a {
+            color: @brand-lightblue;
+          }
+        }
+      }
+    }
+  }
+
+  .panel-footer {
+    background: white;
+    text-align: center;
+    padding: 20px;
+    &.no-border {
+      border: none;
+    }
+  }
+}
+
+.panel-default > .panel-heading,
+.like-panel.like-panel-default {
+  #gradient > .vertical(@brand-lightblue, @brand-darkblue, 0%, 100%);
+}
+
+.panel-primary > .panel-heading,
+.like-panel.like-panel-primary {
+  #gradient > .vertical(@brand-lightgreen, @brand-darkgreen, 0%, 100%);
+}
+.panel-primary.with-arrow > .panel-body {
+  .large-arrow& {
+    padding-top: @panel-arrow-green-big-height + 3px;
+  }
+  &:before {
+    .sprite(@panel-arrow-green);
+
+    .large-arrow& {
+      margin-left: -@panel-arrow-green-big-width / 2;
+      .sprite(@panel-arrow-green-big);
+    }
+  }
+}
+
+.panel-blacknblue > .panel-heading,
+.like-panel.like-panel-blacknblue {
+  #gradient > .vertical(@gradient-light, @gradient-dark, 0%, 100%);
+}
+
+.panel.panel-blacknblue .panel-body .panel-body-inner { padding-bottom: 19px;}
+.panel-blacknblue.with-arrow > .panel-body:before {
+  .sprite(@panel-arrow-darkblue);
+}
+
+.panel-success > .panel-heading,
+.like-panel.like-panel-success {
+  #gradient > .vertical(lighten(@panel-success-heading-bg, 5%), darken(@panel-success-heading-bg, 5%), 0%, 100%);
+}
+.panel-success.with-arrow > .panel-body:before {
+  // .sprite(@panel-arrow-blue);
+}
+
+.panel-info > .panel-heading,
+.like-panel.like-panel-info {
+  #gradient > .vertical(lighten(@panel-info-heading-bg, 5%), darken(@panel-info-heading-bg, 5%), 0%, 100%);
+}
+.panel-info.with-arrow > .panel-body:before {
+  // .sprite(@panel-arrow-blue);
+}
+
+.panel-warning > .panel-heading,
+.like-panel.like-panel-warning {
+  #gradient > .vertical(lighten(@panel-warning-heading-bg, 5%), darken(@panel-warning-heading-bg, 5%), 0%, 100%);
+}
+.panel-warning.with-arrow > .panel-body:before {
+  // .sprite(@panel-arrow-blue);
+}
+
+.panel-danger > .panel-heading,
+.like-panel.like-panel-danger {
+  #gradient > .vertical(lighten(@panel-danger-heading-bg, 5%), darken(@panel-danger-heading-bg, 5%), 0%, 100%);
+}
+.panel-danger.with-arrow > .panel-body:before {
+  // .sprite(@panel-arrow-blue);
+}
+
+.like-panel {
+  &:extend(.panel > .panel-heading);
+  &:extend(.panel);
+}
+
+.like-panel.like-panel-default,
+.like-panel.like-panel-primary,
+.like-panel.like-panel-blacknblue,
+.like-panel.like-panel-success,
+.like-panel.like-panel-info,
+.like-panel.like-panel-warning,
+.like-panel.like-panel-danger {
+  > a {
+    color: white;
+  }
+}
+
+.dropdown.like-panel {
+  padding: 0;
+  > a {
+    display: block;
+    padding-left: 19px;
+
+    line-height: 2.2em;
+    font-size: 2em;
+    font-family: @font-family-sans-serif-second;
+
+    .caret-background {
+      position: absolute;
+      right: 0;
+      height: 2.16em;
+      width: 2.2em;
+      background: @brand-darkblue;
+      text-align: center;
+      border-radius: 0 4px 4px 0;
+      i {
+        .sprite(@dropdown-arrow-down);
+        margin: 0 auto;
+        margin-top: 0.8em;
+        display: block;
+      }
+    }
+  }
+  &.open {
+    border-radius: 4px 4px 0 0;
+    > a .caret-background {
+      height: 4.4em;
+      z-index: 1001;
+
+      i {
+        margin-top: 1.9em;
+      }
+    }
+  }
+  ul.dropdown-menu {
+    margin: 0;
+    width: 100%;
+    border: 2px solid @brand-darkblue;
+    border-radius: 0 0 4px 4px;
+
+    li a {
+      line-height: 2.2em;
+      font-size: 2em;
+      font-family: @font-family-sans-serif-second;
+      &:hover {
+        color: @link-color;
+      }
+    }
+  }
+}

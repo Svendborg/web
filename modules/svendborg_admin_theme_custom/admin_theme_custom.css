@@ -1,0 +1,16 @@
+body .ui-dialog {
+  height: 550px !important;
+  top: 150px !important;
+  margin: 0 auto;
+}
+.ui-dialog.media-wrapper .ui-dialog-content {
+  height: 550px !important;
+}
+.media-item img {
+  height: 100px;
+  width: auto;
+}
+
+body .ui-dialog .ui-dialog-content {
+  height: 450px !important;
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg Sektionssider feature.
+ */
+
+include_once 'svendborg_sektionssider.features.inc';
