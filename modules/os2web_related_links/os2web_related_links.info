@@ -1,0 +1,6 @@
+name = OS2web relaterede links
+description = Relaterede links, (borger.dk recommented links), intern, ektern
+core = 7.x
+package = OS2Web - Backend
+version = 7.x-1.0
+project = os2web_related_links

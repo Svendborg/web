@@ -1,0 +1,321 @@
+<?php
+/**
+ * @file
+ * Code for the OS2WEB related links.
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function os2web_related_links_block_info() {
+  $blocks = array();
+
+  $blocks['term_related_links_block'] = array(
+    'info' => t('Term - Relaterede links block'),
+  );
+  $blocks['node_related_links_block'] = array(
+    'info' => t('Node - Relaterede links block'),
+  );
+  $blocks['selfservice_links_block'] = array(
+    'info' => t('Selvbetjenings links block'),
+  );
+  return $blocks;
+}
+/**
+ * Implements hook_block_view().
+ */
+function os2web_related_links_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+
+    case 'term_related_links_block':
+      $block['subject'] = t('Relaterede sider');
+      $block['content'] = _os2web_related_links_block_content('taxonomy_term');
+      break;
+
+    case 'node_related_links_block':
+      $block['subject'] = t('Relaterede sider');
+      $block['content'] = _os2web_related_links_block_content('node');
+      break;
+
+    case 'selfservice_links_block':
+      $block['subject'] = t('Selvbetjening');
+      $block['content'] = _os2web_related_links_block_content_selfservice();
+      break;
+  }
+  return $block;
+
+}
+/**
+ * OS2WEB block view content callback.
+ */
+function _os2web_related_links_block_content($entity_type = 'node') {
+
+  $entity = FALSE;
+  $eid = arg(1);
+  $output = '';
+  if (is_numeric($eid)) {
+    if ($entity_type == 'node') {
+      $entity = node_load($eid);
+    }
+    else {
+      $entity = taxonomy_term_load($eid);
+    }
+  }
+  $related_links = os2web_related_links_get_links($entity, $entity_type);
+
+  if (!empty($related_links)) {
+    $output = os2web_related_links_make_markup($related_links);
+  }
+  return $output;
+}
+
+function _os2web_related_links_block_content_selfservice() {
+  $entity = FALSE;
+  $eid = arg(1);
+  $output = '';
+  if (is_numeric($eid)) {
+    $entity = node_load($eid);
+  }
+  $links = os2web_related_links_get_selfservice_links($entity);
+
+  if (!empty($links)) {
+    $output = os2web_related_links_make_markup($links);
+  }
+  return $output;
+}
+/**
+ * OS2WEB os2web_related_links_get_links().
+ */
+function os2web_related_links_get_links($entity, $entity_type) {
+  $related_links = array();
+
+  switch ($entity_type) {
+
+    case 'node':
+      // 1. Get all unique related links from the node.
+      $base_field_links = field_get_items('node', $entity, 'field_os2web_base_field_related');
+
+      // 2. Get borger.dk recommended links.
+      if ($entity->type == 'os2web_borger_dk_article' && $item = field_get_items('node', $entity, 'field_os2web_borger_dk_recommend')) {
+        $borger_dk_related_links = os2web_related_links_get_borger_dk_links($item);
+      }
+
+      // 3. Get all related links related to the KLE number on the node.
+      if ((!isset($entity->field_os2web_base_field_hidlinks['und'][0]['value']) ||
+        $entity->field_os2web_base_field_hidlinks['und'][0]['value'] == '0')) {
+        $kle_items = field_get_items('node', $entity, 'field_os2web_base_field_kle_ref');
+      }
+
+      // 4. External related links.
+      $ext_links = field_get_items('node', $entity, 'field_os2web_base_field_ext_link');
+      break;
+
+    case 'taxonomy_term':
+      // 1. Get all unique related links from the node.
+      $base_field_links = field_get_items('taxonomy_term', $entity, 'field_os2web_base_field_related');
+
+      // 3. Get all related links related to the KLE number on the node.
+      if ((!isset($entity->field_os2web_base_field_hidlinks['und'][0]['value']) ||
+        $entity->field_os2web_base_field_hidlinks['und'][0]['value'] == '0')) {
+        $kle_items = field_get_items('taxonomy_term', $entity, 'field_os2web_base_field_kle_ref');
+      }
+      // 4. External related links.
+      $ext_links = field_get_items('taxonomy_term', $entity, 'field_os2web_base_field_ext_link');
+      break;
+  }
+
+  // 1. Get all unique related links from the node.
+  if ($base_field_links) {
+    foreach ($base_field_links as $link) {
+      $link_node = node_load($link['nid']);
+      if ($link_node) {
+        $related_links[$link['nid']] = array(
+          'nid' => $link['nid'],
+          'title' => $link_node->title,
+          'class' => 'int-link',
+        );
+      }
+    }
+  }
+  // 2. Get borger.dk recommended links.
+  if (isset($borger_dk_related_links) && $borger_dk_related_links) {
+    foreach ($borger_dk_related_links as $key => $link) {
+      $related_links[$entity->nid . '_' . $key] = array(
+        'url' => $link['url'],
+        'title' => $link['title'],
+        'class' => 'ext-link',
+      );
+    }
+  }
+  // 3. Get all related links related to the KLE number on the node. Only get
+  // these if the checkbox "Skjul relaterede links" isn't checked.
+  // Check also links nodes are not siblings with the reviewed node.
+  if (isset($kle_items) && $kle_items) {
+
+    foreach ($kle_items as $kle) {
+      // Get all nodes which have the same KLE number as this node.
+      $query = new EntityFieldQuery();
+
+      // Only show 10 items. TODO: admin setting form for content type and max iterms.
+      $result = $query->entityCondition('entity_type', 'node')
+        ->propertyCondition('status', 1)
+        ->fieldCondition('field_os2web_base_field_kle_ref', 'tid', $kle['tid'])
+        ->propertyOrderBy('created', 'ASC')
+        ->range(0, 10)
+        ->execute();
+      if (isset($result['node'])) {
+        foreach ($result['node'] as $link) {
+          // Be sure to skip links which already is in list, or links to current
+          // node.
+          if (isset($related_links[$link->nid]) || ($entity_type == 'node' && $entity->nid == $link->nid)) {
+            continue;
+          }
+          // Check the link node is not siblings in menu,
+          // does not have the same parent menu link.
+          if (os2web_related_links_check_parent_menu_link($entity, $link, $entity_type)) {
+            continue;
+          }
+
+          $link_node = node_load($link->nid);
+          if ($link_node) {
+            $related_links[$link->nid] = array(
+              'nid' => $link->nid,
+              'title' => $link_node->title,
+              'class' => 'kle-link',
+            );
+          }
+
+        }
+      }
+    }
+  }
+
+  // 4. External related links.
+  if ($ext_links) {
+    foreach ($ext_links as $link) {
+      $related_links[] = array(
+        'url' => $link['url'],
+        'title' => $link['title'],
+        'class' => 'ext-link',
+      );
+    }
+  }
+  return $related_links;
+}
+function os2web_related_links_get_selfservice_links($node, $term) {
+  $selfservicelinks = array();
+  // Borger.dk artiles selfservice links.
+  if (isset($node) && $node->type == 'os2web_borger_dk_article') {
+    if ($borger_dk_links = field_get_items('node', $node, 'field_os2web_borger_dk_selfservi')) {
+      $selfservicelinks = os2web_related_links_get_borger_dk_links($borger_dk_links);
+    }
+  }
+
+  if (($node && $links = field_get_items('node', $node, 'field_os2web_base_field_selfserv')) ||
+      ($term && $links = field_get_items('taxonomy_term', $term, 'field_os2web_base_field_selfserv'))) {
+
+    foreach ($links as $link) {
+      $selfservicelink = node_load($link['nid']);
+      if ($selfservicelink) {
+        $link_fields = field_get_items('node', $selfservicelink, 'field_spot_link');
+        if (!empty($link_fields)) {
+          $link_field = array_shift($link_fields);
+          $selfservicelinks[$link['nid']] = array(
+            'url' => $link_field['url'],
+            'title' => $link_field['title'],
+          );
+        }
+      }
+    }
+  }
+
+
+  return $selfservicelinks;
+}
+/**
+ * Make block links markup.
+ */
+function os2web_related_links_make_markup($related_links) {
+  $output = '<ul class="related-links">';
+
+  foreach ($related_links as $key => $link) {
+    $output .= '<li>';
+    if (isset($link['url'])) {
+      $output .= l($link['title'], $link['url'], array('attributes' => array('class' => $link['class'])));
+    }
+    else {
+      $output .= l($link['title'], drupal_get_path_alias('node/' . $link['nid']), array('attributes' => array('class' => $link['class'])));
+    }
+    $output .= '</li>';
+
+  }
+  $output .= '</ul>';
+
+  return $output;
+}
+
+/**
+ * Helper. Returns true or false.
+ *
+ * @param object $node
+ *   reviewed node object.
+ *   object $link.
+ *   related link object.
+ *   string $type
+ *   node or term.
+ */
+function os2web_related_links_check_parent_menu_link($node, $link, $type) {
+  switch ($type) {
+    case 'node':
+      $path = 'node/' . $node->nid;
+      break;
+
+    case 'taxonomy_term':
+      $path = 'taxonomy/term/' . $node->tid;
+  }
+  $node_plid = os2web_related_links_get_parent_menu_link($path);
+  $link_plid = os2web_related_links_get_parent_menu_link('node/' . $link->nid);
+
+  if ($node_plid == $link_plid && $node_plid != 0) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Helper. Get menu links parent plid.
+ */
+function os2web_related_links_get_parent_menu_link($path) {
+
+  $plid = db_query("SELECT plid FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path))->fetchField();
+  return $plid;
+}
+
+
+/**
+ * Helper: retrieve os2web_borger_dk_article links.
+ */
+function os2web_related_links_get_borger_dk_links($item) {
+  $borger_dk_links = array();
+  $doc = new DOMDocument('1.0', 'UTF-8');
+  //$doc->strictErrorChecking = FALSE;
+  $doc->loadHTML('<?xml encoding="UTF-8">' . $item[0]['value']);
+
+  $xml = simplexml_import_dom($doc);
+  $count = 0;
+
+  $results = $xml->xpath("//ul");
+  foreach ($results as $ul) {
+    foreach ($ul->li as $li) {
+      $url = (string) $li->a->attributes()->href;
+      $title = (string) $li->a;
+      $borger_dk_links[] = array(
+        'url' => $url,
+        'title' => $title,
+      );
+    }
+  }
+  return $borger_dk_links;
+}

@@ -139,15 +139,15 @@
       print render($content['field_os2web_base_field_summary']);
 
       print render($content['body']);
-      
+
       if(isset($content['field_os2web_base_field_sympage'])) {
-      print render($content['field_os2web_base_field_sympage']);        
+      print render($content['field_os2web_base_field_sympage']);
       }
 
-      
+
       print render($content);
 
-      print $author_node_info;
+//      print $author_node_info;
 
     ?>
 
