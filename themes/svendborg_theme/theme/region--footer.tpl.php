@@ -71,7 +71,7 @@ print "<h2 class='menu-footer " . $menu_item['link']['link_title']. "'>
         </div>
         <div class="col-md-9 col-sm-6 col-xs-12 col-md-pull-3 col-sm-pull-6">
           <div class='footer-logo'>
-            <img id="footer-logo" src="/<?php print drupal_get_path('theme','svendborg_theme'); ?>/images/footer_logo.png" title="<?php print $page['site_name'] ?>" />
+            <img id="footer-logo" alt="Svendborg" src="/<?php print drupal_get_path('theme','svendborg_theme'); ?>/images/footer_logo.png" title="<?php print $page['site_name'] ?>" />
 
           </div>
         </div>
@@ -84,6 +84,6 @@ print "<h2 class='menu-footer " . $menu_item['link']['link_title']. "'>
     </div>
     <!-- footer bg-image -->
     <div class="lcontainer-fluid clearfix footer-bg-image">
-      <img class="" src="/<?php print drupal_get_path('theme','svendborg_theme'); ?>/images/footer_bottom_bg.png" />
+      <img class="" alt="Svendborg" src="/<?php print drupal_get_path('theme','svendborg_theme'); ?>/images/footer_bottom_bg.png" />
     </div>
   </footer>

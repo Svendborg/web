@@ -1,7 +1,7 @@
 {
-  "name": "os2web_bootstrap_theme",
+  "name": "svendborg_theme",
   "version": "0.1.0",
-  "description": "Theme for OS2web",
+  "description": "Theme for svendborg.dk",
   "main": "gruntfile.js",
   "author": "anders@bellcom.dk",
   "readmeFilename": "README.md",

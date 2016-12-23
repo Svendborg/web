@@ -38,9 +38,3 @@ function os2web_theme_breadcrumb($variables) {
     return $crumbs;
   }
 }
-
-function os2web_theme_preprocess_node(&$variables, $hook) {
-  if($variables['elements']['#view_mode'] == 'teaser'){
-    $variables['theme_hook_suggestions'][]= 'node__teaser';
-  }
-}

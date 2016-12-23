@@ -8430,6 +8430,10 @@ body.page-taxonomy-term.term-is-not-top .field-name-field-os2web-base-field-medi
   margin-left: 10px;
   color: #30353c;
 }
+body.page-node .field-name-field-os2web-base-field-media table,
+body.page-taxonomy-term.term-is-not-top .field-name-field-os2web-base-field-media table {
+  word-break: break-all;
+}
 body.page-node .field-type-text-long img,
 body.page-taxonomy-term.term-is-not-top .field-type-text-long img {
   max-width: 100%;
