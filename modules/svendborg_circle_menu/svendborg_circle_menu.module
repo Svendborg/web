@@ -73,6 +73,7 @@ function svendborg_circle_menu_get_menu_link() {
 */
 function svendborg_circle_menu_get_menu_link_markup() {
   $menu_links = svendborg_circle_menu_get_menu_link();
+  $front_big_menu = '';
 
   foreach ($menu_links as $menus) {
     foreach ($menus as $key => $menu_item) {
