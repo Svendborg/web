@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg OS2web News Page feature.
+ */
+
+include_once 'svendborg_os2web_news_page.features.inc';

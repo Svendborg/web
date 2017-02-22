@@ -1,0 +1,10 @@
+name = Svendborg OS2web Emply integration
+description = Svendborg override "os2web_ofir_job"
+core = 7.x
+package = Svendborg OS2Web - External data sources
+version = 7.x-1.0
+dependencies[] = os2web_ofir_job
+features[features_api][] = api:2
+features[features_override_items][] = views_view.job_liste
+features[features_overrides][] = views_view.job_liste.display|default|display_options|header|area_text_custom|content
+features[features_overrides][] = views_view.job_liste.display|default|display_options|title

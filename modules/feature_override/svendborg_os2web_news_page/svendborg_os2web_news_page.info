@@ -1,0 +1,13 @@
+name = Svendborg OS2web News Page
+description = Svendborg override "os2web_news_page"
+core = 7.x
+package = Svendborg OS2Web - Contenttype
+version = 7.x-1.0
+dependencies[] = os2web_news_page
+features[features_api][] = api:2
+features[features_override_items][] = views_view.os2web_news_lists
+features[features_overrides][] = views_view.os2web_news_lists.display|panel_pane_1|display_options|fields|field_os2web_base_field_lead_img|settings|image_style
+features[features_overrides][] = views_view.os2web_news_lists.display|panel_pane_1|display_options|row_options
+features[features_overrides][] = views_view.os2web_news_lists.display|panel_pane_1|display_options|row_plugin
+features[features_overrides][] = views_view.os2web_news_lists.display|panel_pane_1|display_options|style_options
+features[features_overrides][] = views_view.os2web_news_lists.display|panel_pane_1|display_options|style_plugin
