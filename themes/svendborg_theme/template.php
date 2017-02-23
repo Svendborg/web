@@ -61,10 +61,10 @@ function svendborg_theme_preprocess_page(&$variables) {
   $related_links = array();
   module_load_include('module', 'os2web_related_links');
   if ($node) {
-//    $related_links = os2web_related_links_get_links($node, 'node');
+    $related_links = os2web_related_links_get_links($node, 'node');
   }
   elseif ($term) {
-//    $related_links = os2web_related_links_get_links($term, 'taxonomy_term');
+    $related_links = os2web_related_links_get_links($term, 'taxonomy_term');
   }
 
   // If this is a node with an embedded webform.
