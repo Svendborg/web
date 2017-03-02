@@ -1,0 +1,83 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg search feature.
+ */
+
+include_once 'svendborg_search.features.inc';
+
+/**
+ * Implements hook_form_alter()
+ * does some visual modifications to the form
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function svendborg_search_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form' && ($form['#id'] == 'views-exposed-form-svendborg-elastic-search-panel-pane-menu' || $form['#id'] == 'views-exposed-form-svendborg-elastic-search-panel-pane-frontpage')) {
+    $form['search_api_views_fulltext']['#theme_wrappers'] = array('bootstrap_search_form_wrapper');
+    $form['search_api_views_fulltext']['#attributes']['placeholder'] = t('Search');
+    $form['search_api_views_fulltext']['#attributes']['title'] = t('Enter the terms you wish to search for.');
+    $form['submit']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_file_presave()
+ * adds node of type os2search_dokument per each uploaded PDF file, so that the files are being indexed
+ *
+ * @param $file
+ */
+function svendborg_search_file_presave($file) {
+  if ($file->fid && $file->filemime == 'application/pdf') {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'os2search_dokument')
+      ->propertyCondition('status', NODE_PUBLISHED)
+      ->fieldCondition('field_os2search_file_ref', 'fid', $file->fid);
+    $result = $query->execute();
+
+    if (isset($result['node'])) {
+      $nid = reset(array_keys($result['node']));
+      $document_node = node_load($nid);
+    } else {
+      global $user;
+
+      $document_node = new stdClass();
+      $document_node->title = $file->filename;
+      $document_node->type = 'os2search_dokument';
+      node_object_prepare($document_node);
+      $document_node->language = LANGUAGE_NONE;
+      $document_node->uid = $user->uid;
+      $document_node->status = 1;
+      $document_node->promote = 0;
+      $document_node->comment = 0;
+    }
+
+    $file->display = 1;
+    $document_node->field_os2search_file_ref['und'][0] = (array) $file;
+
+    node_submit($document_node);
+    node_save($document_node);
+  }
+}
+
+/**
+ * Implements hook_file_delete()
+ * when the file is deleted, the related node of type os2search_dokument is deleted as well.
+ *
+ * @param $file
+ */
+function svendborg_search_file_delete($file) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'os2search_dokument')
+    ->fieldCondition('field_os2search_file_ref', 'fid', $file->fid);
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    $nid = reset(array_keys($result['node']));
+    node_delete($nid);
+  }
+}
+

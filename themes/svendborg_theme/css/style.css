@@ -6911,7 +6911,8 @@ fieldset[disabled] #block-feedback-form #feedback-submit.btn-default.active {
 #block-cittaslow-block #block-block-cittaslow button:hover {
   color: #fff;
 }
-.main-container .form-search input:focus {
+.main-container .form-search input:focus,
+.main-container #views-exposed-form-svendborg-elastic-search-panel-pane-frontpage input:focus {
   border: 4px solid #589000;
 }
 .photoswipe-gallery .field-item img {
@@ -7529,6 +7530,15 @@ fieldset[disabled] .btn-orange.active {
 .search-results h3 a {
   color: #0089cd;
 }
+#views-exposed-form-svendborg-elastic-search-page .views-widget {
+  display: inline-block;
+}
+#views-exposed-form-svendborg-elastic-search-page .views-submit-button {
+  padding-top: 0;
+}
+#views-exposed-form-svendborg-elastic-search-page .views-submit-button button {
+  margin-top: 0.35em;
+}
 .spotbox,
 div.panel-pane div.node.node-os2web-spotbox-box,
 div.node-os2web-spotbox-box {
@@ -7775,7 +7785,8 @@ div.node-os2web-spotbox-box .field-name-field-os2web-spotbox-video iframe {
 .header_fixed .search_box {
   margin-top: 5px;
 }
-.header_fixed #search-block-form button {
+.header_fixed #search-block-form button,
+.header_fixed #views-exposed-form-svendborg-elastic-search-panel-pane-menu button {
   background-image: url('../images/search_icon.png') !important;
   background-repeat: no-repeat;
   border-left: none;
@@ -9472,15 +9483,21 @@ h2.menu-footer a.Kommunen {
   font-size: 14px;
   padding: 7px 30px;
 }
-.front .region-navigation #search-block-form {
+.front .region-navigation #search-block-form,
+.front .region-navigation #views-exposed-form-svendborg-elastic-search-panel-pane-menu {
   margin-top: 2px;
 }
-.front .region-navigation #search-block-form input {
+.front .region-navigation #search-block-form input,
+.front .region-navigation #views-exposed-form-svendborg-elastic-search-panel-pane-menu input {
   display: none;
 }
-.front .region-navigation #search-block-form .input-group-btn {
+.front .region-navigation #search-block-form .input-group-btn,
+.front .region-navigation #views-exposed-form-svendborg-elastic-search-panel-pane-menu .input-group-btn {
   border: none;
   text-align: right;
+}
+#views-exposed-form-svendborg-elastic-search-panel-pane-frontpage .views-exposed-widget {
+  padding: 0;
 }
 @media (min-width: 768px) {
   body.front {

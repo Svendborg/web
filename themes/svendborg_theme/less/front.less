@@ -263,7 +263,8 @@
 }
 
 // frontpage search_form in navbar.
-.front .region-navigation #search-block-form {
+.front .region-navigation #search-block-form,
+.front .region-navigation #views-exposed-form-svendborg-elastic-search-panel-pane-menu {
   margin-top: 2px;
   input {
     display: none;
@@ -274,7 +275,12 @@
   }
 }
 
-
+// frontpage search_form in content.
+#views-exposed-form-svendborg-elastic-search-panel-pane-frontpage {
+  .views-exposed-widget {
+    padding: 0;
+  }
+}
 
 @media (min-width:768px){body.front {
   background-image: url(../images/front_bg_724.jpg);

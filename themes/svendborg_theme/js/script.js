@@ -136,8 +136,13 @@
 
         return false;
       });
+      $(".front .region-navigation.container #views-exposed-form-svendborg-elastic-search-panel-pane-menu button").click(function(){
+          $( ".main-container .front-search-box input" ).focus();
 
-    $('#feedback-submit').addClass('btn-primary');
+          return false;
+      });
+
+      $('#feedback-submit').addClass('btn-primary');
 
     var links = $('.region-content a');
     $(links).each(function() {
