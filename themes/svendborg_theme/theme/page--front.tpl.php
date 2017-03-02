@@ -15,8 +15,8 @@
       </div>
 
       <div class="front-search-box col-md-push-3 col-md-6 col-sm-push-3 col-sm-6 col-xs-12">
-        <?php $block_search_form = module_invoke('search', 'block_view', 'search'); ?>
-        <?php print render($block_search_form); ?>
+<!--        --><?php //$block_search_form = module_invoke('search', 'block_view', 'search'); ?>
+<!--        --><?php //print render($block_search_form); ?>
         <?php $block = module_invoke('views', 'block_view', '-exp-svendborg_elastic_search-panel_pane_frontpage'); ?>
         <?php print render($block); ?>
       </div>
