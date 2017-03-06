@@ -25,15 +25,18 @@
         var myid = article.attr('id');
         var style = $('div.' + myid).css('display');
         var path = $(this).css("background-image");
+        var button = this;
         if (style == 'none') {
-          $("div." + myid).show("500");
-          $(this).addClass('gminus');
-          $(this).removeClass('gplus');
+          $("div." + myid).show("500", function() {
+              $(button).addClass('gminus');
+              $(button).removeClass('gplus test');
+          });
         }
         else {
-          $("div." + myid).hide("500");
-          $(this).addClass('gplus');
-          $(this).removeClass('gminus');
+          $("div." + myid).hide("500", function() {
+              $(button).addClass('gplus');
+              $(button).removeClass('gminus');
+          });
         }
         return false;
       });
