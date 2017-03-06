@@ -51,9 +51,29 @@ function svendborg_theme_preprocess_page(&$variables) {
     $variables['page']['os2web_selfservicelinks'] = os2web_related_links_get_selfservice_links($node, $term);
   }
 
+  if ($node) {
+    if (module_exists('bellcom_borgerdk_migrate')) {
+      if (is_array($variables['page']['os2web_selfservicelinks'])) {
+        $variables['page']['os2web_selfservicelinks'] = array_merge($variables['page']['os2web_selfservicelinks'], bellcom_borgerdk_migrate_get_selfservice_links($node));
+      } else {
+        $variables['page']['os2web_selfservicelinks'] = bellcom_borgerdk_migrate_get_selfservice_links($node);
+      }
+    }
+  }
+
   // Get borger.dk legislation links and give them to the template.
-  if (($node && $item = field_get_items('node', $node, 'field_os2web_borger_dk_legislati'))) {
-    $variables['page']['os2web_borger_dk_legislation'] = os2web_related_links_get_borger_dk_links($item);
+  if ($node) {
+    if ($item = field_get_items('node', $node, 'field_os2web_borger_dk_legislati')) {
+      $variables['page']['os2web_borger_dk_legislation'] = os2web_related_links_get_borger_dk_links($item);
+    }
+
+    if (module_exists('bellcom_borgerdk_migrate')) {
+      if (is_array($variables['page']['os2web_borger_dk_legislation'])) {
+        $variables['page']['os2web_borger_dk_legislation'] = array_merge($variables['page']['os2web_borger_dk_legislation'], bellcom_borgerdk_migrate_get_legislation_links($node));
+      } else {
+        $variables['page']['os2web_borger_dk_legislation'] = bellcom_borgerdk_migrate_get_legislation_links($node);
+      }
+    }
   }
 
   // Get all related links to this node.
@@ -62,6 +82,15 @@ function svendborg_theme_preprocess_page(&$variables) {
   module_load_include('module', 'os2web_related_links');
   if ($node) {
     $related_links = os2web_related_links_get_links($node, 'node');
+
+    if (module_exists('bellcom_borgerdk_migrate')) {
+      if (is_array($related_links)) {
+        $related_links = array_merge($related_links, bellcom_borgerdk_migrate_get_related_links($node));
+      } else {
+        $related_links = bellcom_borgerdk_migrate_get_related_links($node);
+      }
+    }
+
   }
   elseif ($term) {
     $related_links = os2web_related_links_get_links($term, 'taxonomy_term');

@@ -1,0 +1,227 @@
+<?php
+
+/**
+ * @file
+ * Code for the Bellcom Borgerdk Migrate feature.
+ */
+
+include_once 'bellcom_borgerdk_migrate.features.inc';
+
+/**
+ * Function that reads all self-services from a related Borger.dk article and fetches the self-service links from it
+ *
+ * @param $node
+ * @return array of self-service link pairs keyed as 'url' and 'title'
+ */
+function bellcom_borgerdk_migrate_get_selfservice_links($node) {
+  $selfservice_links = array();
+
+  //getting all fields of type borgerdk_article_field
+  $fields = field_read_fields(array('type' => 'borgerdk_article_field'));
+
+  foreach ($fields as $field_name => $field) {
+    $field_items = field_get_items('node', $node, $field_name);
+
+    if ($field_items) {
+      //checking that node has the field with this name
+      foreach ($field_items as $field_item) {
+        $selfservices = array();
+
+        //extracting from selected micro-articles
+        if (!empty($field_item['borgerdk_microarticle_entity_ids'])) {
+          $microarticle_ids = json_decode($field_item['borgerdk_microarticle_entity_ids']);
+
+          foreach ($microarticle_ids as $id) {
+            $selfservices += borgerdk_selfservice_load_multiple_sorted(FALSE, array('microarticle_id' => $id));
+          }
+        }
+
+        //extracting from selected self-serivices
+        if (!empty($field_item['borgerdk_selfservice_entity_ids'])) {
+          $selfservice_ids = json_decode($field_item['borgerdk_selfservice_entity_ids']);
+          $selfservices += borgerdk_selfservice_load_multiple_sorted($selfservice_ids);
+        }
+
+        foreach ($selfservices as $ss) {
+          $selfservice_links[] = array(
+            'url' => $ss->url,
+            'title' => $ss->label,
+          );
+        }
+      }
+    }
+  }
+
+  return $selfservice_links;
+}
+
+/**
+ * Function that reads all legislation links from a related Borger.dk article (legislation field)
+ *
+ * @param $node
+ * @return array of legislation links pairs keyed as 'url' and 'title'
+ */
+function bellcom_borgerdk_migrate_get_legislation_links($node) {
+  $legislation_links = array();
+
+  //getting all fields of type borgerdk_article_field
+  $fields = field_read_fields(array('type' => 'borgerdk_article_field'));
+
+  foreach ($fields as $field_name => $field) {
+    $field_items = field_get_items('node', $node, $field_name);
+
+    if ($field_items) {
+      //checking that node has the field with this name
+      foreach ($field_items as $field_item) {
+        if (!empty($field_item['borgerdk_article_entity_id'])) {
+          $article = borgerdk_article_load($field_item['borgerdk_article_entity_id']);
+          if ($article) {
+            $legislation_links = array_merge($legislation_links, bellcom_borgerdk_migrate_parse_links($article->legislation));
+          }
+        }
+      }
+    }
+  }
+
+  return $legislation_links;
+}
+
+/**
+ * Function that reads all related links from a related Borger.dk article (recommendation fields)
+ *
+ * @param $node
+ * @return array of related link pairs keyed as 'url' and 'title'
+ */
+function bellcom_borgerdk_migrate_get_related_links($node) {
+  $related_links = array();
+
+  //getting all fields of type borgerdk_article_field
+  $fields = field_read_fields(array('type' => 'borgerdk_article_field'));
+  foreach ($fields as $field_name => $field) {
+    $field_items = field_get_items('node', $node, $field_name);
+
+    //checking that node has the field with this name
+    if ($field_items) {
+      foreach ($field_items as $field_item) {
+        if (!empty($field_item['borgerdk_article_entity_id'])) {
+          $article = borgerdk_article_load($field_item['borgerdk_article_entity_id']);
+          if ($article) {
+            $related_links = array_merge($related_links, bellcom_borgerdk_migrate_parse_links($article->recommendation));
+          }
+        }
+      }
+    }
+  }
+
+  return $related_links;
+}
+
+/**
+ * Helper function that parses provided text and extracts links of out it.
+ *
+ * @param $text
+ * @return array of link pairs keyed as 'url' and 'title'
+ */
+function bellcom_borgerdk_migrate_parse_links($text) {
+  $links = array();
+
+  if (!empty($text)) {
+    $doc = new DOMDocument('1.0', 'UTF-8');
+    $doc->loadHTML('<?xml encoding="UTF-8">' . $text);
+
+    $xml = simplexml_import_dom($doc);
+
+    $results = $xml->xpath("//ul");
+    foreach ($results as $ul) {
+      foreach ($ul->li as $li) {
+        $url = (string) $li->a->attributes()->href;
+        $title = (string) $li->a;
+        $links[] = array(
+          'url' => $url,
+          'title' => $title,
+        );
+      }
+    }
+  }
+  return $links;
+}
+
+function bellcom_borgerdk_migrate_get_selfservice_from_selvbetjening($node, $article) {
+  $entities = borgerdk_selfservice_load_multiple(FALSE, array(
+    'article_id' => $article->entity_id,
+    'title' => $node->title
+  ));
+  if (empty($entities)) {
+    $selfservice_entity = entity_create('borgerdk_selfservice', array());
+    $selfservice_entity->title = $node->title;
+    $selfservice_entity->label = $node->field_spot_link['und'][0]['title'];
+    $selfservice_entity->url = $node->field_spot_link['und'][0]['url'];
+    $selfservice_entity->article_id = $article->entity_id;
+    borgerdk_selfservice_save($selfservice_entity);
+    $entities = borgerdk_selfservice_load_multiple(FALSE, array(
+      'article_id' => $article->entity_id,
+      'title' => $node->title
+    ));
+  }
+
+  $selfservice_entity = reset($entities);
+
+  return $selfservice_entity;
+}
+
+/**
+ * Helper function to see if the corresponding menu parent is a node of type os2web_borger_dk_article.
+ * If it is node is returned, otherwise FALSE is returned.
+ *
+ * @param $node
+ * @return bool|mixed
+ */
+function bellcom_borgerdk_migrate_need_replace_parent_menu($node) {
+  $menu_link = _bellcom_borger_dk_get_menu_link($node);
+
+  if ($menu_link) {
+    $parent_link = menu_link_load($menu_link['plid']);
+
+    if ($parent_link['router_path'] == 'node/%') { //parent is node
+      //checking if that node is os2web_borger_dk_article
+      $parent_node = node_load(explode('/', $parent_link['link_path'])[1]);
+      if ($parent_node->type == 'os2web_borger_dk_article') {
+        return $parent_node;
+      }
+    }
+  }
+}
+
+/**
+ * Helper function returns the node of the corresponding new Borger.dk article (based on title).
+ *
+ * @param $node
+ * @return bool
+ */
+function bellcom_borger_dk_get_corresponding_new_article($node) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'borger_dk_article')
+    ->propertyCondition('title', $node->title);
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    return node_load(reset(array_keys($result['node'])));
+  }
+  return FALSE;
+}
+
+function _bellcom_borger_dk_get_menu_link($node) {
+  $q = 'node/' . $node->nid;
+  $menu_info = db_select('menu_links', 'ml')
+    ->condition('ml.link_path', $q)
+    ->fields('ml', array('mlid', 'plid'))
+    ->execute()
+    ->fetchAll();
+
+  if (!empty($menu_info)) {
+    return menu_link_load(reset($menu_info)->mlid);
+  }
+
+  return FALSE;
+}

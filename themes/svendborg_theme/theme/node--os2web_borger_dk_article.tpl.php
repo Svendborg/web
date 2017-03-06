@@ -11,6 +11,7 @@
       }
     ?>
 
+    <h2>Os2web Borger.dk article</h2>
     <?php print render($content['field_os2web_borger_dk_image']);?>
 
     <header>
