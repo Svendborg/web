@@ -54,9 +54,9 @@ function svendborg_search_default_search_api_index() {
     "machine_name" : "svendborg_public",
     "description" : null,
     "server" : "svendborg_public",
-    "item_type" : "node",
+    "item_type" : "multiple",
     "options" : {
-      "datasource" : { "bundles" : [] },
+      "datasource" : { "types" : [ "node", "taxonomy_term" ] },
       "index_directly" : 1,
       "cron_limit" : "500",
       "index_name" : { "index" : "svendborg_public", "cluster_id" : "svendborg_public" },
@@ -64,22 +64,25 @@ function svendborg_search_default_search_api_index() {
       "log_only_not_found" : 0,
       "index_statistics_ttl" : "365d",
       "fields" : {
-        "attachments_field_os2search_file_ref" : { "type" : "text" },
-        "author" : { "type" : "integer", "entity_type" : "user" },
-        "body:value" : { "type" : "text" },
-        "changed" : { "type" : "date" },
-        "field_os2search_file_ref:file" : { "type" : "integer", "entity_type" : "file" },
-        "field_os2web_base_field_struct" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_os2web_base_field_struct:parents_all" : {
+        "bellcom_elasticsearch_multi_index_files" : { "type" : "text" },
+        "node" : { "type" : "integer", "entity_type" : "node" },
+        "node:author" : { "type" : "integer", "entity_type" : "user" },
+        "node:body:value" : { "type" : "text" },
+        "node:field_os2search_file_ref:file" : { "type" : "integer", "entity_type" : "file" },
+        "node:field_os2web_base_field_struct" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "node:field_os2web_base_field_struct:parents_all" : {
           "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E",
           "entity_type" : "taxonomy_term"
         },
-        "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
+        "node:status" : { "type" : "duration" },
+        "node:title" : { "type" : "text" },
+        "node:type" : { "type" : "string" },
+        "node:url" : { "type" : "uri" },
         "search_api_language" : { "type" : "string" },
-        "status" : { "type" : "boolean" },
-        "title" : { "type" : "text" },
-        "type" : { "type" : "string" },
-        "url" : { "type" : "uri" }
+        "taxonomy_term" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "taxonomy_term:description" : { "type" : "text" },
+        "taxonomy_term:name" : { "type" : "text" },
+        "taxonomy_term:url" : { "type" : "uri" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -88,22 +91,26 @@ function svendborg_search_default_search_api_index() {
           "settings" : {
             "default" : "0",
             "bundles" : {
-              "os2web_base_rotating_image" : "os2web_base_rotating_image",
-              "os2web_borger_dk_article" : "os2web_borger_dk_article",
-              "os2web_base_gallery" : "os2web_base_gallery",
-              "os2web_base_contentpage" : "os2web_base_contentpage",
-              "os2web_ofir_job" : "os2web_ofir_job",
-              "os2web_base_news" : "os2web_base_news",
-              "os2search_dokument" : "os2search_dokument",
-              "webform" : "webform",
-              "os2web_base_iframe" : "os2web_base_iframe"
+              "node:os2web_base_rotating_image" : "node:os2web_base_rotating_image",
+              "node:borger_dk_article" : "node:borger_dk_article",
+              "node:os2web_base_gallery" : "node:os2web_base_gallery",
+              "node:os2web_base_contentpage" : "node:os2web_base_contentpage",
+              "node:os2web_ofir_job" : "node:os2web_ofir_job",
+              "node:os2web_base_news" : "node:os2web_base_news",
+              "node:os2search_dokument" : "node:os2search_dokument",
+              "node:webform" : "node:webform",
+              "node:os2web_base_iframe" : "node:os2web_base_iframe",
+              "taxonomy_term:os2web_base_tax_site_structure" : "taxonomy_term:os2web_base_tax_site_structure"
             }
           }
         },
-        "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
-        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_language_control" : {
+          "status" : 0,
+          "weight" : "0",
+          "settings" : { "lang_field" : "", "languages" : [] }
+        },
         "search_api_attachments_alter_settings" : {
-          "status" : 1,
+          "status" : 0,
           "weight" : "0",
           "settings" : {
             "excluded_extensions" : "aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv",
@@ -112,32 +119,29 @@ function svendborg_search_default_search_api_index() {
             "excluded_private" : 1
           }
         },
-        "search_api_alter_language_control" : {
-          "status" : 0,
-          "weight" : "0",
-          "settings" : { "lang_field" : "", "languages" : [] }
-        },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_metatag_alter_callback" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_hierarchy" : {
-          "status" : 0,
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "bellcom_elasticsearch_multi_index_files_alter_settings" : {
+          "status" : 1,
           "weight" : "0",
-          "settings" : { "fields" : { "field_os2web_base_field_struct:parents_all" : "field_os2web_base_field_struct:parents_all" } }
+          "settings" : {
+            "excluded_extensions" : "aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv",
+            "fields_extract" : "field_os2search_file_ref"
+          }
         }
       },
       "processors" : {
         "search_api_case_ignore" : {
           "status" : 0,
           "weight" : "0",
-          "settings" : { "fields" : { "title" : true } }
+          "settings" : { "fields" : { "node:title" : true } }
         },
         "search_api_html_filter" : {
           "status" : 0,
           "weight" : "10",
           "settings" : {
-            "fields" : { "title" : true },
+            "fields" : { "node:title" : true },
             "title" : 0,
             "alt" : 1,
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
@@ -146,13 +150,13 @@ function svendborg_search_default_search_api_index() {
         "search_api_transliteration" : {
           "status" : 0,
           "weight" : "15",
-          "settings" : { "fields" : { "title" : true } }
+          "settings" : { "fields" : { "node:title" : true } }
         },
         "search_api_tokenizer" : {
           "status" : 0,
           "weight" : "20",
           "settings" : {
-            "fields" : { "title" : true },
+            "fields" : { "node:title" : true },
             "spaces" : "[^[:alnum:]]",
             "ignorable" : "[\\u0027]"
           }
@@ -161,7 +165,7 @@ function svendborg_search_default_search_api_index() {
           "status" : 0,
           "weight" : "30",
           "settings" : {
-            "fields" : { "title" : true },
+            "fields" : { "node:title" : true },
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
           }
@@ -169,7 +173,7 @@ function svendborg_search_default_search_api_index() {
         "search_api_porter_stemmer" : {
           "status" : 0,
           "weight" : "35",
-          "settings" : { "fields" : { "title" : true }, "exceptions" : "texan=texa" }
+          "settings" : { "fields" : { "node:title" : true }, "exceptions" : "texan=texa" }
         },
         "search_api_elasticsearch_highlighting" : {
           "status" : 1,
@@ -187,7 +191,7 @@ function svendborg_search_default_search_api_index() {
         "search_api_elasticsearch_prefix_search" : {
           "status" : 0,
           "weight" : "35",
-          "settings" : { "fields" : { "title" : true } }
+          "settings" : { "fields" : { "node:title" : true } }
         },
         "search_api_highlighting" : {
           "status" : 0,

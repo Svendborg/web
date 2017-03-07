@@ -13,48 +13,6 @@ function svendborg_search_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'date_format_search_api_facetapi_DAY';
-  $strongarm->value = 'F j, Y';
-  $export['date_format_search_api_facetapi_DAY'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'date_format_search_api_facetapi_HOUR';
-  $strongarm->value = 'H:__';
-  $export['date_format_search_api_facetapi_HOUR'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'date_format_search_api_facetapi_MINUTE';
-  $strongarm->value = 'H:i';
-  $export['date_format_search_api_facetapi_MINUTE'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'date_format_search_api_facetapi_MONTH';
-  $strongarm->value = 'F Y';
-  $export['date_format_search_api_facetapi_MONTH'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'date_format_search_api_facetapi_SECOND';
-  $strongarm->value = 'H:i:S';
-  $export['date_format_search_api_facetapi_SECOND'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'date_format_search_api_facetapi_YEAR';
-  $strongarm->value = 'Y';
-  $export['date_format_search_api_facetapi_YEAR'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'elasticsearch_connector_get_default_connector';
   $strongarm->value = 'svendborg_public';
   $export['elasticsearch_connector_get_default_connector'] = $strongarm;
@@ -135,6 +93,13 @@ function svendborg_search_strongarm() {
   $strongarm->name = 'node_submitted_os2search_dokument';
   $strongarm->value = 0;
   $export['node_submitted_os2search_dokument'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_os2search_dokument_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_os2search_dokument_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
