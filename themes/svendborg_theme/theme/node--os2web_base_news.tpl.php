@@ -1,31 +1,13 @@
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
-  <header>
-    <?php print render($title_prefix); ?>
-    
-    <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
-    
-    <?php print render($title_suffix); ?>
-    <?php if ($display_submitted): ?>
-    <span class="submitted">
-      <?php print $user_picture; ?>
-      <?php print $submitted; ?>
-    </span>
-    <?php endif; ?>
-  </header>
-  <?php endif; ?>
-  <?php if($page) : ?>
-  <header>
 
+  <header>
       <?php if(isset($content['field_os2web_base_field_video'])) : ?>
         <?php hide($content['field_os2web_base_field_lead_img']); ?>
         <?php print render($content['field_os2web_base_field_video']); ?>
       <?php else: ?>
-          <?php print render($content['field_os2web_base_field_lead_img']); ?>
+        <?php print render($content['field_os2web_base_field_lead_img']); ?>
       <?php endif; ?>
-    <?php else : ?>
-      <?php print render($content['field_os2web_base_field_image']); ?>
-
+    
     <time pubdate="pubdate">
       <i></i><?php print format_date($created, 'custom', 'j. F Y'); ?>
     </time>
@@ -35,7 +17,6 @@
     <?php endif; ?>
     <?php print render($title_suffix); ?>
   </header>
-  <?php endif; ?>
 
   <div class="wrap">
     <?php
