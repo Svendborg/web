@@ -7,10 +7,10 @@ body .ui-dialog {
   height: auto !important;
 }
 .media-item img {
-  height: 80px;
+  height: 100px;
   width: auto;
 }
 
 body .ui-dialog .ui-dialog-content {
-  height: auto !important;
+  height: 450px !important;
 }
