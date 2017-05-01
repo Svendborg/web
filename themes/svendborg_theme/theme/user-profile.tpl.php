@@ -40,7 +40,7 @@
   <?php
     // Add created node info to user profile page.
   if (arg(0) == 'user' && is_numeric(arg(1))) {
-    $view = views_get_view('brugers_indhold');
+    $view = views_get_view('forfatters_indhold');
     $view->set_display('block_1');
     $view->set_arguments(array(arg(1)));
     $view->pre_execute();
