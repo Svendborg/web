@@ -8428,6 +8428,10 @@ body.page-taxonomy-term.term-is-not-top .field-name-field-os2web-base-field-medi
   border-top: 1px solid #dfded7;
   padding: 5px 0;
 }
+body.page-node .field-name-field-os2web-base-field-media .field-item.even,
+body.page-taxonomy-term.term-is-not-top .field-name-field-os2web-base-field-media .field-item.even {
+  background: rgba(255, 255, 255, 0.5);
+}
 body.page-node .field-name-field-os2web-base-field-media .field-item .file-icon,
 body.page-taxonomy-term.term-is-not-top .field-name-field-os2web-base-field-media .field-item .file-icon {
   background-image: url(../images/sprites.png);
