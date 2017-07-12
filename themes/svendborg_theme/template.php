@@ -926,11 +926,11 @@ function _svendborg_theme_get_webform($nid) {
   $webform_node = node_load($nid);
 
   $submission = (object) array();
-  $enabled = TRUE;
+  //$enabled = TRUE;
   $preview = FALSE;
   $webform_id = 'webform_client_form_' . $nid;
 
-  $form = drupal_get_form($webform_id, $webform_node, $submission, $enabled, $preview);
+  $form = drupal_get_form($webform_id, $webform_node, $submission, FALSE, $preview);
 
   $text = '<h3>' . $webform_node->title . '</h3>';
 
