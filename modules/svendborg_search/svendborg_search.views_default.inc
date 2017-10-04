@@ -154,6 +154,13 @@ function svendborg_search_views_default_views() {
     16 => 0,
     17 => 0,
   );
+  $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
+    'bellcom_elasticsearch_multi_index_files' => 'bellcom_elasticsearch_multi_index_files',
+    'node:body:value' => 'node:body:value',
+    'node:title' => 'node:title',
+    'taxonomy_term:description' => 'taxonomy_term:description',
+    'taxonomy_term:name' => 'taxonomy_term:name',
+  );
   /* Filterkriterie: Indholdselement: Status (indexed) */
   $handler->display->display_options['filters']['node_status']['id'] = 'node_status';
   $handler->display->display_options['filters']['node_status']['table'] = 'search_api_index_svendborg_public';

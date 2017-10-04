@@ -32,11 +32,11 @@ function svendborg_search_views_api($module = NULL, $api = NULL) {
 function svendborg_search_node_info() {
   $items = array(
     'os2search_dokument' => array(
-      'name' => t('OS2Search Dokument'),
+      'name' => t('Bilag og dokumenter'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titel'),
       'help' => '',
     ),
   );
@@ -64,25 +64,38 @@ function svendborg_search_default_search_api_index() {
       "log_only_not_found" : 0,
       "index_statistics_ttl" : "365d",
       "fields" : {
-        "bellcom_elasticsearch_multi_index_files" : { "type" : "text" },
+        "bellcom_elasticsearch_multi_index_files" : { "type" : "text", "boost" : "0.1" },
         "node" : { "type" : "integer", "entity_type" : "node" },
-        "node:author" : { "type" : "integer", "entity_type" : "user" },
         "node:body:value" : { "type" : "text" },
         "node:field_os2search_file_ref:file" : { "type" : "integer", "entity_type" : "file" },
-        "node:field_os2web_base_field_struct" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "node:field_os2web_base_field_struct:parents_all" : {
-          "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E",
-          "entity_type" : "taxonomy_term"
+        "node:field_os2web_base_field_edi_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "node:field_os2web_base_field_edi_tags:name" : { "type" : "list\\u003Ctext\\u003E", "boost" : "13.0" },
+        "node:field_os2web_base_field_selfserv:field_vist_navn" : { "type" : "list\\u003Ctext\\u003E" },
+        "node:field_os2web_base_field_struct:name" : { "type" : "list\\u003Ctext\\u003E", "boost" : "0.8" },
+        "node:field_os2web_base_field_summary:value" : { "type" : "text", "boost" : "2.0" },
+        "node:field_os2web_base_field_sympage" : { "type" : "integer", "entity_type" : "node" },
+        "node:field_os2web_base_field_sympage:body:value" : { "type" : "text" },
+        "node:field_os2web_base_field_sympage:field_os2web_base_field_text" : { "type" : "text" },
+        "node:field_os2web_base_field_sympage:title" : { "type" : "text" },
+        "node:field_os2web_base_field_text" : { "type" : "text", "boost" : "2.0" },
+        "node:field_os2web_base_field_webform" : { "type" : "integer", "entity_type" : "node" },
+        "node:field_os2web_paragraphs" : {
+          "type" : "list\\u003Cinteger\\u003E",
+          "entity_type" : "field_collection_item"
         },
+        "node:field_os2web_paragraphs:field_os2web_paragraph_ref:body:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "node:field_os2web_paragraphs:field_os2web_paragraph_ref:title" : { "type" : "list\\u003Ctext\\u003E" },
+        "node:field_os2web_paragraphs:field_os2web_paragraph_title" : { "type" : "list\\u003Ctext\\u003E", "boost" : "3.0" },
+        "node:nid" : { "type" : "string" },
         "node:status" : { "type" : "duration" },
-        "node:title" : { "type" : "text" },
+        "node:title" : { "type" : "text", "boost" : "5.0" },
         "node:type" : { "type" : "string" },
-        "node:url" : { "type" : "uri" },
+        "node:vid" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
         "taxonomy_term" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "taxonomy_term:description" : { "type" : "text" },
-        "taxonomy_term:name" : { "type" : "text" },
-        "taxonomy_term:url" : { "type" : "uri" }
+        "taxonomy_term:name" : { "type" : "text", "boost" : "8.0" },
+        "taxonomy_term:tid" : { "type" : "integer" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -91,26 +104,17 @@ function svendborg_search_default_search_api_index() {
           "settings" : {
             "default" : "0",
             "bundles" : {
-              "node:os2web_base_rotating_image" : "node:os2web_base_rotating_image",
-              "node:borger_dk_article" : "node:borger_dk_article",
-              "node:os2web_base_gallery" : "node:os2web_base_gallery",
-              "node:os2web_base_contentpage" : "node:os2web_base_contentpage",
-              "node:os2web_ofir_job" : "node:os2web_ofir_job",
-              "node:os2web_base_news" : "node:os2web_base_news",
               "node:os2search_dokument" : "node:os2search_dokument",
-              "node:webform" : "node:webform",
-              "node:os2web_base_iframe" : "node:os2web_base_iframe",
+              "node:os2web_base_contentpage" : "node:os2web_base_contentpage",
+              "node:borger_dk_article" : "node:borger_dk_article",
+              "node:os2web_base_news" : "node:os2web_base_news",
+              "taxonomy_term:os2web_taxonomies_tax_portal_cat" : "taxonomy_term:os2web_taxonomies_tax_portal_cat",
               "taxonomy_term:os2web_base_tax_site_structure" : "taxonomy_term:os2web_base_tax_site_structure"
             }
           }
         },
-        "search_api_alter_language_control" : {
-          "status" : 0,
-          "weight" : "0",
-          "settings" : { "lang_field" : "", "languages" : [] }
-        },
         "search_api_attachments_alter_settings" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "0",
           "settings" : {
             "excluded_extensions" : "aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv",
@@ -120,7 +124,6 @@ function svendborg_search_default_search_api_index() {
           }
         },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "bellcom_elasticsearch_multi_index_files_alter_settings" : {
           "status" : 1,
@@ -129,7 +132,8 @@ function svendborg_search_default_search_api_index() {
             "excluded_extensions" : "aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv",
             "fields_extract" : "field_os2search_file_ref"
           }
-        }
+        },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
         "search_api_case_ignore" : {
