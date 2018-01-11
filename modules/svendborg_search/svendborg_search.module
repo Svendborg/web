@@ -23,13 +23,14 @@ function svendborg_search_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
- * Implements hook_file_presave()
+ * Implements hook_file_insert()
  * adds node of type os2search_dokument per each uploaded PDF file, so that the files are being indexed
+ * ignores file with source = 'submitted_file'
  *
  * @param $file
  */
-function svendborg_search_file_presave($file) {
-  if ($file->fid && $file->filemime == 'application/pdf') {
+function svendborg_search_file_insert($file) {
+  if ($file->fid && $file->filemime == 'application/pdf' && $file->source != 'submitted_file') {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', 'os2search_dokument')
