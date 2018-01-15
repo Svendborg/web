@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Code for the Svendborg search feature.
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function svendborg_csrf_security_form_alter(&$form, &$form_alter, $form_id) {
+  if (!isset($form['#token'])) {
+
+    $form['svendborg_token'] = array(
+      '#type' => 'hidden',
+      '#default_value' => drupal_get_token()
+    );
+
+    $form['#validate'][] = 'svendborg_csrf_security_validate_svendborg_token';
+
+    // store current session id
+    // touching $_SESSION alone seems to preserve the session id after login
+    $sess_id = session_id();
+    if (isset($_SESSION))
+      $_SESSION['svendborg_session_id'] = $sess_id;
+    else
+      $_SESSION = array('svendborg_session_id' => $sess_id);
+  }
+}
+
+function svendborg_csrf_security_validate_svendborg_token($form, &$form_state) {
+  $token = '';
+ 
+  if (isset($form_state['values']['svendborg_token']))
+    $token = $form_state['values']['svendborg_token'];
+    if (!drupal_valid_token($token)) {
+    // not a valid token!
+
+    $path = current_path();
+    $query = drupal_get_query_parameters();
+    $url = url($path, array('query' => $query));
+
+    // Setting this error will cause the form to fail validation.
+    form_set_error('form_token', t('The form has become outdated. Copy any unsaved work in the form below and then <a href="@link">reload this page</a>.', array('@link' => $url)));
+  }
+}

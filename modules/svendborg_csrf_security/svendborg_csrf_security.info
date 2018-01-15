@@ -1,0 +1,6 @@
+name = Svendborg csrf Security
+description = Cross-Site Request Forgery Security for forms
+core = 7.x
+package = Svendborg
+version = 7.x-1.0
+project = OS2Web
