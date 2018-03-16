@@ -110,10 +110,13 @@
             var hash = location.hash,
                 $panel = jQuery(hash);
 
+            console.log(hash);
+            console.log('Panel: ', $panel);
+
             // The hash refers to a panel
             if ($panel.length && $panel.hasClass('panel')) {
-                var $collapse = $panel.find('.collapse');
                 console.log('Debug 3');
+                var $collapse = $panel.find('.collapse');
 
                 // Let's open the target automatically
                 $collapse.collapse();
