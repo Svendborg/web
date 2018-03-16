@@ -99,8 +99,7 @@
 </script>
 
 <script>
-    (function ($)
-    {
+    (function ($) {
         'use strict';
         console.log('Debug 1');
 
@@ -113,12 +112,11 @@
 
             // The hash refers to a panel
             if ($panel.length && $panel.hasClass('panel')) {
+                var $collapse = $panel.find('.collapse');
                 console.log('Debug 3');
 
                 // Let's open the target automatically
-                $panel.find('.collapse')
-                    .first()
-                    .collapse();
+                $collapse.collapse();
             }
             console.log('Debug 4');
         }
