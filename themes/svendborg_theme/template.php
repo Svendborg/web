@@ -268,6 +268,19 @@ function svendborg_theme_preprocess_taxonomy_term(&$variables) {
  * Implements THEME_preprocess_html().
  */
 function svendborg_theme_preprocess_html(&$variables) {
+    $theme_path = path_to_theme();
+
+    // Add javascript files
+    drupal_add_js($theme_path . '/js/script.js',
+        [
+            'type' => 'file',
+            'scope' => 'footer',
+            'group' => JS_THEME,
+        ]);
+
+    // Add Font Awesome
+    drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', ['type' => 'external']);
+
   // Add conditional stylesheets for IE.
   drupal_add_css(path_to_theme() . '/css/ie.css', array(
     'group' => CSS_THEME,
@@ -300,9 +313,6 @@ function svendborg_theme_preprocess_html(&$variables) {
   );
   // Add header meta tag for IE to head.
   drupal_add_html_head($meta_ie_render_engine, 'meta_ie_render_engine');
-
-  // Add Font Awesome
-  drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', ['type' => 'external']);
 }
 /**
  * Implements hook_preprocess_node().

@@ -50,7 +50,6 @@ scripts[] = 'bootstrap/js/transition.js'
 
 scripts[] = 'js/masonry.pkgd.min.js'
 scripts[] = 'js/isotope.pkgd.min.js'
-scripts[] = 'js/script.js'
 
 scripts[] = 'js/jquery.infinitescroll.min.js'
 scripts[] = 'js/os2web_spotbox_adjust.js'
