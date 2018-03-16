@@ -99,16 +99,13 @@
 </script>
 
 <script>
-jQuery(document).ready(function () {
-    console.log('Debug 1');
-});
+    // Document ready
+    (function ($) {
+        'use strict';
 
-jQuery(function($) {
-    'use strict';
+        console.log('Debug');
 
-    console.log('2');
-});
-
+    })(jQuery);
 </script>
 </body>
 </html>
