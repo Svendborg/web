@@ -300,6 +300,9 @@ function svendborg_theme_preprocess_html(&$variables) {
   );
   // Add header meta tag for IE to head.
   drupal_add_html_head($meta_ie_render_engine, 'meta_ie_render_engine');
+
+  // Add Font Awesome
+  drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', ['type' => 'external']);
 }
 /**
  * Implements hook_preprocess_node().
