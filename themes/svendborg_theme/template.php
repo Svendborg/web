@@ -270,9 +270,6 @@ function svendborg_theme_preprocess_taxonomy_term(&$variables) {
 function svendborg_theme_preprocess_html(&$variables) {
   $theme_path = path_to_theme();
 
-  // Add javascript files
-  drupal_add_js($theme_path . '/js/script.js', array('type' => 'file', 'scope' => 'footer', 'group' => JS_THEME));
-
   // Add Font Awesome
   drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array('type' => 'external'));
 

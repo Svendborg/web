@@ -26,8 +26,8 @@ regions[content_bottom] = 'Content bottom'
 ;; Stylesheets
 ;;;;;;;;;;;;;;;;;;;;;
 
-stylesheets[all][] = css/custom.css
 stylesheets[all][] = css/style.css
+stylesheets[all][] = css/custom.css
 stylesheets[print][] = css/print.css
 
 
@@ -53,7 +53,7 @@ scripts[] = 'js/isotope.pkgd.min.js'
 
 scripts[] = 'js/jquery.infinitescroll.min.js'
 scripts[] = 'js/os2web_spotbox_adjust.js'
-
+scripts[] = 'js/script.js'
 
 ; Disable BootstrapCDN so the compiled LESS source files can be used.
 settings[bootstrap_cdn] = ''
