@@ -149,6 +149,48 @@
             }
         });
 
+
+
+
+        // A hash is set in the URL
+        if (window.location.hash) {
+            setTimeout(function () {
+                var hash = window.location.hash,
+                    $target = $(hash);
+
+                // The hash refers to a panel
+                if ($target.length && $target.hasClass('panel', 'collapsible')) {
+
+                    // Let's open the target automatically
+                    $target.find('.collapse')
+                        .first()
+                        .collapse();
+                }
+            }, 500);
+        }
+
+        // setTimeout(function() {
+        //     var $panels = $('.panel.collapsible');
+        //
+        //     // Run through all panels
+        //     $panels.each(function (index, element) {
+        //         var $element = $(this),
+        //             current_url = location.href.replace(window.location.hash, ''),
+        //             link = current_url + '#' + $element.attr('id'),
+        //             $target_link = $('<a />')
+        //                 .addClass('panel-direct-link')
+        //                 .attr('href', link)
+        //                 .html($('<span />').addClass('icon fa fa-link'));
+        //
+        //         console.log('Element: ', $element);
+        //         console.log('Current URL: ', current_url);
+        //         console.log('Link: ', link);
+        //         console.log('Target link: ', $target_link);
+        //
+        //         // Add the link inside the panels body
+        //         // $element.find('.panel-body').prepend($target_link);
+        //     });
+        // }, 1000);
     });
 
     Drupal.behaviors.feedbackForm = {
@@ -251,47 +293,3 @@
         }
     };
 })(jQuery);
-
-jQuery(function($) {
-    'use strict';
-
-    // A hash is set in the URL
-    if (window.location.hash) {
-        setTimeout(function () {
-            var hash = window.location.hash,
-                $target = $(hash);
-
-            // The hash refers to a panel
-            if ($target.length && $target.hasClass('panel', 'collapsible')) {
-
-                // Let's open the target automatically
-                $target.find('.collapse')
-                    .first()
-                    .collapse();
-            }
-        }, 500);
-    }
-
-    // setTimeout(function() {
-    //     var $panels = $('.panel.collapsible');
-    //
-    //     // Run through all panels
-    //     $panels.each(function (index, element) {
-    //         var $element = $(this),
-    //             current_url = location.href.replace(window.location.hash, ''),
-    //             link = current_url + '#' + $element.attr('id'),
-    //             $target_link = $('<a />')
-    //                 .addClass('panel-direct-link')
-    //                 .attr('href', link)
-    //                 .html($('<span />').addClass('icon fa fa-link'));
-    //
-    //         console.log('Element: ', $element);
-    //         console.log('Current URL: ', current_url);
-    //         console.log('Link: ', link);
-    //         console.log('Target link: ', $target_link);
-    //
-    //         // Add the link inside the panels body
-    //         // $element.find('.panel-body').prepend($target_link);
-    //     });
-    // }, 1000);
-});
