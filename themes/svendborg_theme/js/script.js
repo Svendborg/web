@@ -285,20 +285,22 @@ Drupal.behaviors.feedbackFormSubmit = {
             }, 500);
         }
 
-        // Run through all panels
-        var $panels = $('.panel.collapsible');
+        setTimeout(function() {
+            var $panels = $('.panel.collapsible');
 
-        $panels.each(function (index, element) {
-            var $element = $(this),
-                current_url = location.href.replace(location.hash, ''),
-                link = current_url + '#' + $element.attr('id'),
-                $target_link = $('<a />')
-                    .addClass('panel-direct-link')
-                    .attr('href', link)
-                    .html($('<span />').addClass('icon fa fa-link'));
+            // Run through all panels
+            $panels.each(function (index, element) {
+                var $element = $(this),
+                    current_url = location.href.replace(location.hash, ''),
+                    link = current_url + '#' + $element.attr('id'),
+                    $target_link = $('<a />')
+                        .addClass('panel-direct-link')
+                        .attr('href', link)
+                        .html($('<span />').addClass('icon fa fa-link'));
 
-            // Add the link inside the panels body
-            $element.find('.panel-body').prepend($target_link);
-        });
+                // Add the link inside the panels body
+                $element.find('.panel-body').prepend($target_link);
+            });
+        }, 1000);
     });
 })(jQuery);
