@@ -253,7 +253,6 @@
             $block.animate({width: "51px"});
         }
     };
-
 })(jQuery);
 
 
@@ -264,3 +263,42 @@ Drupal.behaviors.feedbackFormSubmit = {
     attach: function (context) {
     }
 };
+
+
+(function ($) {
+    $(document).ready(function () {
+
+        // A hash is set in the URL
+        if (window.location.hash) {
+            setTimeout(function () {
+                var hash = window.location.hash,
+                    $target = $(hash);
+
+                // The hash refers to a panel
+                if ($target.length && $target.hasClass('panel', 'collapsible')) {
+
+                    // Let's open the target automatically
+                    $target.find('.collapse')
+                        .first()
+                        .collapse();
+                }
+            }, 500);
+        }
+
+        // Run through all panels
+        var $panels = $('.panel.collapsible');
+
+        $panels.each(function (index, element) {
+            var $element = $(this),
+                current_url = location.href.replace(location.hash, ''),
+                link = current_url + '#' + $element.attr('id'),
+                $target_link = $('<a />')
+                    .addClass('panel-direct-link')
+                    .attr('href', link)
+                    .html($('<span />').addClass('icon fa fa-link'));
+
+            // Add the link inside the panels body
+            $element.find('.panel-body').prepend($target_link);
+        });
+    });
+})(jQuery);
