@@ -99,15 +99,15 @@
 </script>
 
 <script>
-    (function ($) {
-        'use strict';
+(function ($) {
+    $(document).ready(function () {
         console.log('Debug 1');
 
         // A hash is set in the URL
-        if (window.location.hash) {
+        if (location.hash) {
             console.log('Debug 2');
 
-            var hash = window.location.hash,
+            var hash = location.hash,
                 $panel = jQuery(hash);
 
             // The hash refers to a panel
@@ -144,7 +144,8 @@
         //         // $element.find('.panel-body').prepend($target_link);
         //     });
         // }, 1000);
-    })(jQuery);
+    });
+})(jQuery);
 </script>
 </body>
 </html>
