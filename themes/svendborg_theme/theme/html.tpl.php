@@ -110,14 +110,14 @@
             setTimeout(function () {
                 console.log('Debug 3');
                 var hash = window.location.hash,
-                    $target = $(hash);
+                    $panel = $(hash);
 
                 // The hash refers to a panel
-                if ($target.length && $target.hasClass('panel')) {
+                if ($panel.length && $panel.hasClass('panel')) {
                     console.log('Debug 4');
 
                     // Let's open the target automatically
-                    $target.find('.collapse')
+                    $panel.find('.collapse')
                         .first()
                         .collapse();
                 }
