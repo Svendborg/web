@@ -101,52 +101,14 @@
 <script>
 jQuery(document).ready(function () {
     console.log('Debug 1');
-
-    // A hash is set in the URL
-    if (location.hash) {
-        console.log('Debug 2');
-
-        var hash = location.hash,
-            $panel = jQuery(hash);
-
-        console.log(hash);
-        console.log('Panel: ', $panel);
-
-        // The hash refers to a panel
-        if ($panel.length && $panel.hasClass('panel')) {
-            console.log('Debug 3');
-            var $collapse = $panel.find('.collapse');
-
-            // Let's open the target automatically
-            $collapse.collapse();
-        }
-        console.log('Debug 4');
-    }
-    console.log('Debug 5');
-
-    // setTimeout(function() {
-    //     var $panels = $('.panel.collapsible');
-    //
-    //     // Run through all panels
-    //     $panels.each(function (index, element) {
-    //         var $element = $(this),
-    //             current_url = location.href.replace(window.location.hash, ''),
-    //             link = current_url + '#' + $element.attr('id'),
-    //             $target_link = $('<a />')
-    //                 .addClass('panel-direct-link')
-    //                 .attr('href', link)
-    //                 .html($('<span />').addClass('icon fa fa-link'));
-    //
-    //         console.log('Element: ', $element);
-    //         console.log('Current URL: ', current_url);
-    //         console.log('Link: ', link);
-    //         console.log('Target link: ', $target_link);
-    //
-    //         // Add the link inside the panels body
-    //         // $element.find('.panel-body').prepend($target_link);
-    //     });
-    // }, 1000);
 });
+
+jQuery(function($) {
+    'use strict';
+
+    console.log('2');
+});
+
 </script>
 </body>
 </html>
