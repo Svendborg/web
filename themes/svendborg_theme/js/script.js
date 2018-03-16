@@ -298,8 +298,13 @@ Drupal.behaviors.feedbackFormSubmit = {
                         .attr('href', link)
                         .html($('<span />').addClass('icon fa fa-link'));
 
+                console.log('Element: ', $element);
+                console.log('Current URL: ', current_url);
+                console.log('Link: ', link);
+                console.log('Target link: ', $target_link);
+
                 // Add the link inside the panels body
-                $element.find('.panel-body').prepend($target_link);
+                // $element.find('.panel-body').prepend($target_link);
             });
         }, 1000);
     });
