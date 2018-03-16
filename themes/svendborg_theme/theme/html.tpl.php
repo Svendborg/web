@@ -107,24 +107,22 @@
         // A hash is set in the URL
         if (window.location.hash) {
             console.log('Debug 2');
-            setTimeout(function () {
+
+            var hash = window.location.hash,
+                $panel = jQuery(hash);
+
+            // The hash refers to a panel
+            if ($panel.length && $panel.hasClass('panel')) {
                 console.log('Debug 3');
-                var hash = window.location.hash,
-                    $panel = $(hash);
 
-                // The hash refers to a panel
-                if ($panel.length && $panel.hasClass('panel')) {
-                    console.log('Debug 4');
-
-                    // Let's open the target automatically
-                    $panel.find('.collapse')
-                        .first()
-                        .collapse();
-                }
-            }, 500);
-            console.log('Debug 5');
+                // Let's open the target automatically
+                $panel.find('.collapse')
+                    .first()
+                    .collapse();
+            }
+            console.log('Debug 4');
         }
-        console.log('Debug 6');
+        console.log('Debug 5');
 
         // setTimeout(function() {
         //     var $panels = $('.panel.collapsible');
