@@ -99,7 +99,7 @@
 </script>
 
 <script>
-$(document).ready(function () {
+jQuery(document).ready(function () {
     console.log('Debug 1');
 
     // A hash is set in the URL
