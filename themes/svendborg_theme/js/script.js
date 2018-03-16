@@ -268,22 +268,22 @@ Drupal.behaviors.feedbackFormSubmit = {
 (function ($) {
     $(document).ready(function () {
 
-        // // A hash is set in the URL
-        // if (window.location.hash) {
-        //     setTimeout(function () {
-        //         var hash = window.location.hash,
-        //             $target = $(hash);
-        //
-        //         // The hash refers to a panel
-        //         if ($target.length && $target.hasClass('panel', 'collapsible')) {
-        //
-        //             // Let's open the target automatically
-        //             $target.find('.collapse')
-        //                 .first()
-        //                 .collapse();
-        //         }
-        //     }, 500);
-        // }
+        // A hash is set in the URL
+        if (window.location.hash) {
+            setTimeout(function () {
+                var hash = window.location.hash,
+                    $target = $(hash);
+
+                // The hash refers to a panel
+                if ($target.length && $target.hasClass('panel', 'collapsible')) {
+
+                    // Let's open the target automatically
+                    $target.find('.collapse')
+                        .first()
+                        .collapse();
+                }
+            }, 500);
+        }
         //
         // // Run through all panels
         // var $panels = $('.panel.collapsible');
