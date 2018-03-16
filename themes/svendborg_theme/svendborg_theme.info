@@ -26,6 +26,7 @@ regions[content_bottom] = 'Content bottom'
 ;; Stylesheets
 ;;;;;;;;;;;;;;;;;;;;;
 
+stylesheets[all][] = css/custom.css
 stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
 

@@ -1,0 +1,9 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.panel-direct-link {
+    float: right;
+}
+.panel-direct-link .icon {
+    font-size: 20px;
+    color: #000;
+}
