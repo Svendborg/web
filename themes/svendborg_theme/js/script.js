@@ -250,3 +250,63 @@
         }
     };
 })(jQuery);
+
+
+
+(function ($) {
+    'use strict';
+
+    console.log('Debug: 1');
+
+    // A hash is set in the URL
+    if (location.hash) {
+
+        console.log('Location has hash');
+
+        setTimeout(function () {
+            var hash = location.hash,
+                $target = $(hash);
+
+            console.log('Timeout function was run');
+
+            // The hash refers to a panel
+            if ($target.length && $target.hasClass('panel')) {
+
+                console.log('Hash refers to a panel');
+
+                // Let's open the target automatically
+                $target.find('.collapse')
+                    .first()
+                    .collapse();
+            }
+        }, 500);
+    }
+
+    console.log('Debug: 2');
+
+
+    // setTimeout(function() {
+//     var $panels = $('.panel.collapsible');
+//
+//     // Run through all panels
+//     $panels.each(function (index, element) {
+//         var $element = $(this),
+//             current_url = location.href.replace(window.location.hash, ''),
+//             link = current_url + '#' + $element.attr('id'),
+//             $target_link = $('<a />')
+//                 .addClass('panel-direct-link')
+//                 .attr('href', link)
+//                 .html($('<span />').addClass('icon fa fa-link'));
+//
+//         console.log('Element: ', $element);
+//         console.log('Current URL: ', current_url);
+//         console.log('Link: ', link);
+//         console.log('Target link: ', $target_link);
+//
+//         // Add the link inside the panels body
+//         // $element.find('.panel-body').prepend($target_link);
+//     });
+// }, 1000);
+
+    console.log('Debug: 3');
+})(jQuery);

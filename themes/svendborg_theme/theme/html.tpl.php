@@ -97,15 +97,5 @@
     })();
     /*]]>*/
 </script>
-
-<script>
-    // Document ready
-    (function ($) {
-        'use strict';
-
-        console.log('Debug');
-
-    })(jQuery);
-</script>
 </body>
 </html>
