@@ -251,28 +251,18 @@
     };
 })(jQuery);
 
-
-
 (function ($) {
     'use strict';
 
-    console.log('Debug: 1');
-
     // A hash is set in the URL
     if (location.hash) {
-
-        console.log('Location has hash');
 
         setTimeout(function () {
             var hash = location.hash,
                 $target = $(hash);
 
-            console.log('Timeout function 1 was run');
-
             // The hash refers to a panel
             if ($target.length && $target.hasClass('panel')) {
-
-                console.log('Hash refers to a panel');
 
                 // Let's open the target automatically
                 $target.find('.collapse')
@@ -282,14 +272,8 @@
         }, 500);
     }
 
-    console.log('Debug: 2');
-
     setTimeout(function() {
         var $panels = $('fieldset.panel.collapsible');
-
-        console.log('Timeout function 2 was run');
-
-        console.log('Panels', $panels);
 
         // Run through all panels
         $panels.each(function (index, element) {
@@ -301,15 +285,8 @@
                     .attr('href', link)
                     .html($('<span />').addClass('icon fa fa-link'));
 
-            console.log('Element: ', $element);
-            console.log('Current URL: ', current_url);
-            console.log('Link: ', link);
-            console.log('Target link: ', $target_link);
-
             // Add the link inside the panels body
             $element.find('.panel-body').prepend($target_link);
         });
     }, 500);
-
-    console.log('Debug: 3');
 })(jQuery);
