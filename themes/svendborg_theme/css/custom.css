@@ -8,3 +8,7 @@
     font-size: 20px;
     color: #a6a6a6;
 }
+
+.panel.collapsible .panel-body ul {
+    padding-left: 20px;
+}
