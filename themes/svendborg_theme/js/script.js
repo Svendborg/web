@@ -285,7 +285,7 @@
     console.log('Debug: 2');
 
     setTimeout(function() {
-        var $panels = $('fieldset.panel');
+        var $panels = $('fieldset.panel.collapsible');
 
         console.log('Timeout function 2 was run');
 
@@ -307,9 +307,9 @@
             console.log('Target link: ', $target_link);
 
             // Add the link inside the panels body
-            // $element.find('.panel-body').prepend($target_link);
+            $element.find('.panel-body').prepend($target_link);
         });
-    }, 1000);
+    }, 500);
 
     console.log('Debug: 3');
 })(jQuery);
