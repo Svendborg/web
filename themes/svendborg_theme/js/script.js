@@ -267,7 +267,7 @@
             var hash = location.hash,
                 $target = $(hash);
 
-            console.log('Timeout function was run');
+            console.log('Timeout function 1 was run');
 
             // The hash refers to a panel
             if ($target.length && $target.hasClass('panel')) {
@@ -284,29 +284,32 @@
 
     console.log('Debug: 2');
 
+    setTimeout(function() {
+        var $panels = $('fieldset.panel');
 
-    // setTimeout(function() {
-//     var $panels = $('.panel.collapsible');
-//
-//     // Run through all panels
-//     $panels.each(function (index, element) {
-//         var $element = $(this),
-//             current_url = location.href.replace(window.location.hash, ''),
-//             link = current_url + '#' + $element.attr('id'),
-//             $target_link = $('<a />')
-//                 .addClass('panel-direct-link')
-//                 .attr('href', link)
-//                 .html($('<span />').addClass('icon fa fa-link'));
-//
-//         console.log('Element: ', $element);
-//         console.log('Current URL: ', current_url);
-//         console.log('Link: ', link);
-//         console.log('Target link: ', $target_link);
-//
-//         // Add the link inside the panels body
-//         // $element.find('.panel-body').prepend($target_link);
-//     });
-// }, 1000);
+        console.log('Timeout function 2 was run');
+
+        console.log('Panels', $panels);
+
+        // Run through all panels
+        $panels.each(function (index, element) {
+            var $element = $(this),
+                current_url = location.href.replace(window.location.hash, ''),
+                link = current_url + '#' + $element.attr('id'),
+                $target_link = $('<a />')
+                    .addClass('panel-direct-link')
+                    .attr('href', link)
+                    .html($('<span />').addClass('icon fa fa-link'));
+
+            console.log('Element: ', $element);
+            console.log('Current URL: ', current_url);
+            console.log('Link: ', link);
+            console.log('Target link: ', $target_link);
+
+            // Add the link inside the panels body
+            // $element.find('.panel-body').prepend($target_link);
+        });
+    }, 1000);
 
     console.log('Debug: 3');
 })(jQuery);
