@@ -12,3 +12,7 @@
 .panel.collapsible .panel-body ul {
     padding-left: 20px;
 }
+
+.panel.collapsible .panel-body a {
+    color: #0089cd;
+}
