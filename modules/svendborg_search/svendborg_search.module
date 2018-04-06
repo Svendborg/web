@@ -82,3 +82,55 @@ function svendborg_search_file_delete($file) {
   }
 }
 
+/**
+ * Implements hook_node_update().
+ *
+ * Unpublishes os2search_document nodes if there is no more published node,
+ * referencing the same file as os2search_document node.
+ */
+function svendborg_search_node_update($node) {
+  if ($node->type !== 'os2search_dokument' && $node->status == NODE_UNPUBLISHED) {
+    $node_fields = field_info_instances('node', $node->type);
+    $file_fields = field_read_fields(array('type' => 'file'));
+    $node_file_fields = array_intersect_key($node_fields, $file_fields);
+
+    foreach ($node_file_fields as $field_name => $node_file_field) {
+      $items = field_get_items('node', $node, $field_name);
+      foreach ($items as $item) {
+        $file = file_load($item['fid']);
+        if ($file->filemime === 'application/pdf') {
+          $usages = file_usage_list($file);
+          $nids = $usages['file']['node'];
+
+          // Unsetting current node nid.
+          unset($nids[$node->nid]);
+
+          if (!empty($nids)) {
+            $usage_nodes = node_load_multiple(array_keys($nids));
+
+            $unpublish_document_nodes = TRUE;
+
+            // Check if we have published nodes that are not of type os2search_dokument.
+            foreach ($usage_nodes as $usage_node) {
+              if ($usage_node->type !== 'os2search_dokument' && $usage_node->status == NODE_PUBLISHED) {
+                $unpublish_document_nodes = FALSE;
+              }
+            }
+
+            // If the flag is unchanged, it means that either we only have os2search_dokument,
+            // or the rest nodes referring file are also unpublished.
+            // Unpublished os2search_dokument nodes.
+            if ($unpublish_document_nodes) {
+              foreach ($usage_nodes as $usage_node) {
+                if ($usage_node->type === 'os2search_dokument' && $usage_node->status == NODE_PUBLISHED) {
+                  $usage_node->status = NODE_UNPUBLISHED;
+                  node_save($usage_node);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
