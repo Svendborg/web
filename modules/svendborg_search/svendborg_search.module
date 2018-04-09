@@ -85,11 +85,13 @@ function svendborg_search_file_delete($file) {
 /**
  * Implements hook_node_update().
  *
- * Unpublishes os2search_document nodes if there is no more published node,
+ * Published or unpublished os2search_document nodes if there is no more node with the same status,
  * referencing the same file as os2search_document node.
  */
 function svendborg_search_node_update($node) {
-  if ($node->type !== 'os2search_dokument' && $node->status == NODE_UNPUBLISHED) {
+  $new_node_status = $node->status;
+
+  if ($node->type !== 'os2search_dokument') {
     $node_fields = field_info_instances('node', $node->type);
     $file_fields = field_read_fields(array('type' => 'file'));
     $node_file_fields = array_intersect_key($node_fields, $file_fields);
@@ -108,22 +110,26 @@ function svendborg_search_node_update($node) {
           if (!empty($nids)) {
             $usage_nodes = node_load_multiple(array_keys($nids));
 
-            $unpublish_document_nodes = TRUE;
+            $update_document_nodes = TRUE;
 
-            // Check if we have published nodes that are not of type os2search_dokument.
-            foreach ($usage_nodes as $usage_node) {
-              if ($usage_node->type !== 'os2search_dokument' && $usage_node->status == NODE_PUBLISHED) {
-                $unpublish_document_nodes = FALSE;
+            // If the new status is unpublished, check that the rest of the nodes referencing same file are also unpublished.
+            if ($new_node_status == NODE_NOT_PUBLISHED) {
+              foreach ($usage_nodes as $usage_node) {
+                if ($usage_node->type !== 'os2search_dokument' && $usage_node->status == NODE_PUBLISHED) {
+                  $update_document_nodes = FALSE;
+                }
               }
             }
 
             // If the flag is unchanged, it means that either we only have os2search_dokument,
-            // or the rest nodes referring file are also unpublished.
-            // Unpublished os2search_dokument nodes.
-            if ($unpublish_document_nodes) {
+            // or new node status is PUBLISHED,
+            // or the rest nodes referring file have the same publish status.
+
+            // Updating os2search_dokument nodes.
+            if ($update_document_nodes) {
               foreach ($usage_nodes as $usage_node) {
-                if ($usage_node->type === 'os2search_dokument' && $usage_node->status == NODE_PUBLISHED) {
-                  $usage_node->status = NODE_UNPUBLISHED;
+                if ($usage_node->type === 'os2search_dokument' && $usage_node->status != $new_node_status) {
+                  $usage_node->status = $new_node_status;
                   node_save($usage_node);
                 }
               }
