@@ -48,12 +48,14 @@
     <div class="field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
   <?php endif; ?>
   <div class="field-items"<?php print $content_attributes; ?>>
+    <?php $itemNumber = 0; ?>
     <?php foreach ($items as $delta => $item): ?>
       <?php 
         $currentItem = $item;
         $itemEnabled = array_shift($currentItem['entity']['field_collection_item'])['#entity']->field_section_enabled['und'][0]['value']; ?>
       <?php if ($itemEnabled == 1): ?>
-        <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>><?php print render($item); ?></div>
+        <?php $itemNumber++ ?>
+        <div class="field-item <?php print $itemNumber % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>><?php print render($item); ?></div>
       <?php endif; ?>
     <?php endforeach; ?>
   </div>
