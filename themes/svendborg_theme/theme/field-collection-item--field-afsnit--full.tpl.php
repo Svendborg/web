@@ -28,20 +28,20 @@
  */
 ?>
 <?php
-if ($content['field_section_enabled']['#items'][0]['value'] <> 0):
+$sectionId = str_replace(' ', '_', $title);
 ?>
-  <?php
-  $sectionId = str_replace(' ', '_', $title);
-  ?>
-  <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-    <div class="content"<?php print $content_attributes; ?>>
-      <h3>
-        <?php
-        print render($content['field_section_heading']);
-        ?>
-      </h3>
+<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <div class="content"<?php print $content_attributes; ?>>
+    <h3>
       <?php
-      print render($content['field_section_text']);
+      print render($content['field_section_heading']);
+      ?>
+    </h3>
+    <?php
+    print render($content['field_section_text']);
+    ?>
+    <?php
+    if ($content['field_section_enabled']['#items'][0]['value'] <> 0):
       ?>
       <h4>
         <?php
@@ -78,6 +78,6 @@ if ($content['field_section_enabled']['#items'][0]['value'] <> 0):
           </div>
         </div>
       <?php endif; ?>
-    </div>
+    <?php endif; ?>
   </div>
-<?php endif; ?>
+</div>
