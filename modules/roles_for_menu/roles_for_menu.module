@@ -70,39 +70,37 @@ function roles_for_menu_form_node_form_alter(&$form, &$form_state, $form_id) {
  */
 function _roles_for_menu_form_alter(array &$form, array $item, array &$complete_form) {
   // Restrict access to the new form elements.
-  $form['options']['roles_for_menu']['#access'] = user_access('administer roles for menu');
+  if (user_access('administer roles for menu')) {
+    $form['options']['#tree'] = TRUE;
+    $form['options']['#weight'] = 50;
 
-  $form['options']['#tree'] = TRUE;
-  $form['options']['#weight'] = 50;
+    // Unset the previous value so that the new values get saved.
+    unset($form['options']['#value']['roles_for_menu']);
 
-  // Unset the previous value so that the new values get saved.
-  unset($form['options']['#value']['roles_for_menu']);
+    $form['options']['roles_for_menu'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Show/hide menu for specific roles'),
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+      '#tree' => TRUE,
+    );
 
-  $form['options']['roles_for_menu'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Show/hide menu for specific roles'),
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-    '#tree' => TRUE,
-  );
+    $form['options']['roles_for_menu']['show'] = array(
+      '#type' => 'checkboxes',
+      '#title' => t('Show menu item for specific roles'),
+      '#options' => array_map('check_plain', user_roles()),
+      '#default_value' => (isset($item['options']['roles_for_menu']['show'])) ? $item['options']['roles_for_menu']['show'] : array(),
+      '#description' => t('User with at least one of this roles will see the menu item. If no roles are selected the menu will be always visible.'),
+    );
 
-  $form['options']['roles_for_menu']['show'] = array(
-    '#type' => 'checkboxes',
-    '#title' => t('Show menu item for specific roles'),
-    '#options' => array_map('check_plain', user_roles()),
-    '#default_value' => (isset($item['options']['roles_for_menu']['show'])) ? $item['options']['roles_for_menu']['show'] : array(),
-    '#description' => t('User with at least one of this roles will see the menu item. If no roles are selected the menu will be always visible.'),
-  );
-
-  $form['options']['roles_for_menu']['hide'] = array(
-    '#type' => 'checkboxes',
-    '#title' => t('Hide menu item from specific roles'),
-    '#options' => array_map('check_plain', user_roles()),
-    '#default_value' => (isset($item['options']['roles_for_menu']['hide'])) ? $item['options']['roles_for_menu']['hide'] : array(),
-    '#description' => t('User with at least one of this roles will not see the menu item. If no roles are selected the menu will be always visible.'),
-  );
-
-  $form['options']['roles_for_menu']['#access'] = (bool) element_get_visible_children($form['options']['roles_for_menu']);
+    $form['options']['roles_for_menu']['hide'] = array(
+      '#type' => 'checkboxes',
+      '#title' => t('Hide menu item from specific roles'),
+      '#options' => array_map('check_plain', user_roles()),
+      '#default_value' => (isset($item['options']['roles_for_menu']['hide'])) ? $item['options']['roles_for_menu']['hide'] : array(),
+      '#description' => t('User with at least one of this roles will not see the menu item. If no roles are selected the menu will be always visible.'),
+    );
+  }
 }
 
 /**
