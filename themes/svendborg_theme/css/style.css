@@ -8323,60 +8323,61 @@ body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_bod
   font-size: 0;
   vertical-align: middle;
 }
-body.page-node article #borger_dk-body,
-body.page-taxonomy-term.term-is-not-top article #borger_dk-body,
-body.page-node div.node-os2web-borger-dk-article #borger_dk-body,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article #borger_dk-body,
-body.page-node div.node-os2web-base-news #borger_dk-body,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news #borger_dk-body {
-  clear: both;
-}
-body.page-node article #borger_dk-body .microArticle,
-body.page-taxonomy-term.term-is-not-top article #borger_dk-body .microArticle,
-body.page-node div.node-os2web-borger-dk-article #borger_dk-body .microArticle,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article #borger_dk-body .microArticle,
-body.page-node div.node-os2web-base-news #borger_dk-body .microArticle,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news #borger_dk-body .microArticle {
+body.page-node article .collapsible-panel,
+body.page-taxonomy-term.term-is-not-top article .collapsible-panel,
+body.page-node div.node-os2web-borger-dk-article .collapsible-panel,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .collapsible-panel,
+body.page-node div.node-os2web-base-news .collapsible-panel,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-panel {
   padding: 10px 10px;
   background-color: #e3e3e3;
   border-radius: 5px;
   margin-bottom: 5px;
 }
-body.page-node article #borger_dk-body div.mArticle,
-body.page-taxonomy-term.term-is-not-top article #borger_dk-body div.mArticle,
-body.page-node div.node-os2web-borger-dk-article #borger_dk-body div.mArticle,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article #borger_dk-body div.mArticle,
-body.page-node div.node-os2web-base-news #borger_dk-body div.mArticle,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news #borger_dk-body div.mArticle {
-  padding-top: 10px;
-}
-body.page-node article #borger_dk-body h2,
-body.page-taxonomy-term.term-is-not-top article #borger_dk-body h2,
-body.page-node div.node-os2web-borger-dk-article #borger_dk-body h2,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article #borger_dk-body h2,
-body.page-node div.node-os2web-base-news #borger_dk-body h2,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news #borger_dk-body h2,
-body.page-node article #borger_dk-body h3,
-body.page-taxonomy-term.term-is-not-top article #borger_dk-body h3,
-body.page-node div.node-os2web-borger-dk-article #borger_dk-body h3,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article #borger_dk-body h3,
-body.page-node div.node-os2web-base-news #borger_dk-body h3,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news #borger_dk-body h3 {
+body.page-node article .collapsible-panel h2,
+body.page-taxonomy-term.term-is-not-top article .collapsible-panel h2,
+body.page-node div.node-os2web-borger-dk-article .collapsible-panel h2,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .collapsible-panel h2,
+body.page-node div.node-os2web-base-news .collapsible-panel h2,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-panel h2,
+body.page-node article .collapsible-panel h3,
+body.page-taxonomy-term.term-is-not-top article .collapsible-panel h3,
+body.page-node div.node-os2web-borger-dk-article .collapsible-panel h3,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .collapsible-panel h3,
+body.page-node div.node-os2web-base-news .collapsible-panel h3,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-panel h3 {
   display: inline-block;
   width: 90%;
   border-top: none;
   margin-top: 0;
+  margin-bottom: 0;
   text-transform: inherit;
   font-weight: bold;
   font-size: 16px;
   background: none;
 }
-body.page-node article #borger_dk-body a.gplus,
-body.page-taxonomy-term.term-is-not-top article #borger_dk-body a.gplus,
-body.page-node div.node-os2web-borger-dk-article #borger_dk-body a.gplus,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article #borger_dk-body a.gplus,
-body.page-node div.node-os2web-base-news #borger_dk-body a.gplus,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news #borger_dk-body a.gplus {
+body.page-node article .collapsible-panel .collapsible-panel-content,
+body.page-taxonomy-term.term-is-not-top article .collapsible-panel .collapsible-panel-content,
+body.page-node div.node-os2web-borger-dk-article .collapsible-panel .collapsible-panel-content,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .collapsible-panel .collapsible-panel-content,
+body.page-node div.node-os2web-base-news .collapsible-panel .collapsible-panel-content,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-panel .collapsible-panel-content {
+  padding-top: 10px;
+}
+body.page-node article .collapsible-panel .collapsible-panel-content article,
+body.page-taxonomy-term.term-is-not-top article .collapsible-panel .collapsible-panel-content article,
+body.page-node div.node-os2web-borger-dk-article .collapsible-panel .collapsible-panel-content article,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .collapsible-panel .collapsible-panel-content article,
+body.page-node div.node-os2web-base-news .collapsible-panel .collapsible-panel-content article,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-panel .collapsible-panel-content article {
+  background-color: #e3e3e3;
+}
+body.page-node article .collapsible-panel a.gplus,
+body.page-taxonomy-term.term-is-not-top article .collapsible-panel a.gplus,
+body.page-node div.node-os2web-borger-dk-article .collapsible-panel a.gplus,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .collapsible-panel a.gplus,
+body.page-node div.node-os2web-base-news .collapsible-panel a.gplus,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-panel a.gplus {
   display: inline-block;
   background-image: url(../images/sprites.png);
   background-position: 0px -143px;
@@ -8386,12 +8387,12 @@ body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news #borger_dk-bod
   vertical-align: middle;
   float: right;
 }
-body.page-node article #borger_dk-body a.gminus,
-body.page-taxonomy-term.term-is-not-top article #borger_dk-body a.gminus,
-body.page-node div.node-os2web-borger-dk-article #borger_dk-body a.gminus,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article #borger_dk-body a.gminus,
-body.page-node div.node-os2web-base-news #borger_dk-body a.gminus,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news #borger_dk-body a.gminus {
+body.page-node article .collapsible-panel a.gminus,
+body.page-taxonomy-term.term-is-not-top article .collapsible-panel a.gminus,
+body.page-node div.node-os2web-borger-dk-article .collapsible-panel a.gminus,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .collapsible-panel a.gminus,
+body.page-node div.node-os2web-base-news .collapsible-panel a.gminus,
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-panel a.gminus {
   display: inline-block;
   background-image: url(../images/sprites.png);
   background-position: 0px -166px;
@@ -8534,6 +8535,16 @@ body.page-taxonomy-term.term-is-not-top .region-content.col-md-6 div.node-os2web
 .page-taxonomy .region-content.col-md-12 article .field-name-field-os2web-base-field-image,
 .page-node .region-content.col-md-12 article .field-name-field-os2web-base-field-image {
   padding: 0 15px;
+}
+.page-taxonomy .region-content.col-sm-9 article .field-name-field-os2web-meetings-bullets,
+.page-node .region-content.col-sm-9 article .field-name-field-os2web-meetings-bullets,
+.page-taxonomy .region-content.col-md-9 article .field-name-field-os2web-meetings-bullets,
+.page-node .region-content.col-md-9 article .field-name-field-os2web-meetings-bullets,
+.page-taxonomy .region-content.col-sm-12 article .field-name-field-os2web-meetings-bullets,
+.page-node .region-content.col-sm-12 article .field-name-field-os2web-meetings-bullets,
+.page-taxonomy .region-content.col-md-12 article .field-name-field-os2web-meetings-bullets,
+.page-node .region-content.col-md-12 article .field-name-field-os2web-meetings-bullets {
+  margin-top: 30px;
 }
 .page-taxonomy .region-content.col-sm-9 article .wrap,
 .page-node .region-content.col-sm-9 article .wrap,

@@ -30,15 +30,15 @@
 ?>
 
 <?php $entity = $variables['borgerdk_microarticle']; ?>
-<div class="microArticle" id="microArtricle<?php print $entity->entity_id; ?>">
-  <h2 class="mArticle" id="mArticle<?php print $entity->entity_id; ?>">
+<div class="microArticle collapsible-panel" id="microArtricle<?php print $entity->entity_id; ?>">
+  <h2 class="mArticle collapsible-panel-title" id="mArticle<?php print $entity->entity_id; ?>">
     <?php
       $content['title']['#label_display'] = 'hidden';
       print render($content['title']);
     ?>
   </h2>
   <a href="#" class="gplus">+</a>
-  <div class="mArticle<?php print $entity->entity_id; ?> mArticle" style="display: none;">
+  <div class="mArticle<?php print $entity->entity_id; ?> mArticle collapsible-panel-content" style="display: none;">
     <?php
       $content['content']['#label_display'] = 'hidden';
       print render($content['content']);

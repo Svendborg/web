@@ -94,40 +94,6 @@
             }
         });
 
-        // borger.dk articles
-        $("div.mArticle").hide();
-        $(".microArticle a.gplus").click(function () {
-            var article = $(this).parent().find('h3');
-            var myid = article.attr('id');
-            var style = $('div.' + myid).css('display');
-            if (style == 'none') {
-                $("div." + myid).show("500");
-                $(this).addClass('gminus');
-                $(this).removeClass('gplus');
-            }
-            else {
-                $("div." + myid).hide("500");
-                $(this).addClass('gplus');
-                $(this).removeClass('gminus');
-            }
-            return false;
-        });
-
-        $(".gplus_all").click(function () {
-            console.log('plus');
-            $("div.mArticle").show();
-            $(".microArticle a.gplus").addClass('gminus');
-            $(".microArticle a.gplus").removeClass('gplus');
-
-            return false;
-        });
-        $(".gminus_all").click(function () {
-            $("div.mArticle").hide();
-            $(".microArticle a.gminus").addClass('gplus');
-            $(".microArticle a.gminus").removeClass('gminus');
-
-            return false;
-        });
         // front nav header search_form button
         $(".front .region-navigation.container #search-block-form button").click(function () {
             $(".main-container .front-search-box input").focus();
@@ -149,6 +115,66 @@
             }
         });
     });
+
+    // Collapsible panel behaviour
+    Drupal.behaviors.collapsible_panel = {
+        attach: function (context) {
+            $(".collapsible-panel .collapsible-panel-title").click(function () {
+                var content = $(this).siblings('.collapsible-panel-content');
+                var style = $(content).css('display');
+                if (style == 'none') {
+                    content.show("500");
+                    var alink = $(this).parent().find("a.gplus");
+                    alink.addClass('gminus');
+                    alink.removeClass('gplus');
+                }
+                else {
+                    content.hide("500");
+                    var alink = $(this).parent().find("a.gminus");
+                    alink.addClass('gplus');
+                    alink.removeClass('gminus');
+                }
+            });
+
+            // borger.dk articles
+            $(".collapsible-panel a.gplus").click(function () {
+                var panel_title = $(this).parent().find('.collapsible-panel-title');
+                var content = $(panel_title).siblings('.collapsible-panel-content');
+                var style = $(content).css('display');
+
+                var button = this;
+
+                if (style == 'none') {
+                    content.show("500", function () {
+                        $(button).addClass('gminus');
+                        $(button).removeClass('gplus test');
+                    });
+                }
+                else {
+                    content.hide("500", function () {
+                        $(button).addClass('gplus');
+                        $(button).removeClass('gminus');
+                    });
+                }
+                return false;
+            });
+
+            $(".gplus_all").click(function () {
+                $("div.collapsible-panel-content").show();
+                $(".collapsible-panel a.gplus").addClass('gminus');
+                $(".collapsible-panel a.gplus").removeClass('gplus');
+
+                return false;
+            });
+            $(".gminus_all").click(function () {
+                $("div.collapsible-panel-content").hide();
+                $(".collapsible-panel a.gminus").addClass('gplus');
+                $(".collapsible-panel a.gminus").removeClass('gminus');
+
+                return false;
+            });
+        }
+    }
 
     Drupal.behaviors.feedbackForm = {
         attach: function (context) {
@@ -177,9 +203,9 @@
     Drupal.behaviors.feedbackFormSubmit = {
         attach: function (context) {
             var $context = $(context);
-            if (!$context.is('#feedback-status-message')) {
-                return;
-            }
+//            if (!$context.is('#feedback-status-message')) {
+//                return;
+//            }
             // Collapse the form.
             $('#block-feedback-form .feedback-link').click();
             // Blend out and remove status message.

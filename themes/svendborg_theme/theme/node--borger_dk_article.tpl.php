@@ -5,7 +5,6 @@
 
     <?php
     if ($node->type == 'borger_dk_article') {
-      drupal_add_js(drupal_get_path('module', 'bellcom_borgerdk_migrate') . '/js/os2web_borger_dk.js', 'file');
       drupal_add_css(drupal_get_path('module', 'bellcom_borgerdk_migrate') . '/css/os2web_borger_dk.css', 'file');
     }
     ?>
