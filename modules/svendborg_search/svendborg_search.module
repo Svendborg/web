@@ -18,6 +18,7 @@ function svendborg_search_form_alter(&$form, &$form_state, $form_id) {
     $form['search_api_views_fulltext']['#theme_wrappers'] = array('bootstrap_search_form_wrapper');
     $form['search_api_views_fulltext']['#attributes']['placeholder'] = t('Search');
     $form['search_api_views_fulltext']['#attributes']['title'] = t('Enter the terms you wish to search for.');
+    $form['search_api_views_fulltext']['#attributes']['class'] = array('form-control', 'form-text');
     $form['submit']['#access'] = FALSE;
   }
 }
