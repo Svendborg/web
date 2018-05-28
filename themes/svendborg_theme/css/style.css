@@ -6924,6 +6924,9 @@ fieldset[disabled] #block-feedback-form #feedback-submit.btn-default.active {
   right: 0;
   padding: 10px;
 }
+.entity.entity-field-collection-item.field-collection-item-field-afsnit .field.field-name-field-section-text {
+  margin-bottom: 20px;
+}
 .btn-default {
   color: #ffffff;
   background-image: -webkit-linear-gradient(top, #005191 0%, #0089cd 100%);
