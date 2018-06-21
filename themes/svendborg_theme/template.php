@@ -9,6 +9,7 @@
  */
 function svendborg_theme_preprocess_page(&$variables) {
   // Remove all Taxonomy auto listings here.
+//print render($block['content']);
   $term = NULL;
   if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
     $term = taxonomy_term_load(arg(2));
@@ -229,6 +230,24 @@ function svendborg_theme_preprocess_page(&$variables) {
     // Frontpage small carousel.
     $variables['page']['front_small_carousel'] = _svendborg_theme_get_front_small_carousel();
   }
+
+  if ($node && $node->type=='os2web_meetings_meeting'){
+    $menu_tree = menu_tree_all_data('menu-indholdsmenu');
+    foreach ($menu_tree as $link) {
+      if($link['link']['mlid'] == '1898') {
+        $links= $link['below'];
+        break;
+      }
+    }
+    $variables['page']['sidebar_first'] = array(
+      '#theme_wrappers' => array('region'),
+      '#region' => 'sidebar_first',
+      'dummy_content' => array(
+        '#markup' =>  '<div class="menu-block-wrapper">' . drupal_render(menu_tree_output($links )) . '</div>',
+      ),
+    );
+  }
+
 }
 
 /**
