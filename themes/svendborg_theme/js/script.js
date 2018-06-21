@@ -207,13 +207,13 @@
 //                return;
 //            }
             // Collapse the form.
-            $('#block-feedback-form .feedback-link').click();
+           // $('#block-feedback-form .feedback-link').click();
             // Blend out and remove status message.
-            window.setTimeout(function () {
-                $context.fadeOut('slow', function () {
-                    $context.remove();
-                });
-            }, 3000);
+           // window.setTimeout(function () {
+           //     $context.fadeOut('slow', function () {
+            //        $context.remove();
+            //    });
+            //}, 3000);
         }
     };
 
