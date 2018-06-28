@@ -6505,6 +6505,12 @@ fieldset.features-export-component .component-select .form-type-checkbox input[t
 div.features-export-list .form-type-checkbox input[type=checkbox] {
   margin-top: 0;
 }
+.views-widget-filter-field_os2web_meetings_committee_tid {
+  width: 100%;  
+}
+.views-widget-filter-field_os2web_meetings_committee_tid .select2-container {
+  min-width: 60%;
+}
 /*
 LESS variables are information about icon's compiled state, stored under its original file name
 
@@ -7533,6 +7539,9 @@ fieldset[disabled] .btn-orange.active {
 }
 .dropdown.like-panel ul.dropdown-menu li a:hover {
   color: #0089cd;
+}
+.pane-views-panes .pane-content {
+  padding: 5px 10px;
 }
 .search-results .search-snippet-info {
   padding-bottom: 12px;

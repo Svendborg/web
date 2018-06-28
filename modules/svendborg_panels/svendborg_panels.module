@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg panels feature.
+ */
+
+include_once 'svendborg_panels.features.inc';
