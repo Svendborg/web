@@ -280,6 +280,8 @@
 (function ($) {
     'use strict';
 
+
+
     // A hash is set in the URL
     if (location.hash) {
 
@@ -316,3 +318,7 @@
         });
     }, 500);
 })(jQuery);
+
+// Add a .form-control class to the search input
+var searchInput = document.getElementById('edit-search-api-views-fulltext');
+searchInput.classList.add('form-control');
