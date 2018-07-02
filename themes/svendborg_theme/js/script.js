@@ -317,9 +317,11 @@
     }, 500);
 
     // Add a .form-control class to the search input
-    var $searchInput = $('input[name=search_api_views_fulltext]');
+    setTimeout(function() {
+        var $searchInput = $('input[name=search_api_views_fulltext]');
 
-    if (! $searchInput.hasClass('form-control')) {
-        $searchInput.addClass('form-control');
-    }
+        if (! $searchInput.hasClass('form-control')) {
+            $searchInput.addClass('form-control');
+        }
+    }, 500);
 })(jQuery);
