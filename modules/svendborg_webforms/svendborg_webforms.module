@@ -5,12 +5,7 @@
  */
 
 function svendborg_webforms_webform_component_defaults_alter(&$defaults, $type) {
-  
-  dpm($type);
-  dpm('here');
   if ($type == 'file') {
     $defaults['extra']['scheme'] = 'private';
-    dpm('hete');
   }
-   dpm($defaults);
 }
