@@ -1,0 +1,11 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg webforms.
+ */
+
+function svendborg_webforms_webform_component_defaults_alter(&$defaults, $type) {
+  if ($type == 'file') {
+    $defaults['extra']['scheme'] = 'private';
+  }
+}
