@@ -33,10 +33,9 @@
     <a id="main-content"></a>
     <?php print render($page['title_prefix']); ?>
 
-    <?php $title = isset($page['title'])?$page['title'] :"";
-    if($title){ ?>
+    <?php if ($page['title']): ?>
       <h1 class="page-header"><?php print $page['title']; ?></h1>
-    <?php }?>
+    <?php endif; ?>
 
     <?php print render($page['title_suffix']); ?>
     <?php print render($page['messages']); ?>
