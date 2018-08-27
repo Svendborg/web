@@ -8299,7 +8299,8 @@ body.page-taxonomy-term.term-is-not-top article .borger_dk_body_intro_text .intr
 body.page-node div.node-os2web-borger-dk-article .borger_dk_body_intro_text .intro_text_text,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .borger_dk_body_intro_text .intro_text_text,
 body.page-node div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_text,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_text {
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_text,
+body.page-node div.node-os2web-meetings-meeting .borger_dk_body_intro_text .intro_text_text {
   width: 70%;
   display: inline-block;
 }
@@ -8308,7 +8309,8 @@ body.page-taxonomy-term.term-is-not-top article .borger_dk_body_intro_text .intr
 body.page-node div.node-os2web-borger-dk-article .borger_dk_body_intro_text .intro_text_buttons,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .borger_dk_body_intro_text .intro_text_buttons,
 body.page-node div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_buttons,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_buttons {
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_buttons,
+body.page-node div.node-os2web-meetings-meeting .borger_dk_body_intro_text .intro_text_buttons {
   float: right;
 }
 body.page-node article .borger_dk_body_intro_text .gplus_gminus,
@@ -8316,7 +8318,8 @@ body.page-taxonomy-term.term-is-not-top article .borger_dk_body_intro_text .gplu
 body.page-node div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gplus_gminus,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gplus_gminus,
 body.page-node div.node-os2web-base-news .borger_dk_body_intro_text .gplus_gminus,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gplus_gminus {
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gplus_gminus,
+body.page-node div.node-os2web-meetings-meeting .intro_text_buttons .borger_dk_body_intro_text .gplus_gminus {
   margin-left: 5px;
 }
 body.page-node article .borger_dk_body_intro_text .gplus_button,
@@ -8324,7 +8327,8 @@ body.page-taxonomy-term.term-is-not-top article .borger_dk_body_intro_text .gplu
 body.page-node div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gplus_button,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gplus_button,
 body.page-node div.node-os2web-base-news .borger_dk_body_intro_text .gplus_button,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gplus_button {
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gplus_button,
+body.page-node div.node-os2web-meetings-meeting .borger_dk_body_intro_text .intro_text_buttons .gplus_gminus {
   background-image: url(../images/sprites.png);
   background-position: 0px -143px;
   width: 23px;
@@ -8338,7 +8342,8 @@ body.page-taxonomy-term.term-is-not-top article .borger_dk_body_intro_text .gmin
 body.page-node div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gminus_button,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gminus_button,
 body.page-node div.node-os2web-base-news .borger_dk_body_intro_text .gminus_button,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gminus_button {
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gminus_button,
+body.page-node .node-os2web-meetings-meeting .intro_text_buttons .gminus_button {
   background-image: url(../images/sprites.png);
   background-position: 0px -166px;
   width: 23px;
@@ -8360,7 +8365,7 @@ body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-p
 }
 body.page-node article .collapsible-panel h2,
 body.page-taxonomy-term.term-is-not-top article .collapsible-panel h2,
-body.page-node div.node-os2web-borger-dk-article .collapsible-panel h2,
+body.page-node div.node-os2web-borger-dk-article .collbapsible-panel h2,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .collapsible-panel h2,
 body.page-node div.node-os2web-base-news .collapsible-panel h2,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-panel h2,
