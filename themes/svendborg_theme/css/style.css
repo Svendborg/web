@@ -6072,6 +6072,12 @@ fieldset .panel-heading a.panel-title:hover {
   margin: 5px 0 10px;
   padding: 0;
 }
+#edit-os2web-subscription-group .help-block {
+  color: inherit;
+}
+#edit-os2web-subscription-group .panel-body {
+  padding: 14px 19px;
+}
 .panel-heading {
   display: block;
 }
@@ -6498,6 +6504,12 @@ div.features-export-list .form-type-checkbox {
 fieldset.features-export-component .component-select .form-type-checkbox input[type=checkbox],
 div.features-export-list .form-type-checkbox input[type=checkbox] {
   margin-top: 0;
+}
+.views-widget-filter-field_os2web_meetings_committee_tid {
+  width: 100%;  
+}
+.views-widget-filter-field_os2web_meetings_committee_tid .select2-container {
+  min-width: 60%;
 }
 /*
 LESS variables are information about icon's compiled state, stored under its original file name
@@ -7528,6 +7540,9 @@ fieldset[disabled] .btn-orange.active {
 .dropdown.like-panel ul.dropdown-menu li a:hover {
   color: #0089cd;
 }
+.pane-views-panes .pane-content {
+  padding: 5px 10px;
+}
 .search-results .search-snippet-info {
   padding-bottom: 12px;
 }
@@ -8284,7 +8299,8 @@ body.page-taxonomy-term.term-is-not-top article .borger_dk_body_intro_text .intr
 body.page-node div.node-os2web-borger-dk-article .borger_dk_body_intro_text .intro_text_text,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .borger_dk_body_intro_text .intro_text_text,
 body.page-node div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_text,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_text {
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_text,
+body.page-node div.node-os2web-meetings-meeting .borger_dk_body_intro_text .intro_text_text {
   width: 70%;
   display: inline-block;
 }
@@ -8293,7 +8309,8 @@ body.page-taxonomy-term.term-is-not-top article .borger_dk_body_intro_text .intr
 body.page-node div.node-os2web-borger-dk-article .borger_dk_body_intro_text .intro_text_buttons,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .borger_dk_body_intro_text .intro_text_buttons,
 body.page-node div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_buttons,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_buttons {
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .intro_text_buttons,
+body.page-node div.node-os2web-meetings-meeting .borger_dk_body_intro_text .intro_text_buttons {
   float: right;
 }
 body.page-node article .borger_dk_body_intro_text .gplus_gminus,
@@ -8301,7 +8318,8 @@ body.page-taxonomy-term.term-is-not-top article .borger_dk_body_intro_text .gplu
 body.page-node div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gplus_gminus,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gplus_gminus,
 body.page-node div.node-os2web-base-news .borger_dk_body_intro_text .gplus_gminus,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gplus_gminus {
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gplus_gminus,
+body.page-node div.node-os2web-meetings-meeting .intro_text_buttons .borger_dk_body_intro_text .gplus_gminus {
   margin-left: 5px;
 }
 body.page-node article .borger_dk_body_intro_text .gplus_button,
@@ -8309,7 +8327,8 @@ body.page-taxonomy-term.term-is-not-top article .borger_dk_body_intro_text .gplu
 body.page-node div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gplus_button,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gplus_button,
 body.page-node div.node-os2web-base-news .borger_dk_body_intro_text .gplus_button,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gplus_button {
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gplus_button,
+body.page-node div.node-os2web-meetings-meeting .borger_dk_body_intro_text .intro_text_buttons .gplus_gminus {
   background-image: url(../images/sprites.png);
   background-position: 0px -143px;
   width: 23px;
@@ -8323,7 +8342,8 @@ body.page-taxonomy-term.term-is-not-top article .borger_dk_body_intro_text .gmin
 body.page-node div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gminus_button,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .borger_dk_body_intro_text .gminus_button,
 body.page-node div.node-os2web-base-news .borger_dk_body_intro_text .gminus_button,
-body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gminus_button {
+body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .borger_dk_body_intro_text .gminus_button,
+body.page-node .node-os2web-meetings-meeting .intro_text_buttons .gminus_button {
   background-image: url(../images/sprites.png);
   background-position: 0px -166px;
   width: 23px;
@@ -8345,7 +8365,7 @@ body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-p
 }
 body.page-node article .collapsible-panel h2,
 body.page-taxonomy-term.term-is-not-top article .collapsible-panel h2,
-body.page-node div.node-os2web-borger-dk-article .collapsible-panel h2,
+body.page-node div.node-os2web-borger-dk-article .collbapsible-panel h2,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-borger-dk-article .collapsible-panel h2,
 body.page-node div.node-os2web-base-news .collapsible-panel h2,
 body.page-taxonomy-term.term-is-not-top div.node-os2web-base-news .collapsible-panel h2,

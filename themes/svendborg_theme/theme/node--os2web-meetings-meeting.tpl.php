@@ -144,8 +144,21 @@
       print render($content['field_os2web_base_field_sympage']);
     }
 
-
-    print render($content);
+  $content['field_os2web_meetings_full_doc']['#title']= t('Full doc');
+  $content['field_os2web_meetings_committee']['#title'] = t('Committee');
+  $content['field_os2web_meetings_date']['#title'] = t('Date');
+  $content['field_os2web_meetings_location']['#title'] = t('Lokation');
+  hide($content['field_os2web_meetings_bullets']);
+  print render($content);
+?>
+    <div class="borger_dk_body_intro_text">
+      <div class='intro_text_buttons'>
+        <span>Åben/luk alle</span><a href='#' class='gplus_all gplus_gminus'><span class='gplus_button'>+</span></a>
+        <a href='#' class='gminus_all gplus_gminus'><span class='gminus_button'>-</span></a>
+     </div>
+    </div>  
+<?php
+  print render($content['field_os2web_meetings_bullets']);
 
     print $author_node_info;
 

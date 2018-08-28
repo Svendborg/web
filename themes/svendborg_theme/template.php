@@ -247,7 +247,9 @@ function svendborg_theme_preprocess_page(&$variables) {
       ),
     );
   }
-
+  if (request_uri() == '/dagsorden-og-referat' && !empty($variables['page']['sidebar_first'])) {
+    $variables['page']['sidebar_first'] = array();
+  }
 }
 
 /**
