@@ -3,3 +3,30 @@
  * @file
  * Drupal needs this blank file.
  */
+/**
+ * Implements hook_form_alter().
+ */
+function manage_menu_additional_items_form_node_form_alter(&$form, &$form_state, $form_id) {
+  dpm($form);
+  if (isset($form['menu']['link']['options']['roles_for_menu'])) {
+    $form['menu']['link']['options']['roles_for_menu']['#collapsed'] = TRUE;
+  }
+  
+}
+
+
+function manage_menu_additional_items_module_implements_alter(&$implementations, $hook) {
+  
+  if ($hook == 'form_alter') {
+    // Move my_module_rdf_mapping() to the end of the list. module_implements()
+    // iterates through $implementations with a foreach loop which PHP iterates
+    // in the order that the items were added, so to move an item to the end of
+    // the array, we remove it and then add it.
+   
+ 
+    $group = $implementations['manage_menu_additional_items'];
+    unset($implementations['manage_menu_additional_items']);
+    $implementations['manage_menu_additional_items'] = $group;
+
+  }
+}
