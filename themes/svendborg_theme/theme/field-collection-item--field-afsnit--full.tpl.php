@@ -66,7 +66,7 @@ $sectionId = str_replace(' ', '_', $title);
                 <?php print render($content['field_section_popup_text']); ?>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"><?php print t('Close') ?></button>
               </div>
             </div>
           </div>
