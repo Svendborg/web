@@ -7557,6 +7557,7 @@ fieldset[disabled] .btn-orange.active {
 .dropdown.like-panel ul.dropdown-menu li a:hover {
   color: #0089cd;
 }
+.pane-custom .pane-content,
 .pane-views-panes .pane-content {
   padding: 5px 10px;
 }
