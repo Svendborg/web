@@ -6513,6 +6513,21 @@ div.features-export-list .form-type-checkbox input[type=checkbox] {
 .views-widget-filter-field_os2web_meetings_committee_tid .select2-container {
   min-width: 60%;
 }
+td.views-field-field-os2web-meetings-committee {
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
 /*
 LESS variables are information about icon's compiled state, stored under its original file name
 
