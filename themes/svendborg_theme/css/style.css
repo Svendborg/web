@@ -7557,9 +7557,11 @@ fieldset[disabled] .btn-orange.active {
 .dropdown.like-panel ul.dropdown-menu li a:hover {
   color: #0089cd;
 }
-.pane-custom .pane-content,
 .pane-views-panes .pane-content {
   padding: 5px 10px;
+}
+.pane-custom .pane-content {
+  padding: 10px 19px;
 }
 .search-results .search-snippet-info {
   padding-bottom: 12px;
