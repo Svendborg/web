@@ -6072,12 +6072,14 @@ fieldset .panel-heading a.panel-title:hover {
   margin: 5px 0 10px;
   padding: 0;
 }
+.pane-os2web-subscription-os2web-subscription-form .help-block,
 #edit-os2web-subscription-group .help-block,
 #edit-os2web-subscription-enabled-types-group .help-block {
   color: inherit;
 }
+.pane-os2web-subscription-os2web-subscription-form .panel-body,
 #edit-os2web-subscription-group .panel-body,
-#edit-os2web-subscription-enabled-types-group panel-body {
+#edit-os2web-subscription-enabled-types-group .panel-body {
   padding: 14px 19px;
 }
 .panel-heading {
@@ -7562,6 +7564,9 @@ fieldset[disabled] .btn-orange.active {
 }
 .pane-custom .pane-content {
   padding: 10px 19px;
+}
+.pane-os2web-subscription-os2web-subscription-form .btn {
+  margin-top: 20px;
 }
 .search-results .search-snippet-info {
   padding-bottom: 12px;
