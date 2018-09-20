@@ -7351,10 +7351,12 @@ fieldset[disabled] .btn-orange.active {
   display: block;
   float: right;
 }
+.panel.with-arrow > .pane-content,
 .panel.with-arrow > .panel-body {
   position: relative;
   padding-top: 10px;
 }
+.panel.with-arrow > .pane-content:before,
 .panel.with-arrow > .panel-body:before {
   content: " ";
   display: table;
