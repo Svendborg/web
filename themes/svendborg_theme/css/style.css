@@ -7440,16 +7440,19 @@ fieldset[disabled] .btn-orange.active {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff589000', GradientType=0);
 }
-.large-arrow.panel-primary.with-arrow > .panel-body {
+.large-arrow.panel-primary.with-arrow > .panel-body,
+.large-arrow.panel-primary.with-arrow > .pane-content {
   padding-top: 19px;
 }
-.panel-primary.with-arrow > .panel-body:before {
+.panel-primary.with-arrow > .panel-body:before,
+.panel-primary.with-arrow > .pane-content:before {
   background-image: url(../images/sprites.png);
   background-position: 0px -7px;
   width: 14px;
   height: 7px;
 }
-.large-arrow.panel-primary.with-arrow > .panel-body:before {
+.large-arrow.panel-primary.with-arrow > .panel-body:before,
+.large-arrow.panel-primary.with-arrow > .pane-content:before {
   margin-left: -15.5px;
   background-image: url(../images/sprites.png);
   background-position: 0px -110px;
