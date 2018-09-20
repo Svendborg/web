@@ -7351,11 +7351,13 @@ fieldset[disabled] .btn-orange.active {
   display: block;
   float: right;
 }
+.pane-os2web-subscription-os2web-subscription-form .panel > .panel-body,
 .panel.with-arrow > .pane-content,
 .panel.with-arrow > .panel-body {
   position: relative;
   padding-top: 10px;
 }
+.pane-os2web-subscription-os2web-subscription-form .panel > .panel-body:before,
 .panel.with-arrow > .pane-content:before,
 .panel.with-arrow > .panel-body:before {
   content: " ";
@@ -7433,6 +7435,7 @@ fieldset[disabled] .btn-orange.active {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0089cd', endColorstr='#ff005191', GradientType=0);
 }
+.pane-os2web-subscription-os2web-subscription-form .panel > .panel-heading,
 .panel-primary > .panel-heading,
 .like-panel.like-panel-primary {
   background-image: -webkit-linear-gradient(top, #85c500 0%, #589000 100%);
@@ -7440,10 +7443,12 @@ fieldset[disabled] .btn-orange.active {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff589000', GradientType=0);
 }
+.large-arrow.pane-os2web-subscription-os2web-subscription-form .panel > .panel-body,
 .large-arrow.panel-primary.with-arrow > .panel-body,
 .large-arrow.panel-primary.with-arrow > .pane-content {
   padding-top: 19px;
 }
+.pane-os2web-subscription-os2web-subscription-form .panel > .panel-body:before,
 .panel-primary.with-arrow > .panel-body:before,
 .panel-primary.with-arrow > .pane-content:before {
   background-image: url(../images/sprites.png);
@@ -7451,6 +7456,7 @@ fieldset[disabled] .btn-orange.active {
   width: 14px;
   height: 7px;
 }
+.large-arrow.pane-os2web-subscription-os2web-subscription-form .panel > .panel-body:before,
 .large-arrow.panel-primary.with-arrow > .panel-body:before,
 .large-arrow.panel-primary.with-arrow > .pane-content:before {
   margin-left: -15.5px;
