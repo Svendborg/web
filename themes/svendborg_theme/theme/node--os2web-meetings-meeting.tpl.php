@@ -148,6 +148,7 @@
   $content['field_os2web_meetings_committee']['#title'] = t('Committee');
   $content['field_os2web_meetings_date']['#title'] = t('Date');
   $content['field_os2web_meetings_location']['#title'] = t('Lokation');
+  $content['field_os2web_meetings_type']['#title'] = t('Status');
   hide($content['field_os2web_meetings_bullets']);
   print render($content);
 ?>
