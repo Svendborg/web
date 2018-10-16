@@ -81,7 +81,9 @@
 ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix collapsible-panel"<?php print $attributes; ?>>
   <h2 class="collapsible-panel-title"><?php print $title; ?></h2>
-  <a href="#" class="gplus">+</a>
+  <a href="#" class="gplus">+</a>  
+  <a href="/dagsorden_punkt/<?php print $node->nid?>/send_to_friend_form" class="email-icon" rel="lightframe"></a>
+  <a href="/print/dagsorden_punkt/<?php print $node->nid?>/print" class="print-icon"></a>
   <div class="collapsible-panel-content" style="display: none;">
     <?php print render($content); ?>
   </div>

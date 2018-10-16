@@ -1,0 +1,8 @@
+msgid ""
+"Fill out the fields below and press \"Send\", when you want to send "
+"the e-mail"
+msgstr "Udfyld felterne herunder og tryk \"Send\", nÃ¥r du vil sende beskeden."
+
+msgid "Recipients email"
+msgstr "Modtagers email"
+
