@@ -2,10 +2,19 @@ html body{
   min-width: 0px !important;
 }
 
-#region-page-top, #section-header, #breadcrumb, #region-sidebar-first, #region-sidebar-second, #zone-user-wrapper, #zone-menu-wrapper, #section-footer{
-  display: none;
+#region-page-top, 
+#section-header, 
+#breadcrumb, 
+#region-sidebar-first, 
+#region-sidebar-second, 
+#zone-user-wrapper, 
+#zone-menu-wrapper, 
+#section-footer,
+.header_svendborg,
+.region_footer,
+.slicknav_menu {
+  display: none !important;
 }
-
 .container-12{
   background: #FFF !important;
   width: 300px !important;
