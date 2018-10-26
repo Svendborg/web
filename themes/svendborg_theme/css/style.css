@@ -8599,14 +8599,14 @@ body.page-taxonomy-term.term-is-not-top .region-content.col-md-6 div.node-os2web
 .page-node .region-content.col-md-12 article .field-name-field-os2web-base-field-image {
   padding: 0 15px;
 }
-.page-taxonomy .region-content.col-sm-9 article .field-name-field-os2web-meetings-bullets,
-.page-node .region-content.col-sm-9 article .field-name-field-os2web-meetings-bullets,
-.page-taxonomy .region-content.col-md-9 article .field-name-field-os2web-meetings-bullets,
-.page-node .region-content.col-md-9 article .field-name-field-os2web-meetings-bullets,
-.page-taxonomy .region-content.col-sm-12 article .field-name-field-os2web-meetings-bullets,
-.page-node .region-content.col-sm-12 article .field-name-field-os2web-meetings-bullets,
-.page-taxonomy .region-content.col-md-12 article .field-name-field-os2web-meetings-bullets,
-.page-node .region-content.col-md-12 article .field-name-field-os2web-meetings-bullets {
+.page-taxonomy .region-content.col-sm-9 article .field-os2web-meetings-partic,
+.page-node .region-content.col-sm-9 article .field-os2web-meetings-partic,
+.page-taxonomy .region-content.col-md-9 article .field-os2web-meetings-partic,
+.page-node .region-content.col-md-9 article .field-os2web-meetings-partic,
+.page-taxonomy .region-content.col-sm-12 article .field-os2web-meetings-partic,
+.page-node .region-content.col-sm-12 article .field-os2web-meetings-partic,
+.page-taxonomy .region-content.col-md-12 article .field-os2web-meetings-partic,
+.page-node .region-content.col-md-12 article .field-os2web-meetings-partic {
   margin-top: 30px;
 }
 .page-taxonomy .region-content.col-sm-9 article .wrap,
