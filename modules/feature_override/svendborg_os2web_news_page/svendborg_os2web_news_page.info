@@ -11,3 +11,6 @@ features[features_overrides][] = views_view.os2web_news_lists.display|panel_pane
 features[features_overrides][] = views_view.os2web_news_lists.display|panel_pane_1|display_options|row_plugin
 features[features_overrides][] = views_view.os2web_news_lists.display|panel_pane_1|display_options|style_options
 features[features_overrides][] = views_view.os2web_news_lists.display|panel_pane_1|display_options|style_plugin
+features[field_base][] = field_os2web_meetings_partic
+features[field_instance][] = node-os2web_meetings_meeting-field_os2web_meetings_partic
+project path = sites/all/modules/feature_override

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg OS2web meetings feature.
+ */
+
+include_once 'svendborg_os2web_meetings.features.inc';

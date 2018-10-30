@@ -143,12 +143,13 @@
     if(isset($content['field_os2web_base_field_sympage'])) {
       print render($content['field_os2web_base_field_sympage']);
     }
-
   $content['field_os2web_meetings_full_doc']['#title']= t('Full doc');
   $content['field_os2web_meetings_committee']['#title'] = t('Committee');
   $content['field_os2web_meetings_date']['#title'] = t('Date');
   $content['field_os2web_meetings_location']['#title'] = t('Lokation');
+  $content['field_os2web_meetings_type']['#title'] = t('Status');
   hide($content['field_os2web_meetings_bullets']);
+  hide($content['field_os2web_meetings_partic']);
   print render($content);
 ?>
     <div class="borger_dk_body_intro_text">
@@ -156,7 +157,14 @@
         <span>Åben/luk alle</span><a href='#' class='gplus_all gplus_gminus'><span class='gplus_button'>+</span></a>
         <a href='#' class='gminus_all gplus_gminus'><span class='gminus_button'>-</span></a>
      </div>
-    </div>  
+    </div> 
+    <div class="field-os2web-meetings-partic clearfix collapsible-panel">
+  <h2 class="collapsible-panel-title"><?php print t('Deltagere') ?></h2>
+  <a href="#" class="gplus">+</a>  
+    <div class="collapsible-panel-content" style="display: none;">
+    <?php print render($content['field_os2web_meetings_partic']); ?>
+  </div>
+</div>
 <?php
   print render($content['field_os2web_meetings_bullets']);
 

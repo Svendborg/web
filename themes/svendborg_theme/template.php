@@ -331,7 +331,6 @@ function svendborg_theme_preprocess_html(&$variables) {
  * Implements hook_preprocess_node().
  */
 function svendborg_theme_preprocess_node(&$vars) {
-
   // Add css class "node--NODETYPE--VIEWMODE" to nodes.
   $vars['classes_array'][] = 'node--' . $vars['type'] . '--' . $vars['view_mode'];
 
@@ -358,6 +357,10 @@ function svendborg_theme_preprocess_node(&$vars) {
     // Microartilce settings.
     $vars['content_body'] = $content_fields['body'];
     $vars['content_body'] = $content_fields['body'];
+  }
+  if ($vars['type'] == 'os2web_meetings_meeting'){
+    $commitee = taxonomy_term_load($vars['field_os2web_meetings_committee'][0]['tid']);
+    $vars['title'] = $commitee->name;
   }
 }
 /**
@@ -948,7 +951,7 @@ function _svendborg_theme_get_borger_dk_content($node) {
  * Instead of a fully loaded render array, though, it returns markup, without
  * too many wrappers and such.
  */
-function _svendborg_theme_get_webform($nid) {
+function _b_get_webform($nid) {
   $webform_node = node_load($nid);
 
   $submission = (object) array();

@@ -6530,6 +6530,9 @@ td.views-field-field-os2web-meetings-committee {
   -webkit-hyphens: auto;
   hyphens: auto;
 }
+body.page-node.node-type-os2web-meetings-meeting .collapsible-panel h2 {
+  width: 80%;
+}
 /*
 LESS variables are information about icon's compiled state, stored under its original file name
 
@@ -8596,14 +8599,14 @@ body.page-taxonomy-term.term-is-not-top .region-content.col-md-6 div.node-os2web
 .page-node .region-content.col-md-12 article .field-name-field-os2web-base-field-image {
   padding: 0 15px;
 }
-.page-taxonomy .region-content.col-sm-9 article .field-name-field-os2web-meetings-bullets,
-.page-node .region-content.col-sm-9 article .field-name-field-os2web-meetings-bullets,
-.page-taxonomy .region-content.col-md-9 article .field-name-field-os2web-meetings-bullets,
-.page-node .region-content.col-md-9 article .field-name-field-os2web-meetings-bullets,
-.page-taxonomy .region-content.col-sm-12 article .field-name-field-os2web-meetings-bullets,
-.page-node .region-content.col-sm-12 article .field-name-field-os2web-meetings-bullets,
-.page-taxonomy .region-content.col-md-12 article .field-name-field-os2web-meetings-bullets,
-.page-node .region-content.col-md-12 article .field-name-field-os2web-meetings-bullets {
+.page-taxonomy .region-content.col-sm-9 article .field-os2web-meetings-partic,
+.page-node .region-content.col-sm-9 article .field-os2web-meetings-partic,
+.page-taxonomy .region-content.col-md-9 article .field-os2web-meetings-partic,
+.page-node .region-content.col-md-9 article .field-os2web-meetings-partic,
+.page-taxonomy .region-content.col-sm-12 article .field-os2web-meetings-partic,
+.page-node .region-content.col-sm-12 article .field-os2web-meetings-partic,
+.page-taxonomy .region-content.col-md-12 article .field-os2web-meetings-partic,
+.page-node .region-content.col-md-12 article .field-os2web-meetings-partic {
   margin-top: 30px;
 }
 .page-taxonomy .region-content.col-sm-9 article .wrap,
@@ -8850,6 +8853,28 @@ body.page-node article #borger_dk-body .microArticle ul {
   background: white;
   border-radius: 4px 4px;
   margin-bottom: 20px;
+}
+.node-os2web-meetings-bullet .email-icon,
+.node-os2web-meetings-bullet .print-icon {
+  display: inline-block;
+  float: right;
+  width: 23px;
+  height: 23px;
+  font-size: 0;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+.node-os2web-meetings-bullet .email-icon {
+  background-image: url(../images/icon-send-to-friend-bullet-point.png);
+}
+.node-os2web-meetings-bullet .print-icon {
+  background-image: url(../images/icon-print-bullet-point.png);
+}
+.bullet-point-send-to-friend-form {
+  margin-bottom: 20px;
+}
+.bullet-point-send-to-friend-form label {
+  display: block;
 }
 #nyheder-carousel-large {
   background-color: #fff;
