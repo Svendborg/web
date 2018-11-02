@@ -83,7 +83,7 @@
   <h2 class="collapsible-panel-title"><?php print $title; ?></h2>
   <a href="#" class="gplus">+</a>  
   <a href="/dagsorden_punkt/<?php print $node->nid?>/send_to_friend_form" class="email-icon" rel="lightframe"></a>
-  <a href="/print/dagsorden_punkt/<?php print $node->nid?>/print" class="print-icon"></a>
+  <a href="/print/dagsorden_punkt/<?php print $node->nid?>/print" class="print-icon" <?php variable_get('print_html_windowclose', PRINT_HTML_WINDOWCLOSE_DEFAULT) ? print 'target = "_blank"' : ''?> ></a>
   <div class="collapsible-panel-content" style="display: none;">
     <?php print render($content); ?>
   </div>
