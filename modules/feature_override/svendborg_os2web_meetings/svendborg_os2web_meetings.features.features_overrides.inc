@@ -16,7 +16,7 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
   $overrides["field_base.field_os2web_meetings_searchdata.settings|code"] = 'if (function_exists(\'_svendborg_os2web_meetings_generate_search_data\')) {
     $entity_field[0][\'value\'] = _svendborg_os2web_meetings_generate_search_data($entity);
   } else {
-    $entity_field[0][\'value\'] = \'ccc\';
+    $entity_field[0][\'value\'] = \'"\'b;
   }';
   $overrides["field_base.field_os2web_meetings_searchdata.settings|database"] = array(
     'data_default' => '',
