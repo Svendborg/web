@@ -5,3 +5,78 @@
  */
 
 include_once 'svendborg_os2web_meetings.features.inc';
+
+/**
+ * Helper function for the os2web_meetings_view_search view.
+ *
+ * @param stdObject $entity
+ *   The entity
+ *
+ * @access protected
+ */
+function _svendborg_os2web_meetings_generate_search_data($entity) {
+  $title = $entity->title;
+  $entity_type = 'node';
+
+  /* $abbr = '';
+    if (is_array(field_get_items($entity_type, $entity, 'field_os2web_meetings_abbr')))
+      $abbr = ' '.array_pop(array_pop(field_get_items($entity_type, $entity, 'field_os2web_meetings_abbr'))); */
+
+  $location = field_get_items($entity_type, $entity, 'field_os2web_meetings_location');
+  if (is_array($location)) {
+    $location_term = taxonomy_term_load(array_pop(array_pop($location)));
+    $location = ' ' . $location_term->name;
+  }
+
+  $committee = field_get_items($entity_type, $entity, 'field_os2web_meetings_committee');
+  if (is_array($committee)) {
+    $committee_term = taxonomy_term_load(array_pop(array_pop($committee)));
+    $committee = ' ' . $committee_term->name;
+  }
+
+  $bps = '';
+  $bpoints = field_get_items($entity_type, $entity, 'field_os2web_meetings_bullets');
+  if (is_array($bpoints)) {
+    foreach ($bpoints as $bpoint) {
+      $node = node_load($bpoint['target_id']);
+      $text = strip_tags(check_markup($node->title, 'plain_text'));
+      $bps .= ' ' . $text;
+
+      $bpas = field_get_items($entity_type, $node, 'field_os2web_meetings_attach');
+      if (is_array($bpas)) {
+        foreach ($bpas as $bpa) {
+          $node2 = node_load($bpa['target_id']);
+          $body = field_get_items($entity_type, $node2, 'field_os2web_meetings_bpa_body');
+          $text = strip_tags(check_markup(array_pop(array_pop($body)), 'filtered_html'));
+          $text = trim(preg_replace('/[\",;:.\'\(\)]/', ' ', $text));
+          $text = trim(preg_replace('/\s\s+/', ' ', $text));
+          $bps .= ' ' . $text;
+        }
+      }
+
+    }
+  }
+
+  // Extract keywords so only relevant words are stored.
+  $t = mb_split('\s+', $bps);
+  $t = array_keys(array_flip($t));
+  $t = array_filter($t, '_svendborg_os2web_meetings_strip_words');
+  $bps = implode(' ', $t);
+
+  $result = $title . $location . $committee . ' ' . $bps;
+  return $result;
+}
+
+/**
+ * Helper function which removes common and small (<2 chars) words.
+ */
+function _svendborg_os2web_meetings_strip_words($text) {
+  $text = preg_replace('/^[^\w|\d|æ|ø|å]+/', '', $text);
+  $text = preg_replace('/[^\w|\d|æ|ø|å]+$/', '', $text);
+  if (strlen($text) > 3) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}

@@ -23,7 +23,7 @@ function svendborg_os2web_meetings_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 7,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -102,7 +102,7 @@ function svendborg_os2web_meetings_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 41,
+      'weight' => 18,
     ),
   );
 
