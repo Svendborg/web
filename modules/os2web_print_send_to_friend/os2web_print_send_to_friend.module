@@ -140,7 +140,7 @@ function os2web_print_send_to_friend_send_to_friend($bullet_point_id) {
 
   $body .= os2web_print_send_to_friend_print_bullet_point($bullet_point_id);
 
-  $from = variable_get('site_mail');
+  $from = 'noreply@svendborg.dk';
   $message = array(
     'id' => 'send_to_friend_',
     'to' => $_POST['email'],
