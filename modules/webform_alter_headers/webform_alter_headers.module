@@ -1,0 +1,10 @@
+<?php
+function webform_mail_alter(&$message) {
+	if (isset($message['headers']['Reply-To'])) {
+		$message['headers']['From'] = $message['headers']['Reply-To'];
+		$message['headers']['Sender'] = $message['headers']['Reply-To'];
+		$message['headers']['Errors-To'] = $message['headers']['Reply-To'];
+		$message['headers']['Return-Path'] = $message['headers']['Reply-To'];
+	}
+}
+

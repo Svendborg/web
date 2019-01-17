@@ -1,0 +1,3 @@
+name = "Webform Alter Headers"
+description = "Alter headers in webforms."
+core = "7.x"
