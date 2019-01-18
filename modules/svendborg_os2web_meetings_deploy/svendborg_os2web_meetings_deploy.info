@@ -1,0 +1,6 @@
+name = Svendborg OS2web meetings deploy
+description = Deployment OS2meetings functionality
+core = 7.x
+package = Svendborg
+version = 7.x-1.0
+project = OS2Web
