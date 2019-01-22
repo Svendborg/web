@@ -121,7 +121,7 @@ function svendborg_panels_default_page_manager_pages() {
   $pane->panel = 'center';
   $pane->type = 'views_panes';
   $pane->subtype = 'os2web_meetings-panel_pane_1';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array();
   $pane->configuration = array(
     'items_per_page' => '',
