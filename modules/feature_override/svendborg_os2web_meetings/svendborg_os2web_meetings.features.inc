@@ -5,34 +5,6 @@
  */
 
 /**
- * Implements hook_field_default_field_bases_alter().
- */
-function svendborg_os2web_meetings_field_default_field_bases_alter(&$data) {
-  if (isset($data['field_os2web_meetings_searchdata'])) {
-    $data['field_os2web_meetings_searchdata']['module'] = 'computed_field'; /* WAS: 'text' */
-    $data['field_os2web_meetings_searchdata']['settings']['code'] = 'if (function_exists(\'_svendborg_os2web_meetings_generate_search_data\')) {
-      $entity_field[0][\'value\'] = _svendborg_os2web_meetings_generate_search_data($entity);
-    } else {
-      $entity_field[0][\'value\'] = \'ccc\';
-    }'; /* WAS: '' */
-    $data['field_os2web_meetings_searchdata']['settings']['database'] = array(
-      'data_default' => '',
-      'data_index' => 0,
-      'data_length' => 32,
-      'data_not_NULL' => 0,
-      'data_precision' => 10,
-      'data_scale' => 2,
-      'data_size' => 'normal',
-      'data_type' => 'longtext',
-    ); /* WAS: '' */
-    $data['field_os2web_meetings_searchdata']['settings']['display_format'] = '$display_output = $entity_field_item[\'value\'];'; /* WAS: '' */
-    $data['field_os2web_meetings_searchdata']['settings']['recalculate'] = 0; /* WAS: '' */
-    $data['field_os2web_meetings_searchdata']['settings']['store'] = 1; /* WAS: '' */
-    $data['field_os2web_meetings_searchdata']['type'] = 'computed'; /* WAS: 'text_long' */
-  }
-}
-
-/**
  * Implements hook_field_default_field_instances_alter().
  */
 function svendborg_os2web_meetings_field_default_field_instances_alter(&$data) {
@@ -87,18 +59,13 @@ function svendborg_os2web_meetings_field_default_field_instances_alter(&$data) {
     $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['display']['search_index']['label'] = 'above'; /* WAS: 'hidden' */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['display']['search_index']['weight'] = 0; /* WAS: 13 */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['widget']['active'] = 0; /* WAS: 1 */
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['widget']['module'] = 'computed_field'; /* WAS: 'text' */
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['widget']['type'] = 'computed'; /* WAS: 'text_textarea' */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['widget']['weight'] = 14; /* WAS: 31 */
-    unset($data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['default_value']);
     unset($data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['display']['includeable']);
     unset($data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['display']['list']);
-    unset($data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['settings']['text_processing']);
-    unset($data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['widget']['settings']['rows']);
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_type'])) {
     $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['label'] = 'inline'; /* WAS: 'above' */
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['module'] = NULL; /* WAS: '' */
+    $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['module'] = 'list'; /* WAS: '' */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['type'] = 'list_default'; /* WAS: 'hidden' */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['weight'] = 1; /* WAS: 6 */
   }
@@ -116,6 +83,105 @@ function svendborg_os2web_meetings_views_default_views_alter(&$data) {
       'label' => '',
       'element_label_colon' => FALSE,
     ); /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_2']->display_options['defaults']['fields'] = FALSE; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_2']->display_options['defaults']['row_options'] = FALSE; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_2']->display_options['defaults']['row_plugin'] = FALSE; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_2']->display_options['defaults']['style_options'] = FALSE; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_2']->display_options['defaults']['style_plugin'] = FALSE; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_2']->display_options['fields'] = array(
+      'nid' => array(
+        'id' => 'nid',
+        'table' => 'node',
+        'field' => 'nid',
+        'label' => '',
+        'exclude' => TRUE,
+        'element_label_colon' => FALSE,
+      ),
+      'title' => array(
+        'id' => 'title',
+        'table' => 'node',
+        'field' => 'title',
+        'exclude' => TRUE,
+        'alter' => array(
+          'path' => 'os2web_meetings_meeting/[nid]',
+        ),
+      ),
+      'field_os2web_meetings_committee' => array(
+        'id' => 'field_os2web_meetings_committee',
+        'table' => 'field_data_field_os2web_meetings_committee',
+        'field' => 'field_os2web_meetings_committee',
+        'label' => '',
+        'alter' => array(
+          'make_link' => TRUE,
+          'path' => 'node/[nid]',
+        ),
+        'element_label_colon' => FALSE,
+        'type' => 'taxonomy_term_reference_plain',
+      ),
+      'field_os2web_meetings_date' => array(
+        'id' => 'field_os2web_meetings_date',
+        'table' => 'field_data_field_os2web_meetings_date',
+        'field' => 'field_os2web_meetings_date',
+        'label' => '',
+        'alter' => array(
+          'make_link' => TRUE,
+          'path' => 'node/[nid]',
+        ),
+        'element_label_colon' => FALSE,
+        'settings' => array(
+          'format_type' => 'os2web_meetings_short_date',
+          'fromto' => 'value',
+          'multiple_number' => '',
+          'multiple_from' => '',
+          'multiple_to' => '',
+          'show_repeat_rule' => 'show',
+        ),
+      ),
+    ); /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_2']->display_options['style_options'] = array(
+      'row_class' => 'no_striping',
+      'default_row_class' => FALSE,
+      'row_class_special' => FALSE,
+      'columns' => array(
+        'nid' => 'nid',
+        'title' => 'title',
+        'field_os2web_meetings_committee' => 'field_os2web_meetings_committee',
+        'field_os2web_meetings_date' => 'field_os2web_meetings_date',
+      ),
+      'default' => -1,
+      'info' => array(
+        'nid' => array(
+          'sortable' => 0,
+          'default_sort_order' => 'asc',
+          'align' => '',
+          'separator' => '',
+          'empty_column' => 0,
+        ),
+        'title' => array(
+          'sortable' => 0,
+          'default_sort_order' => 'asc',
+          'align' => '',
+          'separator' => '',
+          'empty_column' => 0,
+        ),
+        'field_os2web_meetings_committee' => array(
+          'sortable' => 0,
+          'default_sort_order' => 'asc',
+          'align' => '',
+          'separator' => '',
+          'empty_column' => 0,
+        ),
+        'field_os2web_meetings_date' => array(
+          'sortable' => 0,
+          'default_sort_order' => 'asc',
+          'align' => '',
+          'separator' => '',
+          'empty_column' => 0,
+        ),
+      ),
+      'override' => FALSE,
+    ); /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_2']->display_options['style_plugin'] = 'table'; /* WAS: '' */
     $data['os2web_meetings']->display['panel_pane_3']->display_options['fields']['field_os2web_meetings_type'] = array(
       'id' => 'field_os2web_meetings_type',
       'table' => 'field_data_field_os2web_meetings_type',

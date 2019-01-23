@@ -110,7 +110,7 @@ function svendborg_panels_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'Meeting agendas and summaries';
+  $display->title = 'Møde dagsordener og referater';
   $display->uuid = '712f7edf-4318-4038-b562-392b799dccdf';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'page_dagsorden_og_referat__panel';
@@ -121,7 +121,7 @@ function svendborg_panels_default_page_manager_pages() {
   $pane->panel = 'center';
   $pane->type = 'views_panes';
   $pane->subtype = 'os2web_meetings-panel_pane_1';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array();
   $pane->configuration = array(
     'items_per_page' => '',
@@ -135,7 +135,7 @@ function svendborg_panels_default_page_manager_pages() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'panel panel-default',
+    'css_class' => 'panel',
   );
   $pane->extras = array();
   $pane->position = 0;
@@ -174,6 +174,36 @@ function svendborg_panels_default_page_manager_pages() {
   $display->content['new-1fce76b6-03cc-4163-b455-f97eb096ae37'] = $pane;
   $display->panels['center'][1] = 'new-1fce76b6-03cc-4163-b455-f97eb096ae37';
   $pane = new stdClass();
+  $pane->pid = 'new-d11ed2d2-9273-48d9-8d44-d2ff2309e0cb';
+  $pane->panel = 'h__jre';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => '',
+    'title' => 'Læs også',
+    'title_heading' => 'h2',
+    'body' => '<div><a href="/politik">Politik</a></div>
+',
+    'format' => 'filtered_html',
+    'substitute' => TRUE,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'panel panel-primary with-arrow',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'd11ed2d2-9273-48d9-8d44-d2ff2309e0cb';
+  $display->content['new-d11ed2d2-9273-48d9-8d44-d2ff2309e0cb'] = $pane;
+  $display->panels['h__jre'][0] = 'new-d11ed2d2-9273-48d9-8d44-d2ff2309e0cb';
+  $pane = new stdClass();
   $pane->pid = 'new-40ccf817-b70c-4b02-9e51-29e894b3b20f';
   $pane->panel = 'h__jre';
   $pane->type = 'views_panes';
@@ -181,7 +211,7 @@ function svendborg_panels_default_page_manager_pages() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'items_per_page' => '',
+    'items_per_page' => '5',
     'override_title' => 1,
     'override_title_text' => 'Seneste referater',
     'override_title_heading' => 'h3',
@@ -192,14 +222,14 @@ function svendborg_panels_default_page_manager_pages() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'panel panel-default',
+    'css_class' => 'panel panel-primary with-arrow',
   );
   $pane->extras = array();
-  $pane->position = 0;
+  $pane->position = 1;
   $pane->locks = array();
   $pane->uuid = '40ccf817-b70c-4b02-9e51-29e894b3b20f';
   $display->content['new-40ccf817-b70c-4b02-9e51-29e894b3b20f'] = $pane;
-  $display->panels['h__jre'][0] = 'new-40ccf817-b70c-4b02-9e51-29e894b3b20f';
+  $display->panels['h__jre'][1] = 'new-40ccf817-b70c-4b02-9e51-29e894b3b20f';
   $pane = new stdClass();
   $pane->pid = 'new-b73d0dc0-5e2c-4481-af88-85016c3be307';
   $pane->panel = 'h__jre';
@@ -218,11 +248,11 @@ function svendborg_panels_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = 'b73d0dc0-5e2c-4481-af88-85016c3be307';
   $display->content['new-b73d0dc0-5e2c-4481-af88-85016c3be307'] = $pane;
-  $display->panels['h__jre'][1] = 'new-b73d0dc0-5e2c-4481-af88-85016c3be307';
+  $display->panels['h__jre'][2] = 'new-b73d0dc0-5e2c-4481-af88-85016c3be307';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

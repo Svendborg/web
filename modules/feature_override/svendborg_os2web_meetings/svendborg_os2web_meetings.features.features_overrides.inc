@@ -11,28 +11,6 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 
-  // Exported overrides for: field_base
-  $overrides["field_base.field_os2web_meetings_searchdata.module"] = 'computed_field';
-  $overrides["field_base.field_os2web_meetings_searchdata.settings|code"] = 'if (function_exists(\'_svendborg_os2web_meetings_generate_search_data\')) {
-    $entity_field[0][\'value\'] = _svendborg_os2web_meetings_generate_search_data($entity);
-  } else {
-    $entity_field[0][\'value\'] = \'"\';
-  }';
-  $overrides["field_base.field_os2web_meetings_searchdata.settings|database"] = array(
-    'data_default' => '',
-    'data_index' => 0,
-    'data_length' => 32,
-    'data_not_NULL' => 0,
-    'data_precision' => 10,
-    'data_scale' => 2,
-    'data_size' => 'normal',
-    'data_type' => 'longtext',
-  );
-  $overrides["field_base.field_os2web_meetings_searchdata.settings|display_format"] = '$display_output = $entity_field_item[\'value\'];';
-  $overrides["field_base.field_os2web_meetings_searchdata.settings|recalculate"] = 0;
-  $overrides["field_base.field_os2web_meetings_searchdata.settings|store"] = 1;
-  $overrides["field_base.field_os2web_meetings_searchdata.type"] = 'computed';
-
   // Exported overrides for: field_instance
   $overrides["field_instance.node-os2web_meetings_bullet-field_os2web_meetings_enclosures.label"] = 'Enclosures';
   $overrides["field_instance.node-os2web_meetings_bullet-field_os2web_meetings_enclosures.settings|epsacrop"] = array(
@@ -65,21 +43,16 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_location.display|default|weight"] = 3;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_location.display|search_index|type"] = 'taxonomy_term_reference_link';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_location.widget|weight"] = 11;
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.default_value"]["DELETED"] = TRUE;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.display|default|label"] = 'above';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.display|default|weight"] = 14;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.display|includeable"]["DELETED"] = TRUE;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.display|list"]["DELETED"] = TRUE;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.display|search_index|label"] = 'above';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.display|search_index|weight"] = 0;
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.settings|text_processing"]["DELETED"] = TRUE;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.widget|active"] = 0;
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.widget|module"] = 'computed_field';
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.widget|settings|rows"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.widget|type"] = 'computed';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.widget|weight"] = 14;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_type.display|default|label"] = 'inline';
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_type.display|default|module"] = NULL;
+  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_type.display|default|module"] = 'list';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_type.display|default|type"] = 'list_default';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_type.display|default|weight"] = 1;
 
@@ -93,6 +66,105 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
     'element_label_colon' => FALSE,
   );
   $overrides["views_view.os2web_meetings.display|panel_pane_1|display_options|fields|views_conditional"]["DELETED"] = TRUE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_2|display_options|defaults|fields"] = FALSE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_2|display_options|defaults|row_options"] = FALSE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_2|display_options|defaults|row_plugin"] = FALSE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_2|display_options|defaults|style_options"] = FALSE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_2|display_options|defaults|style_plugin"] = FALSE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_2|display_options|fields"] = array(
+    'nid' => array(
+      'id' => 'nid',
+      'table' => 'node',
+      'field' => 'nid',
+      'label' => '',
+      'exclude' => TRUE,
+      'element_label_colon' => FALSE,
+    ),
+    'title' => array(
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'exclude' => TRUE,
+      'alter' => array(
+        'path' => 'os2web_meetings_meeting/[nid]',
+      ),
+    ),
+    'field_os2web_meetings_committee' => array(
+      'id' => 'field_os2web_meetings_committee',
+      'table' => 'field_data_field_os2web_meetings_committee',
+      'field' => 'field_os2web_meetings_committee',
+      'label' => '',
+      'alter' => array(
+        'make_link' => TRUE,
+        'path' => 'node/[nid]',
+      ),
+      'element_label_colon' => FALSE,
+      'type' => 'taxonomy_term_reference_plain',
+    ),
+    'field_os2web_meetings_date' => array(
+      'id' => 'field_os2web_meetings_date',
+      'table' => 'field_data_field_os2web_meetings_date',
+      'field' => 'field_os2web_meetings_date',
+      'label' => '',
+      'alter' => array(
+        'make_link' => TRUE,
+        'path' => 'node/[nid]',
+      ),
+      'element_label_colon' => FALSE,
+      'settings' => array(
+        'format_type' => 'os2web_meetings_short_date',
+        'fromto' => 'value',
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_to' => '',
+        'show_repeat_rule' => 'show',
+      ),
+    ),
+  );
+  $overrides["views_view.os2web_meetings.display|panel_pane_2|display_options|style_options"] = array(
+    'row_class' => 'no_striping',
+    'default_row_class' => FALSE,
+    'row_class_special' => FALSE,
+    'columns' => array(
+      'nid' => 'nid',
+      'title' => 'title',
+      'field_os2web_meetings_committee' => 'field_os2web_meetings_committee',
+      'field_os2web_meetings_date' => 'field_os2web_meetings_date',
+    ),
+    'default' => -1,
+    'info' => array(
+      'nid' => array(
+        'sortable' => 0,
+        'default_sort_order' => 'asc',
+        'align' => '',
+        'separator' => '',
+        'empty_column' => 0,
+      ),
+      'title' => array(
+        'sortable' => 0,
+        'default_sort_order' => 'asc',
+        'align' => '',
+        'separator' => '',
+        'empty_column' => 0,
+      ),
+      'field_os2web_meetings_committee' => array(
+        'sortable' => 0,
+        'default_sort_order' => 'asc',
+        'align' => '',
+        'separator' => '',
+        'empty_column' => 0,
+      ),
+      'field_os2web_meetings_date' => array(
+        'sortable' => 0,
+        'default_sort_order' => 'asc',
+        'align' => '',
+        'separator' => '',
+        'empty_column' => 0,
+      ),
+    ),
+    'override' => FALSE,
+  );
+  $overrides["views_view.os2web_meetings.display|panel_pane_2|display_options|style_plugin"] = 'table';
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|fields|field_os2web_meetings_committee|exclude"]["DELETED"] = TRUE;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|fields|field_os2web_meetings_type"] = array(
     'id' => 'field_os2web_meetings_type',
