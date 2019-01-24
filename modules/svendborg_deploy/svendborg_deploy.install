@@ -1,10 +1,13 @@
 <?php
 /**
  * @file
- * svendborg_os2web_meetings_deploy.install
+ * svendborg_deploy.install
  */
 
-function svendborg_os2web_meetings_deploy_update_7101() {
+/*
+ * Implements hook_update_N
+ */
+function svendborg_deploy_update_7101() {
   $modules = array('os2web_esdh_provider', 'os2web_acadre_esdh', 'os2web_meetings', 'os2web_print_send_to_friend', 'svendborg_panels', 'os2web_subscription', 'os2web_settings', 'svendborg_os2web_meetings'); // Array of module names
   $enable_dependencies = TRUE; 
   module_enable($modules, $enable_dependencies);  

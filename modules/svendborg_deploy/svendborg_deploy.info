@@ -1,0 +1,6 @@
+name = Svendborg deploy
+description = Deployment new Svendborg functionality
+core = 7.x
+package = Svendborg
+version = 7.x-1.0
+project = OS2Web
