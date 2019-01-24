@@ -68,17 +68,6 @@ function svendborg_theme_preprocess_region(&$variables) {
 }
 
 /**
- * Implements template_process_region().
- */
-function svendborg_theme_process_region(&$variables) {
-  $page = &drupal_static('svendborg_theme_preprocess_page_variables');
-  $region = $variables['region'];
-  
-  $attributes = &$variables['attributes_array'];
-  
-}
-
-/**
  * Implements template_process_page().
  */
 function svendborg_theme_process_page(&$variables) {
@@ -97,7 +86,7 @@ function svendborg_theme_process_page(&$variables) {
 function svendborg_theme_preprocess_page(&$variables) {
   // Ensure each region has the correct theme wrappers.
   foreach (system_region_list($GLOBALS['theme_key']) as $name => $title) {
-    if (!$variables['page'][$name]['#theme_wrappers']) {
+    if (!empty($variables['page'][$name]) && empty($variables['page'][$name]['#theme_wrappers'])) {
       $variables['page'][$name]['#theme_wrappers'] = array('region');
       $variables['page'][$name]['#region'] = $name;
     }
