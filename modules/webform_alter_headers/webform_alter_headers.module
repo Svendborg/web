@@ -1,5 +1,9 @@
 <?php
-function webform_mail_alter(&$message) {
+
+/*
+ * Implements hook_mail_alter().
+ */
+function webform_alter_headers_mail_alter(&$message) {
 	if (isset($message['headers']['Reply-To'])) {
 		$message['headers']['From'] = $message['headers']['Reply-To'];
 		$message['headers']['Sender'] = $message['headers']['Reply-To'];
@@ -7,4 +11,3 @@ function webform_mail_alter(&$message) {
 		$message['headers']['Return-Path'] = $message['headers']['Reply-To'];
 	}
 }
-
