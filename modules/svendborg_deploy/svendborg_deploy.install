@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ * svendborg_deploy.install
+ */
+
+/*
+ * Implements hook_update_N
+ */
+function svendborg_deploy_update_7101() {
+  $modules = array('os2web_esdh_provider', 'os2web_acadre_esdh', 'os2web_meetings', 'os2web_print_send_to_friend', 'svendborg_panels', 'os2web_subscription', 'os2web_settings', 'svendborg_os2web_meetings'); // Array of module names
+  $enable_dependencies = TRUE; 
+  module_enable($modules, $enable_dependencies);  
+}

@@ -110,7 +110,7 @@ function svendborg_panels_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'Meeting agendas and summaries';
+  $display->title = 'Møde dagsordener og referater';
   $display->uuid = '712f7edf-4318-4038-b562-392b799dccdf';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'page_dagsorden_og_referat__panel';
@@ -121,7 +121,7 @@ function svendborg_panels_default_page_manager_pages() {
   $pane->panel = 'center';
   $pane->type = 'views_panes';
   $pane->subtype = 'os2web_meetings-panel_pane_1';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array();
   $pane->configuration = array(
     'items_per_page' => '',
@@ -135,7 +135,7 @@ function svendborg_panels_default_page_manager_pages() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'panel panel-default',
+    'css_class' => 'panel',
   );
   $pane->extras = array();
   $pane->position = 0;
@@ -181,7 +181,7 @@ function svendborg_panels_default_page_manager_pages() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'items_per_page' => '',
+    'items_per_page' => '5',
     'override_title' => 1,
     'override_title_text' => 'Seneste referater',
     'override_title_heading' => 'h3',
@@ -192,7 +192,7 @@ function svendborg_panels_default_page_manager_pages() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'panel panel-default',
+    'css_class' => 'panel panel-primary with-arrow',
   );
   $pane->extras = array();
   $pane->position = 0;

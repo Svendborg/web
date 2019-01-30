@@ -23,7 +23,7 @@ function svendborg_os2web_meetings_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 15,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -46,7 +46,7 @@ function svendborg_os2web_meetings_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_os2web_meetings_partic',
-    'label' => 'Deltagere',
+    'label' => 'Attendees',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -102,13 +102,13 @@ function svendborg_os2web_meetings_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 18,
+      'weight' => 41,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Deltagere');
+  t('Attendees');
 
   return $field_instances;
 }
