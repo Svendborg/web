@@ -5,9 +5,93 @@
  */
 
 /**
+ * Implements template_preprocess_region().
+ */
+function svendborg_theme_preprocess_region(&$variables) {
+  $variables['page'] = &drupal_static('svendborg_theme_preprocess_page_variables');
+  $region = $variables['region'];
+
+  $attributes = &$variables['attributes_array'];
+  $attributes['class'] = $variables['classes_array'];
+
+  // Handle regions.
+  switch ($region) {
+    case 'navigation':
+      $variables['content_attributes_array']['class'][] = 'container';
+      break;
+
+    case 'sidebar_first':
+    case 'sidebar_second':
+      $attributes['class'][] = 'col-sm-3';
+      break;
+  
+    case 'content':
+      // Add information about the number of sidebars.
+      if (!empty($variables['page']['page']['sidebar_first']) && !empty($variables['page']['page']['sidebar_second'])) {
+        $attributes['class'][] = "col-sm-6";
+      }
+      elseif (!empty($variables['page']['page']['sidebar_first']) || !empty($variables['page']['page']['sidebar_second'])) {
+        $attributes['class'][] = "col-sm-9";
+      }
+      else {
+        $attributes['class'][] = "col-sm-12";
+      }
+      break;
+  }
+
+
+  $regions = system_region_list($GLOBALS['theme_key']);
+  // Add "column" classes to regions.
+  static $region_columns;
+  if (!isset($region_columns)) {
+    foreach ($regions as $name => $title) {
+      $region_columns[$name] = theme_get_setting('bootstrap_region_grid-' . $name) ? : 0;
+    }
+    $columns = theme_get_setting('bootstrap_grid_columns') ? : 12;
+    foreach ($regions as $name => $title) {
+      if ($dynamic_regions = theme_get_setting('bootstrap_region_grid_dynamic-' . $name) ? : array()) {
+        // Enforce the region to have the maximum number of columns.
+        $column = $columns;
+        foreach ($dynamic_regions as $dynamic_region) {
+          if (is_array($variables['page']['page'][$dynamic_region]) &&
+            element_children($variables['page']['page'][$dynamic_region])) {
+            $column -= $region_columns[$dynamic_region];
+          }
+        }
+        $region_columns[$name] = $column;
+      }
+    }
+  }
+  if ($region_columns[$region]) {
+    $attributes['class'][] = (theme_get_setting('bootstrap_grid_class_prefix') ? : 'col-sm') . '-' . $region_columns[$region];
+  }
+}
+
+/**
+ * Implements template_process_page().
+ */
+function svendborg_theme_process_page(&$variables) {
+  $page = &drupal_static('svendborg_theme_preprocess_page_variables');
+  if (!empty($variables['title'])) {
+    $page['title'] = $variables['title'];
+  }
+  if (!empty($variables['breadcrumb'])) {
+    $page['breadcrumb'] = $variables['breadcrumb'];
+  }
+}
+
+/**
  * Implements template_preprocess_page().
  */
 function svendborg_theme_preprocess_page(&$variables) {
+  // Ensure each region has the correct theme wrappers.
+  foreach (system_region_list($GLOBALS['theme_key']) as $name => $title) {
+    if (!empty($variables['page'][$name]) && empty($variables['page'][$name]['#theme_wrappers'])) {
+      $variables['page'][$name]['#theme_wrappers'] = array('region');
+      $variables['page'][$name]['#region'] = $name;
+    }
+  }
+
   // Remove all Taxonomy auto listings here.
 //print render($block['content']);
   $term = NULL;
@@ -250,6 +334,13 @@ function svendborg_theme_preprocess_page(&$variables) {
   if (request_uri() == '/dagsorden-og-referat' && !empty($variables['page']['sidebar_first'])) {
     $variables['page']['sidebar_first'] = array();
   }
+
+  // Store the page variables in cache so it can be used in region
+  // preprocessing.
+  $page = &drupal_static(__FUNCTION__ . '_variables');
+  if (!isset($page)) {
+    $page = $variables;
+  }
 }
 
 /**
@@ -384,6 +475,7 @@ function get_the_classes($nid) {
   }
   return $top_parent_term;
 }
+
 /**
  * Implements theme_breadcrumb().
  *
