@@ -6032,7 +6032,10 @@ fieldset legend.panel-heading {
 }
 fieldset .panel-body {
   clear: both;
-  display: inherit;
+
+}
+fieldset .panel-body.panel-collapse {
+
 }
 fieldset .panel-heading a.panel-title {
   color: inherit;
@@ -7326,7 +7329,7 @@ fieldset[disabled] .btn-orange.active {
   font-size: 20px;
   font-weight: bold;
 }
-.field-collection-view > .panel.collapsed > .panel-heading a.panel-title::before {
+.field-collection-view > .panel > .panel-heading a.panel-title.collapsed::before {
   content: "+";
   height: 20px;
   line-height: 19px;
