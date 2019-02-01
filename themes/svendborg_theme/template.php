@@ -1043,7 +1043,7 @@ function _svendborg_theme_get_borger_dk_content($node) {
  * Instead of a fully loaded render array, though, it returns markup, without
  * too many wrappers and such.
  */
-function _b_get_webform($nid) {
+function _svendborg_theme_get_webform($nid) {
   $webform_node = node_load($nid);
 
   $submission = (object) array();
