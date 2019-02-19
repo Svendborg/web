@@ -98,39 +98,41 @@ function svendborg_search_node_update($node) {
 
     foreach ($node_file_fields as $field_name => $node_file_field) {
       $items = field_get_items('node', $node, $field_name);
-      foreach ($items as $item) {
-        $file = file_load($item['fid']);
-        if ($file->filemime === 'application/pdf') {
-          $usages = file_usage_list($file);
-          $nids = $usages['file']['node'];
+      if ($items) {
+        foreach ($items as $item) {
+          $file = file_load($item['fid']);
+          if ($file->filemime === 'application/pdf') {
+            $usages = file_usage_list($file);
+            $nids = $usages['file']['node'];
 
-          // Unsetting current node nid.
-          unset($nids[$node->nid]);
+            // Unsetting current node nid.
+            unset($nids[$node->nid]);
 
-          if (!empty($nids)) {
-            $usage_nodes = node_load_multiple(array_keys($nids));
+            if (!empty($nids)) {
+              $usage_nodes = node_load_multiple(array_keys($nids));
 
-            $update_document_nodes = TRUE;
+              $update_document_nodes = TRUE;
 
-            // If the new status is unpublished, check that the rest of the nodes referencing same file are also unpublished.
-            if ($new_node_status == NODE_NOT_PUBLISHED) {
-              foreach ($usage_nodes as $usage_node) {
-                if ($usage_node->type !== 'os2search_dokument' && $usage_node->status == NODE_PUBLISHED) {
-                  $update_document_nodes = FALSE;
+              // If the new status is unpublished, check that the rest of the nodes referencing same file are also unpublished.
+              if ($new_node_status == NODE_NOT_PUBLISHED) {
+                foreach ($usage_nodes as $usage_node) {
+                  if ($usage_node->type !== 'os2search_dokument' && $usage_node->status == NODE_PUBLISHED) {
+                    $update_document_nodes = FALSE;
+                  }
                 }
               }
-            }
 
-            // If the flag is unchanged, it means that either we only have os2search_dokument,
-            // or new node status is PUBLISHED,
-            // or the rest nodes referring file have the same publish status.
+              // If the flag is unchanged, it means that either we only have os2search_dokument,
+              // or new node status is PUBLISHED,
+              // or the rest nodes referring file have the same publish status.
 
-            // Updating os2search_dokument nodes.
-            if ($update_document_nodes) {
-              foreach ($usage_nodes as $usage_node) {
-                if ($usage_node->type === 'os2search_dokument' && $usage_node->status != $new_node_status) {
-                  $usage_node->status = $new_node_status;
-                  node_save($usage_node);
+              // Updating os2search_dokument nodes.
+              if ($update_document_nodes) {
+                foreach ($usage_nodes as $usage_node) {
+                  if ($usage_node->type === 'os2search_dokument' && $usage_node->status != $new_node_status) {
+                    $usage_node->status = $new_node_status;
+                    node_save($usage_node);
+                  }
                 }
               }
             }
