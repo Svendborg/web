@@ -130,7 +130,7 @@ function os2web_print_send_to_friend_send_to_friend($bullet_point_id) {
     ->execute();
   $meeting = !empty($meetings['node']) ? array_pop($meetings['node']) : NULL;
 
-  $subject = 'Dagsordenpunkt: ' . $bullet_point->title;
+  $subject = 'Dagsordenspunkt: ' . $bullet_point->title;
 
   $body = "Hej \n\n" . $_POST['name'] . " har sendt dig et dagsordenspunkt. \n\n";
   if ($meeting) {
