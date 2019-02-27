@@ -122,7 +122,7 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
     'options' => array(
       'submit_button' => 'Udfør',
       'reset_button' => TRUE,
-      'reset_button_label' => 'Gendan',
+      'reset_button_label' => 'Nulstil',
       'exposed_sorts_label' => 'Sortér efter',
       'sort_asc_label' => 'Stigende',
       'sort_desc_label' => 'Faldende',
@@ -159,6 +159,7 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|7"] = 0;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|8"] = 0;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|9"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|default_date"] = '+2 month';
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember"] = TRUE;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|1"] = 1;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|10"] = 0;
@@ -175,6 +176,7 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|7"] = 0;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|8"] = 0;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|9"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|default_date"] = 'today';
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember"] = TRUE;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|1"] = 1;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|10"] = 0;

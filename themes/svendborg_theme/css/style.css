@@ -6522,7 +6522,7 @@ td.views-field-field-os2web-meetings-committee {
   /* These are technically the same, but use both */
   overflow-wrap: break-word;
   word-wrap: break-word;
-  -ms-word-break: break-all;
+  -ms-word-break: break-word;
   /* This is the dangerous one in WebKit, as it breaks things wherever */
   word-break: break-all;
   /* Instead use this non-standard one: */
