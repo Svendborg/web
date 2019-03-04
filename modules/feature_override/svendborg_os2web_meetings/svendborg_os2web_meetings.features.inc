@@ -9,7 +9,6 @@
  */
 function svendborg_os2web_meetings_field_default_field_instances_alter(&$data) {
   if (isset($data['node-os2web_meetings_bullet-field_os2web_meetings_enclosures'])) {
-    $data['node-os2web_meetings_bullet-field_os2web_meetings_enclosures']['label'] = 'Enclosures'; /* WAS: 'Bilag' */
     $data['node-os2web_meetings_bullet-field_os2web_meetings_enclosures']['settings']['epsacrop'] = array(
       'styles' => array(
         'os2web_spotbox_image' => 0,
@@ -22,21 +21,21 @@ function svendborg_os2web_meetings_field_default_field_instances_alter(&$data) {
     $data['node-os2web_meetings_bullet-field_os2web_meetings_enclosures']['widget']['settings']['filefield_sources']['source_imce'] = array(
       'imce_mode' => 0,
     ); /* WAS: '' */
-    unset($data['node-os2web_meetings_bullet-field_os2web_meetings_enclosures']['widget']['settings']['filefield_sources']['filefield_sources']['plupload']);
+    $data['node-os2web_meetings_bullet-field_os2web_meetings_enclosures']['widget']['settings']['filefield_sources']['source_reference']['search_all_fields'] = 0; /* WAS: '' */
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_addendum'])) {
     $data['node-os2web_meetings_meeting-field_os2web_meetings_addendum']['display']['default']['weight'] = 4; /* WAS: 3 */
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_addendum']['widget']['weight'] = 13; /* WAS: 16 */
+    $data['node-os2web_meetings_meeting-field_os2web_meetings_addendum']['widget']['weight'] = 14; /* WAS: 16 */
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_bullets'])) {
     $data['node-os2web_meetings_meeting-field_os2web_meetings_bullets']['display']['default']['weight'] = 6; /* WAS: 5 */
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_bullets']['widget']['weight'] = 12; /* WAS: 14 */
+    $data['node-os2web_meetings_meeting-field_os2web_meetings_bullets']['widget']['weight'] = 13; /* WAS: 14 */
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_committee'])) {
     $data['node-os2web_meetings_meeting-field_os2web_meetings_committee']['display']['default']['type'] = 'taxonomy_term_reference_link'; /* WAS: 'taxonomy_term_reference_plain' */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_committee']['display']['default']['weight'] = 2; /* WAS: 1 */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_committee']['display']['search_index']['type'] = 'taxonomy_term_reference_link'; /* WAS: 'taxonomy_term_reference_plain' */
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_committee']['widget']['weight'] = 10; /* WAS: 12 */
+    $data['node-os2web_meetings_meeting-field_os2web_meetings_committee']['widget']['weight'] = 9; /* WAS: 12 */
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_date'])) {
     $data['node-os2web_meetings_meeting-field_os2web_meetings_date']['display']['default']['settings']['format_type'] = 'meeting_date'; /* WAS: 'ec_date_view' */
@@ -59,13 +58,13 @@ function svendborg_os2web_meetings_field_default_field_instances_alter(&$data) {
     $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['display']['search_index']['label'] = 'above'; /* WAS: 'hidden' */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['display']['search_index']['weight'] = 0; /* WAS: 13 */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['widget']['active'] = 0; /* WAS: 1 */
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['widget']['weight'] = 14; /* WAS: 31 */
+    $data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['widget']['weight'] = 15; /* WAS: 31 */
     unset($data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['display']['includeable']);
     unset($data['node-os2web_meetings_meeting-field_os2web_meetings_searchdata']['display']['list']);
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_type'])) {
     $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['label'] = 'inline'; /* WAS: 'above' */
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['module'] = NULL; /* WAS: '' */
+    $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['module'] = 'list'; /* WAS: '' */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['type'] = 'list_default'; /* WAS: 'hidden' */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['weight'] = 1; /* WAS: 6 */
   }
@@ -134,6 +133,18 @@ function svendborg_os2web_meetings_views_default_views_alter(&$data) {
         ),
       ),
     ); /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['defaults']['exposed_form'] = FALSE; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['exposed_form'] = array(
+      'type' => 'basic',
+      'options' => array(
+        'submit_button' => 'Udfør',
+        'reset_button' => TRUE,
+        'reset_button_label' => 'Nulstil',
+        'exposed_sorts_label' => 'Sortér efter',
+        'sort_asc_label' => 'Stigende',
+        'sort_desc_label' => 'Faldende',
+      ),
+    ); /* WAS: '' */
     $data['os2web_meetings']->display['panel_pane_3']->display_options['fields']['field_os2web_meetings_type'] = array(
       'id' => 'field_os2web_meetings_type',
       'table' => 'field_data_field_os2web_meetings_type',
@@ -141,6 +152,62 @@ function svendborg_os2web_meetings_views_default_views_alter(&$data) {
       'label' => '',
       'element_label_colon' => FALSE,
     ); /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_addendum_nid'] = array(
+      'id' => 'field_os2web_meetings_addendum_nid',
+      'table' => 'field_data_field_os2web_meetings_addendum',
+      'field' => 'field_os2web_meetings_addendum_nid',
+      'operator' => 'empty',
+    ); /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember'] = TRUE; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][1] = 1; /* WAS: 0 */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][10] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][11] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][12] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][13] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][14] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][15] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][16] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][17] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][4] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][5] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][6] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][7] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][8] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember_roles'][9] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['default_date'] = '+2 month'; /* WAS: '+14 days' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember'] = TRUE; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][1] = 1; /* WAS: 0 */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][10] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][11] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][12] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][13] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][14] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][15] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][16] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][17] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][4] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][5] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][6] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][7] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][8] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value_1']['expose']['remember_roles'][9] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['default_date'] = 'today'; /* WAS: '-12 months' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember'] = TRUE; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][1] = 1; /* WAS: 0 */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][10] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][11] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][12] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][13] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][14] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][15] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][16] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][17] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][4] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][5] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][6] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][7] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][8] = 0; /* WAS: '' */
+    $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_date_value']['expose']['remember_roles'][9] = 0; /* WAS: '' */
     $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_searchdata_value_1'] = array(
       'id' => 'field_os2web_meetings_searchdata_value_1',
       'table' => 'field_data_field_os2web_meetings_searchdata',
@@ -153,9 +220,10 @@ function svendborg_os2web_meetings_views_default_views_alter(&$data) {
         'label' => 'Keyword',
         'operator' => 'field_os2web_meetings_searchdata_value_1_op',
         'identifier' => 'field_os2web_meetings_searchdata_value',
+        'remember' => TRUE,
         'remember_roles' => array(
           2 => 2,
-          1 => 0,
+          1 => 1,
           6 => 0,
           4 => 0,
           7 => 0,

@@ -12,7 +12,6 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
   $overrides = array();
 
   // Exported overrides for: field_instance
-  $overrides["field_instance.node-os2web_meetings_bullet-field_os2web_meetings_enclosures.label"] = 'Enclosures';
   $overrides["field_instance.node-os2web_meetings_bullet-field_os2web_meetings_enclosures.settings|epsacrop"] = array(
     'styles' => array(
       'os2web_spotbox_image' => 0,
@@ -21,19 +20,19 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
     ),
   );
   $overrides["field_instance.node-os2web_meetings_bullet-field_os2web_meetings_enclosures.widget|settings|filefield_sources|filefield_sources|clipboard"] = 0;
-  $overrides["field_instance.node-os2web_meetings_bullet-field_os2web_meetings_enclosures.widget|settings|filefield_sources|filefield_sources|plupload"]["DELETED"] = TRUE;
   $overrides["field_instance.node-os2web_meetings_bullet-field_os2web_meetings_enclosures.widget|settings|filefield_sources|filefield_sources|upload"] = 'upload';
   $overrides["field_instance.node-os2web_meetings_bullet-field_os2web_meetings_enclosures.widget|settings|filefield_sources|source_imce"] = array(
     'imce_mode' => 0,
   );
+  $overrides["field_instance.node-os2web_meetings_bullet-field_os2web_meetings_enclosures.widget|settings|filefield_sources|source_reference|search_all_fields"] = 0;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_addendum.display|default|weight"] = 4;
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_addendum.widget|weight"] = 13;
+  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_addendum.widget|weight"] = 14;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_bullets.display|default|weight"] = 6;
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_bullets.widget|weight"] = 12;
+  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_bullets.widget|weight"] = 13;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_committee.display|default|type"] = 'taxonomy_term_reference_link';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_committee.display|default|weight"] = 2;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_committee.display|search_index|type"] = 'taxonomy_term_reference_link';
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_committee.widget|weight"] = 10;
+  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_committee.widget|weight"] = 9;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_date.display|default|settings|format_type"] = 'meeting_date';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_date.display|default|settings|show_remaining_days"] = 0;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_date.display|default|settings|show_repeat_rule"]["DELETED"] = TRUE;
@@ -50,9 +49,9 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.display|search_index|label"] = 'above';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.display|search_index|weight"] = 0;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.widget|active"] = 0;
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.widget|weight"] = 14;
+  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_searchdata.widget|weight"] = 15;
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_type.display|default|label"] = 'inline';
-  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_type.display|default|module"] = NULL;
+  $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_type.display|default|module"] = 'list';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_type.display|default|type"] = 'list_default';
   $overrides["field_instance.node-os2web_meetings_meeting-field_os2web_meetings_type.display|default|weight"] = 1;
 
@@ -117,6 +116,18 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
       ),
     ),
   );
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|defaults|exposed_form"] = FALSE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|exposed_form"] = array(
+    'type' => 'basic',
+    'options' => array(
+      'submit_button' => 'Udfør',
+      'reset_button' => TRUE,
+      'reset_button_label' => 'Nulstil',
+      'exposed_sorts_label' => 'Sortér efter',
+      'sort_asc_label' => 'Stigende',
+      'sort_desc_label' => 'Faldende',
+    ),
+  );
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|fields|field_os2web_meetings_committee|exclude"]["DELETED"] = TRUE;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|fields|field_os2web_meetings_type"] = array(
     'id' => 'field_os2web_meetings_type',
@@ -126,6 +137,62 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
     'element_label_colon' => FALSE,
   );
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|fields|views_conditional"]["DELETED"] = TRUE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_addendum_nid"] = array(
+    'id' => 'field_os2web_meetings_addendum_nid',
+    'table' => 'field_data_field_os2web_meetings_addendum',
+    'field' => 'field_os2web_meetings_addendum_nid',
+    'operator' => 'empty',
+  );
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember"] = TRUE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|1"] = 1;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|10"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|11"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|12"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|13"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|14"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|15"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|16"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|17"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|4"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|5"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|6"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|7"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|8"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_committee_tid|expose|remember_roles|9"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|default_date"] = '+2 month';
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember"] = TRUE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|1"] = 1;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|10"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|11"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|12"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|13"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|14"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|15"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|16"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|17"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|4"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|5"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|6"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|7"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|8"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value_1|expose|remember_roles|9"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|default_date"] = 'today';
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember"] = TRUE;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|1"] = 1;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|10"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|11"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|12"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|13"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|14"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|15"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|16"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|17"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|4"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|5"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|6"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|7"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|8"] = 0;
+  $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_date_value|expose|remember_roles|9"] = 0;
   $overrides["views_view.os2web_meetings.display|panel_pane_3|display_options|filters|field_os2web_meetings_searchdata_value_1"] = array(
     'id' => 'field_os2web_meetings_searchdata_value_1',
     'table' => 'field_data_field_os2web_meetings_searchdata',
@@ -138,9 +205,10 @@ function svendborg_os2web_meetings_features_override_default_overrides() {
       'label' => 'Keyword',
       'operator' => 'field_os2web_meetings_searchdata_value_1_op',
       'identifier' => 'field_os2web_meetings_searchdata_value',
+      'remember' => TRUE,
       'remember_roles' => array(
         2 => 2,
-        1 => 0,
+        1 => 1,
         6 => 0,
         4 => 0,
         7 => 0,
