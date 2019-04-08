@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg OS2Web Spotbox feature.
+ */
+
+include_once 'svendborg_os2web_spotbox.features.inc';

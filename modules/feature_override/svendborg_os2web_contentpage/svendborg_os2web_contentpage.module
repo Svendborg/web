@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Svendborg OS2web Indholdsside feature.
+ */
+
+include_once 'svendborg_os2web_contentpage.features.inc';
