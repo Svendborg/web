@@ -20,4 +20,14 @@ function svendborg_os2web_base_field_default_field_instances_alter(&$data) {
     unset($data['taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_field_image']['widget']['settings']['browser_plugins']['youtube']);
     unset($data['taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_field_image']['widget']['settings']['progress_indicator']);
   }
+  if (isset($data['taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_contact'])) {
+    $data['taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_contact']['display']['default']['type'] = 'hidden'; /* WAS: 'list_default' */
+    $data['taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_contact']['display']['default']['weight'] = 4; /* WAS: 9 */
+    unset($data['taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_contact']['display']['default']['module']);
+  }
+  if (isset($data['taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_sidebar'])) {
+    $data['taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_sidebar']['display']['default']['type'] = 'hidden'; /* WAS: 'list_default' */
+    $data['taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_sidebar']['display']['default']['weight'] = 7; /* WAS: 8 */
+    unset($data['taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_sidebar']['display']['default']['module']);
+  }
 }

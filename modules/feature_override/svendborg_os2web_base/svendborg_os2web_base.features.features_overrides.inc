@@ -22,6 +22,12 @@ function svendborg_os2web_base_features_override_default_overrides() {
   $overrides["field_instance.taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_field_image.widget|settings|allowed_schemes|private"] = 0;
   $overrides["field_instance.taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_field_image.widget|settings|browser_plugins|youtube"]["DELETED"] = TRUE;
   $overrides["field_instance.taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_field_image.widget|settings|progress_indicator"]["DELETED"] = TRUE;
+  $overrides["field_instance.taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_contact.display|default|module"]["DELETED"] = TRUE;
+  $overrides["field_instance.taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_contact.display|default|type"] = 'hidden';
+  $overrides["field_instance.taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_contact.display|default|weight"] = 4;
+  $overrides["field_instance.taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_sidebar.display|default|module"]["DELETED"] = TRUE;
+  $overrides["field_instance.taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_sidebar.display|default|type"] = 'hidden';
+  $overrides["field_instance.taxonomy_term-os2web_base_tax_site_structure-field_os2web_base_hide_sidebar.display|default|weight"] = 7;
 
  return $overrides;
 }
