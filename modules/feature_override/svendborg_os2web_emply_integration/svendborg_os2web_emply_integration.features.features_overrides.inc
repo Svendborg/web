@@ -12,6 +12,7 @@ function svendborg_os2web_emply_integration_features_override_default_overrides(
   $overrides = array();
 
   // Exported overrides for: field_instance
+  $overrides["field_instance.taxonomy_term-os2web_job_designs-field_os2web_job_image.display|default|settings|image_style"] = 'svendborg_content_image';
   $overrides["field_instance.taxonomy_term-os2web_job_designs-field_os2web_job_image.settings|epsacrop|styles|fredericia_content_image"]["DELETED"] = TRUE;
   $overrides["field_instance.taxonomy_term-os2web_job_designs-field_os2web_job_image.settings|epsacrop|styles|fredericia_spotbox"]["DELETED"] = TRUE;
   $overrides["field_instance.taxonomy_term-os2web_job_designs-field_os2web_job_image.settings|epsacrop|styles|os2web_gallery_thumbnails"]["DELETED"] = TRUE;
@@ -25,7 +26,7 @@ function svendborg_os2web_emply_integration_features_override_default_overrides(
 
   // Exported overrides for: views_view
   $overrides["views_view.job_liste.display|default|display_options|header|area_text_custom|content"] = '<p>Her kan du få et overblik over ledige stillinger i Svendborg Kommune.<br />
-      Svendborg Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>';
+          Svendborg Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>';
   $overrides["views_view.job_liste.display|default|display_options|title"] = 'Job i Svendborg Kommune';
 
  return $overrides;

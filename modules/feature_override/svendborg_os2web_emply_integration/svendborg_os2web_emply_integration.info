@@ -7,6 +7,7 @@ dependencies[] = os2web_ofir_job
 features[features_api][] = api:2
 features[features_override_items][] = field_instance.taxonomy_term-os2web_job_designs-field_os2web_job_image
 features[features_override_items][] = views_view.job_liste
+features[features_overrides][] = field_instance.taxonomy_term-os2web_job_designs-field_os2web_job_image.display|default|settings|image_style
 features[features_overrides][] = field_instance.taxonomy_term-os2web_job_designs-field_os2web_job_image.settings|epsacrop|styles|fredericia_content_image
 features[features_overrides][] = field_instance.taxonomy_term-os2web_job_designs-field_os2web_job_image.settings|epsacrop|styles|fredericia_spotbox
 features[features_overrides][] = field_instance.taxonomy_term-os2web_job_designs-field_os2web_job_image.settings|epsacrop|styles|os2web_gallery_thumbnails

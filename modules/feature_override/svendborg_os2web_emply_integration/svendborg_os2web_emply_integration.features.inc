@@ -9,6 +9,7 @@
  */
 function svendborg_os2web_emply_integration_field_default_field_instances_alter(&$data) {
   if (isset($data['taxonomy_term-os2web_job_designs-field_os2web_job_image'])) {
+    $data['taxonomy_term-os2web_job_designs-field_os2web_job_image']['display']['default']['settings']['image_style'] = 'svendborg_content_image'; /* WAS: '' */
     $data['taxonomy_term-os2web_job_designs-field_os2web_job_image']['settings']['epsacrop']['styles']['svendborg_content_image'] = 0; /* WAS: '' */
     $data['taxonomy_term-os2web_job_designs-field_os2web_job_image']['settings']['epsacrop']['styles']['svendborg_spotbox'] = 0; /* WAS: '' */
     $data['taxonomy_term-os2web_job_designs-field_os2web_job_image']['settings']['wysiwyg_insert'] = 0; /* WAS: '' */
@@ -28,7 +29,7 @@ function svendborg_os2web_emply_integration_field_default_field_instances_alter(
 function svendborg_os2web_emply_integration_views_default_views_alter(&$data) {
   if (isset($data['job_liste'])) {
     $data['job_liste']->display['default']->display_options['header']['area_text_custom']['content'] = '<p>Her kan du få et overblik over ledige stillinger i Svendborg Kommune.<br />
-        Svendborg Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>'; /* WAS: '<p>Her kan du få et overblik over ledige stillinger i Fredericia Kommune.<br />
+            Svendborg Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>'; /* WAS: '<p>Her kan du få et overblik over ledige stillinger i Fredericia Kommune.<br />
     Fredericia Kommune vil gerne gøre det nemt for dig at blive opmærksom på de jobs, som er relevante for dig.</p>' */
     $data['job_liste']->display['default']->display_options['title'] = 'Job i Svendborg Kommune'; /* WAS: 'Job i Fredericia Kommune' */
   }
