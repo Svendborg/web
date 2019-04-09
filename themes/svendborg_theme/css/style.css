@@ -6534,6 +6534,9 @@ td.views-field-field-os2web-meetings-committee {
 body.page-node.node-type-os2web-meetings-meeting .collapsible-panel h2 {
   width: 80%;
 }
+#postliste-import-node-form .form-item-feeds-feedsexcelparser-max-rows {
+  display: none;
+}
 /*
 LESS variables are information about icon's compiled state, stored under its original file name
 
