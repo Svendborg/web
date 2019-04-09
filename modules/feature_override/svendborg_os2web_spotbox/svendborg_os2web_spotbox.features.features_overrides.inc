@@ -17,7 +17,7 @@ function svendborg_os2web_spotbox_features_override_default_overrides() {
   $overrides["field_instance.node-os2web_spotbox_box-field_os2web_spotbox_big_image.settings|epsacrop|styles|fredericia_content_image"]["DELETED"] = TRUE;
   $overrides["field_instance.node-os2web_spotbox_box-field_os2web_spotbox_big_image.settings|epsacrop|styles|fredericia_spotbox"]["DELETED"] = TRUE;
   $overrides["field_instance.node-os2web_spotbox_box-field_os2web_spotbox_big_image.settings|epsacrop|styles|svendborg_content_image"] = 0;
-  $overrides["field_instance.node-os2web_spotbox_box-field_os2web_spotbox_big_image.settings|epsacrop|styles|svendborg_spotbox"] = 0;
+  $overrides["field_instance.node-os2web_spotbox_box-field_os2web_spotbox_big_image.settings|epsacrop|styles|svendborg_spotbox"] = 'svendborg_spotbox';
   $overrides["field_instance.node-os2web_spotbox_box-field_os2web_spotbox_big_image.settings|wysiwyg_insert"] = 0;
   $overrides["field_instance.node-os2web_spotbox_box-field_os2web_spotbox_big_image.widget|settings|allowed_schemes|oembed"] = 0;
   $overrides["field_instance.node-os2web_spotbox_box-field_os2web_spotbox_big_image.widget|settings|allowed_schemes|private"] = 0;

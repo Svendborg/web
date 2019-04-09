@@ -12,7 +12,7 @@ function svendborg_os2web_spotbox_field_default_field_instances_alter(&$data) {
     $data['node-os2web_spotbox_box-field_os2web_spotbox_big_image']['display']['default']['settings']['image_style'] = 'svendborg_content_image'; /* WAS: 'fredericia_spotbox' */
     $data['node-os2web_spotbox_box-field_os2web_spotbox_big_image']['display']['spotbox']['settings']['image_style'] = 'os2web_spotbox_image'; /* WAS: 'os2web_spotbox_image_300' */
     $data['node-os2web_spotbox_box-field_os2web_spotbox_big_image']['settings']['epsacrop']['styles']['svendborg_content_image'] = 0; /* WAS: '' */
-    $data['node-os2web_spotbox_box-field_os2web_spotbox_big_image']['settings']['epsacrop']['styles']['svendborg_spotbox'] = 0; /* WAS: '' */
+    $data['node-os2web_spotbox_box-field_os2web_spotbox_big_image']['settings']['epsacrop']['styles']['svendborg_spotbox'] = 'svendborg_spotbox'; /* WAS: '' */
     $data['node-os2web_spotbox_box-field_os2web_spotbox_big_image']['settings']['wysiwyg_insert'] = 0; /* WAS: '' */
     $data['node-os2web_spotbox_box-field_os2web_spotbox_big_image']['widget']['settings']['allowed_schemes']['oembed'] = 0; /* WAS: '' */
     $data['node-os2web_spotbox_box-field_os2web_spotbox_big_image']['widget']['settings']['allowed_schemes']['private'] = 0; /* WAS: '' */

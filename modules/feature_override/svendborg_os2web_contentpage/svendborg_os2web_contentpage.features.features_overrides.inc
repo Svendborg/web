@@ -15,7 +15,7 @@ function svendborg_os2web_contentpage_features_override_default_overrides() {
   $overrides["field_instance.node-os2web_base_contentpage-field_os2web_base_field_image.display|default|settings|slideshow_image_style"] = 'svendborg_content_image';
   $overrides["field_instance.node-os2web_base_contentpage-field_os2web_base_field_image.settings|epsacrop|styles|fredericia_content_image"]["DELETED"] = TRUE;
   $overrides["field_instance.node-os2web_base_contentpage-field_os2web_base_field_image.settings|epsacrop|styles|fredericia_spotbox"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-os2web_base_contentpage-field_os2web_base_field_image.settings|epsacrop|styles|svendborg_content_image"] = 0;
+  $overrides["field_instance.node-os2web_base_contentpage-field_os2web_base_field_image.settings|epsacrop|styles|svendborg_content_image"] = 'svendborg_content_image';
   $overrides["field_instance.node-os2web_base_contentpage-field_os2web_base_field_image.settings|epsacrop|styles|svendborg_spotbox"] = 0;
   $overrides["field_instance.node-os2web_base_contentpage-field_os2web_base_field_image.settings|wysiwyg_insert"] = 0;
   $overrides["field_instance.node-os2web_base_contentpage-field_os2web_base_field_image.widget|settings|allowed_schemes|oembed"] = 0;
