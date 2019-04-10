@@ -20,6 +20,48 @@ function svendborg_os2web_news_page_field_default_field_instances_alter(&$data) 
     unset($data['node-os2web_base_news-field_os2web_base_field_lead_img']['widget']['settings']['browser_plugins']['youtube']);
     unset($data['node-os2web_base_news-field_os2web_base_field_lead_img']['widget']['settings']['progress_indicator']);
   }
+  if (isset($data['node-os2web_base_news-field_os2web_base_hide_contact'])) {
+    $data['node-os2web_base_news-field_os2web_base_hide_contact']['display']['default']['type'] = 'hidden'; /* WAS: 'list_default' */
+    $data['node-os2web_base_news-field_os2web_base_hide_contact']['display']['default']['weight'] = 9; /* WAS: 23 */
+    $data['node-os2web_base_news-field_os2web_base_hide_contact']['display']['spotbox'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+    unset($data['node-os2web_base_news-field_os2web_base_hide_contact']['display']['default']['module']);
+  }
+  if (isset($data['node-os2web_base_news-field_os2web_base_hide_sidebar'])) {
+    $data['node-os2web_base_news-field_os2web_base_hide_sidebar']['display']['default']['type'] = 'hidden'; /* WAS: 'list_default' */
+    $data['node-os2web_base_news-field_os2web_base_hide_sidebar']['display']['default']['weight'] = 14; /* WAS: 22 */
+    $data['node-os2web_base_news-field_os2web_base_hide_sidebar']['display']['spotbox'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+    unset($data['node-os2web_base_news-field_os2web_base_hide_sidebar']['display']['default']['module']);
+  }
+  if (isset($data['node-os2web_base_news-field_os2web_news_date_end'])) {
+    $data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['type'] = 'hidden'; /* WAS: 'date_default' */
+    $data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['weight'] = 6; /* WAS: 21 */
+    unset($data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['module']);
+    unset($data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['settings']['format_type']);
+    unset($data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['settings']['fromto']);
+    unset($data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['settings']['multiple_from']);
+    unset($data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['settings']['multiple_number']);
+    unset($data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['settings']['multiple_to']);
+  }
+  if (isset($data['node-os2web_base_news-field_os2web_news_date_start'])) {
+    $data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['type'] = 'hidden'; /* WAS: 'date_default' */
+    $data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['weight'] = 5; /* WAS: 20 */
+    unset($data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['module']);
+    unset($data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['settings']['format_type']);
+    unset($data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['settings']['fromto']);
+    unset($data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['settings']['multiple_from']);
+    unset($data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['settings']['multiple_number']);
+    unset($data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['settings']['multiple_to']);
+  }
 }
 
 /**

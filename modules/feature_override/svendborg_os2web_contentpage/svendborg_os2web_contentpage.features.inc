@@ -5,6 +5,15 @@
  */
 
 /**
+ * Implements hook_field_default_field_bases_alter().
+ */
+function svendborg_os2web_contentpage_field_default_field_bases_alter(&$data) {
+  if (isset($data['field_svendborg_hide_sidebar'])) {
+    unset($data['field_svendborg_hide_sidebar']['foreign keys']);
+  }
+}
+
+/**
  * Implements hook_field_default_field_instances_alter().
  */
 function svendborg_os2web_contentpage_field_default_field_instances_alter(&$data) {
@@ -19,5 +28,30 @@ function svendborg_os2web_contentpage_field_default_field_instances_alter(&$data
     unset($data['node-os2web_base_contentpage-field_os2web_base_field_image']['settings']['epsacrop']['styles']['fredericia_spotbox']);
     unset($data['node-os2web_base_contentpage-field_os2web_base_field_image']['widget']['settings']['browser_plugins']['youtube']);
     unset($data['node-os2web_base_contentpage-field_os2web_base_field_image']['widget']['settings']['progress_indicator']);
+  }
+  if (isset($data['node-os2web_base_contentpage-field_os2web_base_hide_contact'])) {
+    $data['node-os2web_base_contentpage-field_os2web_base_hide_contact']['display']['default']['type'] = 'hidden'; /* WAS: 'list_default' */
+    $data['node-os2web_base_contentpage-field_os2web_base_hide_contact']['display']['default']['weight'] = 11; /* WAS: 23 */
+    $data['node-os2web_base_contentpage-field_os2web_base_hide_contact']['display']['spotbox'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+    unset($data['node-os2web_base_contentpage-field_os2web_base_hide_contact']['display']['default']['module']);
+  }
+  if (isset($data['node-os2web_base_contentpage-field_os2web_base_hide_sidebar'])) {
+    $data['node-os2web_base_contentpage-field_os2web_base_hide_sidebar']['display']['default']['type'] = 'hidden'; /* WAS: 'list_default' */
+    $data['node-os2web_base_contentpage-field_os2web_base_hide_sidebar']['display']['default']['weight'] = 10; /* WAS: 22 */
+    $data['node-os2web_base_contentpage-field_os2web_base_hide_sidebar']['display']['spotbox'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+    unset($data['node-os2web_base_contentpage-field_os2web_base_hide_sidebar']['display']['default']['module']);
+  }
+  if (isset($data['node-os2web_base_contentpage-field_svendborg_hide_sidebar'])) {
+    $data['node-os2web_base_contentpage-field_svendborg_hide_sidebar']['display']['default']['weight'] = 13; /* WAS: 6 */
   }
 }
