@@ -59,6 +59,19 @@ function svendborg_os2web_news_page_features_override_default_overrides() {
 
   // Exported overrides for: views_view
   $overrides["views_view.os2web_news_lists.display|panel_pane_1|display_options|fields|field_os2web_base_field_lead_img|settings|image_style"] = 'svendborg_content_image';
+  $overrides["views_view.os2web_news_lists.display|panel_pane_1|display_options|row_options"] = array(
+    'image' => 'field_os2web_base_field_lead_img',
+    'title' => 'title',
+    'description' => '',
+  );
+  $overrides["views_view.os2web_news_lists.display|panel_pane_1|display_options|row_plugin"] = 'views_bootstrap_carousel_plugin_rows';
+  $overrides["views_view.os2web_news_lists.display|panel_pane_1|display_options|style_options"] = array(
+    'interval' => 5000,
+    'navigation' => 1,
+    'indicators' => 1,
+    'pause' => 0,
+  );
+  $overrides["views_view.os2web_news_lists.display|panel_pane_1|display_options|style_plugin"] = 'views_bootstrap_carousel_plugin_style';
 
  return $overrides;
 }
