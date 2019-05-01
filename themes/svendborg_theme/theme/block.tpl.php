@@ -36,7 +36,7 @@
 
   <?php print render($title_prefix); ?>
   <?php if ($title && $block_html_id == "block-views-news-filter-block"): ?>
-  <div class="panel panel-primary with-big-arrow">
+  <div class="panel panel-primary with-arrow">
     <div class="panel-heading">
       <h3 class="panel-title"><?php print $title; ?></h3>
     </div>

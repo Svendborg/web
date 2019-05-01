@@ -7,7 +7,7 @@
  * @ingroup views_templates
  */
 ?>
-<div class="panel panel-primary with-arrow large-arrow">
+<div class="panel panel-primary with-arrow">
   <div class="panel-heading">
     <?php if(isset($view->args[2])): ?>
       <a class="rss-icon" target="_blank" href="/nyheder/<?php print strtolower($view->args[2]); ?>/all/rss.xml"></a>
