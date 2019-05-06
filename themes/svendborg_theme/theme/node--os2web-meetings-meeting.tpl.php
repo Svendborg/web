@@ -170,8 +170,13 @@
 </div>
 <?php
   print render($content['field_os2web_meetings_bullets']);
-
-    print $author_node_info;
+  if (isset($additional_agendas)) {
+    print t('Tillægsdagsorden:');
+    foreach ($additional_agendas as $bullet_point) {
+      print drupal_render($bullet_point);
+    }
+  }
+  print $author_node_info;
 
     ?>
 
