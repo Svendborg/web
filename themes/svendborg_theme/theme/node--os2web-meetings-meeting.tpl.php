@@ -171,7 +171,7 @@
 <?php
   print render($content['field_os2web_meetings_bullets']);
   if (isset($additional_agendas)) {
-    print t('Tillægsdagsorden:');
+    print '<div class ="additional-agenda-label">' . t('Tillægsdagsorden:') . '</div>';
     foreach ($additional_agendas as $bullet_point) {
       print drupal_render($bullet_point);
     }
