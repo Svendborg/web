@@ -452,6 +452,23 @@ function svendborg_theme_preprocess_node(&$vars) {
   if ($vars['type'] == 'os2web_meetings_meeting'){
     $commitee = taxonomy_term_load($vars['field_os2web_meetings_committee'][0]['tid']);
     $vars['title'] = $commitee->name;
+    if (!variable_get('os2web_settings_not_attach_addtional_agenda', FALSE)) {
+      $additional_meetings = array();
+      // Adding tillaegs meetings, if any.
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node')
+        ->fieldCondition('field_os2web_meetings_addendum', 'nid', $vars['nid'], '=');
+      $result = $query->execute();
+      if (isset($result['node']) && is_array($result['node'])) {
+        $additional_agendas = array_keys($result['node']);
+        foreach($additional_agendas as $nid) {
+          $node = node_load($nid);
+          foreach ($node->field_os2web_meetings_bullets['und'] as $additional_bp) {
+            $vars['additional_agendas'][] = node_view(node_load($additional_bp['target_id']));
+          }
+        }
+      }
+    }  
   }
 }
 /**

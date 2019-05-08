@@ -148,6 +148,9 @@
   $content['field_os2web_meetings_date']['#title'] = t('Date');
   $content['field_os2web_meetings_location']['#title'] = t('Lokation');
   $content['field_os2web_meetings_type']['#title'] = t('Status');
+  if (variable_get('os2web_settings_not_attach_addtional_agenda', FALSE)) {
+    hide($content['field_os2web_meetings_addendum']);
+  }
   hide($content['field_os2web_meetings_bullets']);
   hide($content['field_os2web_meetings_partic']);
   print render($content);
@@ -167,8 +170,13 @@
 </div>
 <?php
   print render($content['field_os2web_meetings_bullets']);
-
-    print $author_node_info;
+  if (isset($additional_agendas)) {
+    print '<div class ="additional-agenda-label">' . t('Tillægsdagsorden:') . '</div>';
+    foreach ($additional_agendas as $bullet_point) {
+      print drupal_render($bullet_point);
+    }
+  }
+  print $author_node_info;
 
     ?>
 

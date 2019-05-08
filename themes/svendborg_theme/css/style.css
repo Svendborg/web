@@ -6537,6 +6537,10 @@ body.page-node.node-type-os2web-meetings-meeting .collapsible-panel h2 {
 #postliste-import-node-form .form-item-feeds-feedsexcelparser-max-rows {
   display: none;
 }
+.node-type-os2web-meetings-meeting .additional-agenda-label {
+  font-weight: bold;
+  padding: 15px 0;
+}
 /*
 LESS variables are information about icon's compiled state, stored under its original file name
 
