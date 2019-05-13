@@ -226,20 +226,27 @@ function svendborg_theme_preprocess_page(&$variables) {
 
   // On taxonomy pages, add a news list in second sidebar.
   if ($term) {
-    $view = views_get_view('os2web_news_lists');
-    $view->set_display('panel_pane_2');
-    $view->set_arguments(array('all', 'Branding', $term->tid));
-    $view->set_items_per_page(3);
-    $view->pre_execute();
-    $view->execute();
-    if (!empty($view->result)) {
-      if (empty($variables['page']['sidebar_second'])) {
-        $variables['page']['sidebar_second'] = array(
-          '#theme_wrappers' => array('region'),
-          '#region' => 'sidebar_second',
-        );
+    $dont_render_on_these_tids = array(4067);
+
+    if (!in_array($term->tid, $dont_render_on_these_tids)) {
+      $view = views_get_view('os2web_news_lists');
+      $view->set_display('panel_pane_2');
+      $view->set_arguments(['all', 'Branding', $term->tid]);
+      $view->set_items_per_page(3);
+      $view->pre_execute();
+      $view->execute();
+
+      if (!empty($view->result)) {
+
+        if (empty($variables['page']['sidebar_second'])) {
+          $variables['page']['sidebar_second'] = [
+            '#theme_wrappers' => ['region'],
+            '#region'         => 'sidebar_second',
+          ];
+        }
+
+        $variables['page']['sidebar_second']['os2web_news_lists'] = ['#markup' => $view->render()];
       }
-      $variables['page']['sidebar_second']['os2web_news_lists'] = array('#markup' => $view->render());
     }
     if ($term_is_top && $term->vocabulary_machine_name == "os2web_base_tax_site_structure") {
       $variables['page']['sidebar_first'] = array();
