@@ -90,20 +90,20 @@
           <?php print $view->render(); ?>
         </div>
       <?php endif; ?>
-<!--    --><?php
-//      // Get news carousel.
-//      $view = views_get_view('os2web_news_lists');
-//      $view->set_display('panel_pane_1');
-//      $view->set_arguments(array('Branding', 'none', $term_name));
-//      $view->set_items_per_page(3);
-//      $view->pre_execute();
-//      $view->execute();
-//    ?>
-<!--      --><?php //if (!empty($view->result)) : ?>
-<!--      <div class="col-sm-12 col-md-12 extra-bottom-padding">-->
-<!--        --><?php //print $view->render(); ?>
-<!--      </div>-->
-<!--      --><?php //endif; ?>
+    <?php
+      // Get news carousel.
+      $view = views_get_view('os2web_news_lists');
+      $view->set_display('panel_pane_1');
+      $view->set_arguments(array('Branding', 'none', $term_name));
+      $view->set_items_per_page(3);
+      $view->pre_execute();
+      $view->execute();
+    ?>
+      <?php if (!empty($view->result)) : ?>
+      <div class="col-sm-12 col-md-12 extra-bottom-padding">
+        <?php print $view->render(); ?>
+      </div>
+      <?php endif; ?>
     <?php elseif($term_is_top): ?>
     <div class="bg-white content-img-header">
       <header>
