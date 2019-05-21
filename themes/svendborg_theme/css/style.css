@@ -6541,6 +6541,10 @@ body.page-node.node-type-os2web-meetings-meeting .collapsible-panel h2 {
   font-weight: bold;
   padding: 15px 0;
 }
+body.page-taxonomy-term .field-type-text-long img {
+  max-width: 100%;
+  height: auto;
+}
 /*
 LESS variables are information about icon's compiled state, stored under its original file name
 
