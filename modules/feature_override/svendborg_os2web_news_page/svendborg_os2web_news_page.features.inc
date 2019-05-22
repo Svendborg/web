@@ -5,6 +5,26 @@
  */
 
 /**
+ * Implements hook_field_default_field_bases_alter().
+ */
+function svendborg_os2web_news_page_field_default_field_bases_alter(&$data) {
+  if (isset($data['field_os2web_base_field_contact'])) {
+    $data['field_os2web_base_field_contact']['settings']['referenceable_types']['borger_dk_article'] = 0; /* WAS: '' */
+    $data['field_os2web_base_field_contact']['settings']['referenceable_types']['interne_sider'] = 0; /* WAS: '' */
+    $data['field_os2web_base_field_contact']['settings']['referenceable_types']['keyboard_shortcut'] = 0; /* WAS: '' */
+    $data['field_os2web_base_field_contact']['settings']['referenceable_types']['os2search_dokument'] = 0; /* WAS: '' */
+    $data['field_os2web_base_field_contact']['settings']['referenceable_types']['os2web_acadre_postlists'] = 0; /* WAS: '' */
+    $data['field_os2web_base_field_contact']['settings']['referenceable_types']['os2web_meetings_bullet'] = 0; /* WAS: '' */
+    $data['field_os2web_base_field_contact']['settings']['referenceable_types']['os2web_meetings_bullet_attach'] = 0; /* WAS: '' */
+    $data['field_os2web_base_field_contact']['settings']['referenceable_types']['os2web_meetings_meeting'] = 0; /* WAS: '' */
+    $data['field_os2web_base_field_contact']['settings']['referenceable_types']['os2web_ofir_job'] = 0; /* WAS: '' */
+    $data['field_os2web_base_field_contact']['settings']['referenceable_types']['postliste_import'] = 0; /* WAS: '' */
+    unset($data['field_os2web_base_field_contact']['settings']['referenceable_types']['kontaktblok']);
+    unset($data['field_os2web_base_field_contact']['settings']['referenceable_types']['spotbokse2']);
+  }
+}
+
+/**
  * Implements hook_field_default_field_instances_alter().
  */
 function svendborg_os2web_news_page_field_default_field_instances_alter(&$data) {
@@ -77,7 +97,6 @@ function svendborg_os2web_news_page_views_default_views_alter(&$data) {
     ); /* WAS: '' */
     $data['os2web_news_lists']->display['panel_pane_1']->display_options['row_plugin'] = 'views_bootstrap_carousel_plugin_rows'; /* WAS: 'fields' */
     $data['os2web_news_lists']->display['panel_pane_1']->display_options['style_options'] = array(
-      'interval' => 5000,
       'navigation' => 1,
       'indicators' => 1,
       'pause' => 0,

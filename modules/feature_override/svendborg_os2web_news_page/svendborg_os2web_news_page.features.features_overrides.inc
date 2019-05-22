@@ -11,6 +11,20 @@ function svendborg_os2web_news_page_features_override_default_overrides() {
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 
+  // Exported overrides for: field_base
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|borger_dk_article"] = 0;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|interne_sider"] = 0;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|keyboard_shortcut"] = 0;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|kontaktblok"]["DELETED"] = TRUE;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|os2search_dokument"] = 0;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|os2web_acadre_postlists"] = 0;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|os2web_meetings_bullet"] = 0;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|os2web_meetings_bullet_attach"] = 0;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|os2web_meetings_meeting"] = 0;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|os2web_ofir_job"] = 0;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|postliste_import"] = 0;
+  $overrides["field_base.field_os2web_base_field_contact.settings|referenceable_types|spotbokse2"]["DELETED"] = TRUE;
+
   // Exported overrides for: field_instance
   $overrides["field_instance.node-os2web_base_news-field_os2web_base_field_lead_img.display|default|settings|slideshow_image_style"] = 'svendborg_content_image';
   $overrides["field_instance.node-os2web_base_news-field_os2web_base_field_lead_img.settings|epsacrop|styles|fredericia_content_image"]["DELETED"] = TRUE;
@@ -66,7 +80,6 @@ function svendborg_os2web_news_page_features_override_default_overrides() {
   );
   $overrides["views_view.os2web_news_lists.display|panel_pane_1|display_options|row_plugin"] = 'views_bootstrap_carousel_plugin_rows';
   $overrides["views_view.os2web_news_lists.display|panel_pane_1|display_options|style_options"] = array(
-    'interval' => 5000,
     'navigation' => 1,
     'indicators' => 1,
     'pause' => 0,
