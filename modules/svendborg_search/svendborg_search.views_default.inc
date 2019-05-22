@@ -45,7 +45,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Overskrift: Søg: Stavekontrol */
+  /* Overskrift: Søg: Spellcheck */
   $handler->display->display_options['header']['search_api_spellcheck']['id'] = 'search_api_spellcheck';
   $handler->display->display_options['header']['search_api_spellcheck']['table'] = 'search_api_index_svendborg_public';
   $handler->display->display_options['header']['search_api_spellcheck']['field'] = 'search_api_spellcheck';
@@ -89,7 +89,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['node_field_os2search_file_ref_file']['display'] = 'view';
   $handler->display->display_options['fields']['node_field_os2search_file_ref_file']['view_mode'] = 'search_result';
   $handler->display->display_options['fields']['node_field_os2search_file_ref_file']['bypass_access'] = 0;
-  /* Felt: Søg: Uddrag */
+  /* Felt: Søg: Excerpt */
   $handler->display->display_options['fields']['search_api_excerpt']['id'] = 'search_api_excerpt';
   $handler->display->display_options['fields']['search_api_excerpt']['table'] = 'search_api_index_svendborg_public';
   $handler->display->display_options['fields']['search_api_excerpt']['field'] = 'search_api_excerpt';
@@ -102,7 +102,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_excerpt']['element_wrapper_class'] = 'search-snippet-info';
   $handler->display->display_options['fields']['search_api_excerpt']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['search_api_excerpt']['link_to_entity'] = 0;
-  /* Felt: Indholdselement: URL (indexed) */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['node_url']['id'] = 'node_url';
   $handler->display->display_options['fields']['node_url']['table'] = 'search_api_index_svendborg_public';
   $handler->display->display_options['fields']['node_url']['field'] = 'node_url';
@@ -111,8 +111,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['node_url']['element_class'] = 'url';
   $handler->display->display_options['fields']['node_url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['node_url']['element_wrapper_class'] = 'search-snippet-info';
-  $handler->display->display_options['fields']['node_url']['link_to_entity'] = 1;
-  /* Felt: Ord i ordforråd: URL (indexed) */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['taxonomy_term_url']['id'] = 'taxonomy_term_url';
   $handler->display->display_options['fields']['taxonomy_term_url']['table'] = 'search_api_index_svendborg_public';
   $handler->display->display_options['fields']['taxonomy_term_url']['field'] = 'taxonomy_term_url';
@@ -121,8 +120,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['taxonomy_term_url']['element_class'] = 'url';
   $handler->display->display_options['fields']['taxonomy_term_url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['taxonomy_term_url']['element_wrapper_class'] = 'search-snippet-info';
-  $handler->display->display_options['fields']['taxonomy_term_url']['link_to_entity'] = 1;
-  /* Sorteringskriterie: Søg: Relevans */
+  /* Sorteringskriterie: Søg: Relevance */
   $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_svendborg_public';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
@@ -161,6 +159,57 @@ function svendborg_search_views_default_views() {
     'taxonomy_term:description' => 'taxonomy_term:description',
     'taxonomy_term:name' => 'taxonomy_term:name',
   );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filterkriterie: Søg: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_svendborg_public';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    4 => 0,
+    7 => 0,
+    3 => 0,
+    5 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    15 => 0,
+    13 => 0,
+    14 => 0,
+    16 => 0,
+    17 => 0,
+  );
+  $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
+    'bellcom_elasticsearch_multi_index_files' => 'bellcom_elasticsearch_multi_index_files',
+    'node:body:value' => 'node:body:value',
+    'node:title' => 'node:title',
+    'taxonomy_term:description' => 'taxonomy_term:description',
+    'taxonomy_term:name' => 'taxonomy_term:name',
+  );
+  /* Filterkriterie: Ord i ordforråd: Term ID (indexed) */
+  $handler->display->display_options['filters']['taxonomy_term_tid']['id'] = 'taxonomy_term_tid';
+  $handler->display->display_options['filters']['taxonomy_term_tid']['table'] = 'search_api_index_svendborg_public';
+  $handler->display->display_options['filters']['taxonomy_term_tid']['field'] = 'taxonomy_term_tid';
+  $handler->display->display_options['filters']['taxonomy_term_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['taxonomy_term_tid']['group'] = 2;
   /* Filterkriterie: Indholdselement: Status (indexed) */
   $handler->display->display_options['filters']['node_status']['id'] = 'node_status';
   $handler->display->display_options['filters']['node_status']['table'] = 'search_api_index_svendborg_public';
@@ -168,10 +217,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['filters']['node_status']['value'] = array(
     1 => '1',
   );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['filters']['node_status']['group'] = 2;
   $handler->display->display_options['path'] = 'search';
 
   /* Display: Content pane */
