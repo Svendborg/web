@@ -24,11 +24,12 @@ function svendborg_os2web_meetings_field_default_field_instances_alter(&$data) {
     $data['node-os2web_meetings_bullet-field_os2web_meetings_enclosures']['widget']['settings']['filefield_sources']['source_reference']['search_all_fields'] = 0; /* WAS: '' */
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_addendum'])) {
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_addendum']['display']['default']['weight'] = 4; /* WAS: 3 */
+    $data['node-os2web_meetings_meeting-field_os2web_meetings_addendum']['display']['default']['type'] = 'hidden'; /* WAS: 'node_reference_default' */
+    $data['node-os2web_meetings_meeting-field_os2web_meetings_addendum']['display']['default']['weight'] = 7; /* WAS: 3 */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_addendum']['widget']['weight'] = 13; /* WAS: 16 */
+    unset($data['node-os2web_meetings_meeting-field_os2web_meetings_addendum']['display']['default']['module']);
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_bullets'])) {
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_bullets']['display']['default']['weight'] = 6; /* WAS: 5 */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_bullets']['widget']['weight'] = 12; /* WAS: 14 */
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_committee'])) {
@@ -43,7 +44,6 @@ function svendborg_os2web_meetings_field_default_field_instances_alter(&$data) {
     unset($data['node-os2web_meetings_meeting-field_os2web_meetings_date']['display']['default']['settings']['show_repeat_rule']);
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_full_doc'])) {
-    $data['node-os2web_meetings_meeting-field_os2web_meetings_full_doc']['display']['default']['weight'] = 5; /* WAS: 4 */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_full_doc']['widget']['weight'] = 8; /* WAS: 10 */
   }
   if (isset($data['node-os2web_meetings_meeting-field_os2web_meetings_location'])) {
@@ -67,6 +67,7 @@ function svendborg_os2web_meetings_field_default_field_instances_alter(&$data) {
     $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['module'] = 'list'; /* WAS: '' */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['type'] = 'list_default'; /* WAS: 'hidden' */
     $data['node-os2web_meetings_meeting-field_os2web_meetings_type']['display']['default']['weight'] = 1; /* WAS: 6 */
+    unset($data['node-os2web_meetings_meeting-field_os2web_meetings_type']['widget']['settings']['maxlength_js_label']);
   }
 }
 
@@ -160,7 +161,6 @@ function svendborg_os2web_meetings_views_default_views_alter(&$data) {
       'table' => 'field_data_field_os2web_meetings_type',
       'field' => 'field_os2web_meetings_type',
       'label' => '',
-      'exclude' => TRUE,
       'element_label_colon' => FALSE,
     ); /* WAS: '' */
     $data['os2web_meetings']->display['panel_pane_3']->display_options['filters']['field_os2web_meetings_committee_tid']['expose']['remember'] = TRUE; /* WAS: '' */
