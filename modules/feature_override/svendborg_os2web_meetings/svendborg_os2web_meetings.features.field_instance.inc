@@ -23,7 +23,7 @@ function svendborg_os2web_meetings_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 6,
       ),
       'search_index' => array(
         'label' => 'above',

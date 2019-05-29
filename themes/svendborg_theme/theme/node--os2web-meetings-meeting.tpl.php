@@ -153,6 +153,7 @@
   }
   hide($content['field_os2web_meetings_bullets']);
   hide($content['field_os2web_meetings_partic']);
+  hide($content['field_os2web_meetings_particcanl']);
   print render($content);
 ?>
     <div class="borger_dk_body_intro_text">
@@ -166,6 +167,10 @@
   <a href="#" class="gplus">+</a>  
     <div class="collapsible-panel-content" style="display: none;">
     <?php print render($content['field_os2web_meetings_partic']); ?>
+    <?php if(isset($content['field_os2web_meetings_particcanl'])) : ?>
+      <strong><?php print t('Afmeldinger') ?></strong>
+      <?php print render($content['field_os2web_meetings_particcanl']); ?>
+    <?php endif?>  
   </div>
 </div>
 <?php
