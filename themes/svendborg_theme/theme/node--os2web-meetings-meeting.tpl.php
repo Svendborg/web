@@ -168,7 +168,7 @@
     <div class="collapsible-panel-content" style="display: none;">
     <?php print render($content['field_os2web_meetings_partic']); ?>
     <?php if(isset($content['field_os2web_meetings_particcanl'])) : ?>
-      <strong><?php print t('Afmeldinger') ?></strong>
+      <strong><?php print t('Afbud') ?></strong>
       <?php print render($content['field_os2web_meetings_particcanl']); ?>
     <?php endif?>  
   </div>
