@@ -10,6 +10,17 @@ function manage_menu_additional_items_form_node_form_alter(&$form, &$form_state,
   if (isset($form['menu']['link']['options']['roles_for_menu'])) {
     $form['menu']['link']['options']['roles_for_menu']['#collapsed'] = TRUE;
   }
+   if (isset($form['menu']['link'])) {  
+   
+   $form['menu']['link']['options']['hide_from_left_menu'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Hide from left menu'),
+      '#description' => t('Hide item from left sidepane menu.'),
+      '#default_value' => (isset($form['#node']->menu['options']['hide_from_left_menu'])) ? $form['#node']->menu['options']['hide_from_left_menu'] : false,
+      '#weight' => -9,
+    );
+    $form['menu']['link']['options']['attributes']['#type'] = 'container';
+  }
   
 }
 
@@ -27,4 +38,15 @@ function manage_menu_additional_items_module_implements_alter(&$implementations,
     $implementations['manage_menu_additional_items'] = $group;
 
   }
+}
+
+function manage_menu_additional_items_form_menu_edit_item_alter(&$form, &$form_state, $form_id) {
+  
+   $form['options']['hide_from_left_menu'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Hide from left menu'),
+      '#description' => t('Hide item from left sidepane menu.'),
+      '#default_value' => (isset($form['original_item']['#value']['options']['hide_from_left_menu'])) ? $form['original_item']['#value']['options']['hide_from_left_menu'] : false,
+      '#weight' => 0,
+    );
 }
