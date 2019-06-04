@@ -566,6 +566,9 @@ function svendborg_theme_menu_link(array $variables) {
       $element['#attributes']['class'][] = 'has-children';
     }
   }
+  if ($element['#original_link']['menu_name'] == 'menu-hindholdsmenu' && isset($element['#original_link']['options']['hide_from_left_menu']) &&  $element['#original_link']['options']['hide_from_left_menu'] == 1) {
+    $element['#attributes']['class'][] = 'left-sidebar-hide';
+  }
   // On primary navigation menu, class 'active' is not set on active menu item.
   // @see https://drupal.org/node/1896674
   if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {

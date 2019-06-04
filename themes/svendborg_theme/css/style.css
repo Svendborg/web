@@ -6545,6 +6545,9 @@ body.page-taxonomy-term .field-type-text-long img {
   max-width: 100%;
   height: auto;
 }
+.menu-block-2.menu-name-menu-indholdsmenu .menu.nav li.left-sidebar-hide {
+  display: none;
+}
 /*
 LESS variables are information about icon's compiled state, stored under its original file name
 
