@@ -566,7 +566,7 @@ function svendborg_theme_menu_link(array $variables) {
       $element['#attributes']['class'][] = 'has-children';
     }
   }
-  if ($element['#original_link']['menu_name'] == 'menu-hindholdsmenu' && isset($element['#original_link']['options']['hide_from_left_menu']) &&  $element['#original_link']['options']['hide_from_left_menu'] == 1) {
+  if ($element['#original_link']['menu_name'] == 'menu-indholdsmenu' && isset($element['#original_link']['options']['hide_from_left_menu']) &&  $element['#original_link']['options']['hide_from_left_menu'] == 1) {
     $element['#attributes']['class'][] = 'left-sidebar-hide';
   }
   // On primary navigation menu, class 'active' is not set on active menu item.
