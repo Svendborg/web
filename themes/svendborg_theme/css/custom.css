@@ -29,3 +29,10 @@
     font-size: 18px;
     color: #30353c;
 }
+
+/* Resets. */
+.node--os2web_base_contentpage--includeable {
+    background: initial;
+    border-radius: initial;
+    margin-bottom: initial;
+}
