@@ -4,7 +4,7 @@
   <div class="caption">
   <?php $spotbox_url = (isset($variables['elements']['#spotbox_url'])) ? $variables['elements']['#spotbox_url'] : $spotbox_url; ?>
     <?php if(!empty($spotbox_url)) : ?>
-      <a href="<?php print $spotbox_url ?>">
+      <a href="<?php print $spotbox_url ?>" title ="<?php isset($variables['elements']['#spotbox_url_title']) ? print $variables['elements']['#spotbox_url_title'] : ""?>">
     <?php endif; ?>
 
     <?php if(!empty($content['field_os2web_spotbox_big_image'])) : ?>
