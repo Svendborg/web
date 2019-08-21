@@ -80,12 +80,23 @@
  */
 ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix collapsible-panel"<?php print $attributes; ?>>
-  <h2 class="collapsible-panel-title"><?php print $title; ?></h2>
-  <a href="#" class="gplus">+</a>  
+  <h2 class="collapsible-panel-title"><?php print $title; ?>
+  <?php if ($node->field_os2web_meetings_bul_closed['und'][0]['value'] == '1') :
+    print t('(Lukket)');
+    endif;
+  ?>
+  </h2>
+  <a href="#" class="gplus">+</a>
   <a href="/dagsorden_punkt/<?php print $node->nid?>/send_to_friend_form" class="email-icon" rel="lightframe"></a>
   <a href="/print/dagsorden_punkt/<?php print $node->nid?>/print" class="print-icon" <?php variable_get('print_html_windowclose', PRINT_HTML_WINDOWCLOSE_DEFAULT) ? print 'target = "_blank"' : ''?> ></a>
   <div class="collapsible-panel-content" style="display: none;">
-    <?php print render($content); ?>
+  <?php if ($node->field_os2web_meetings_bul_closed['und'][0]['value'] == '1') :
+    print t('Dagsordenpunktets indhold er skjult fordi dagsordenspunktet er lukket.');
+  else:
+    print render($content);
+  endif;
+  ?>
+
   </div>
 </article>
 
