@@ -36,3 +36,20 @@
     border-radius: initial;
     margin-bottom: initial;
 }
+
+/* Accessibility color contrast fixes. */
+#top_menu a {
+  background-color: transparent;
+}
+.nav-tabs > li.active > a {
+  color: #30353c;
+}
+.footer-indholsdmenu .nav > li > a {
+  background-color: transparent;
+}
+.footer-menu {
+  background-color: #3A67A1;
+}
+#footer-contacts .footer-address a {
+  color: #026b9e;
+}
