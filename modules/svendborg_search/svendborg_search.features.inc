@@ -27,24 +27,6 @@ function svendborg_search_views_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_node_info().
- */
-function svendborg_search_node_info() {
-  $items = array(
-    'os2search_dokument' => array(
-      'name' => t('Bilag og dokumenter'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Titel'),
-      'help' => '',
-    ),
-  );
-  drupal_alter('node_info', $items);
-  return $items;
-}
-
-/**
  * Implements hook_default_search_api_index().
  */
 function svendborg_search_default_search_api_index() {
