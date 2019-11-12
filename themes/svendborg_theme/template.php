@@ -24,7 +24,7 @@ function svendborg_theme_preprocess_region(&$variables) {
     case 'sidebar_second':
       $attributes['class'][] = 'col-sm-3';
       break;
-  
+
     case 'content':
       // Add information about the number of sidebars.
       if (!empty($variables['page']['page']['sidebar_first']) && !empty($variables['page']['page']['sidebar_second'])) {
@@ -475,7 +475,7 @@ function svendborg_theme_preprocess_node(&$vars) {
           }
         }
       }
-    }  
+    }
   }
 }
 /**
@@ -680,6 +680,32 @@ function svendborg_theme_file_link($variables) {
   $icon_directory = $variables['icon_directory'];
   $url = file_create_url($file->uri);
   $icon = theme('file_icon', array('file' => $file, 'icon_directory' => $icon_directory));
+
+  // Human-readable names, for use as text-alternatives to icons.
+  $mime_name = array(
+    'application/msword' => t('Microsoft Office document icon'),
+    'application/vnd.ms-excel' => t('Office spreadsheet icon'),
+    'application/vnd.ms-powerpoint' => t('Office presentation icon'),
+    'application/pdf' => t('PDF icon'),
+    'video/quicktime' => t('Movie icon'),
+    'audio/mpeg' => t('Audio icon'),
+    'audio/wav' => t('Audio icon'),
+    'image/jpeg' => t('Image icon'),
+    'image/png' => t('Image icon'),
+    'image/gif' => t('Image icon'),
+    'application/zip' => t('Package icon'),
+    'text/html' => t('HTML icon'),
+    'text/plain' => t('Plain text icon'),
+    'application/octet-stream' => t('Binary Data'),
+  );
+  $mimetype = file_get_mimetype($file->uri);
+
+  $icon = theme('file_icon', array(
+    'file' => $file,
+    'icon_directory' => $icon_directory,
+    'alt' => !empty($mime_name[$mimetype]) ? $mime_name[$mimetype] : t('File'),
+  ));
+
   // Set options as per anchor format described at
   // http://microformats.org/wiki/file-format-examples
   $options = array(
