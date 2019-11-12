@@ -30,13 +30,6 @@
     <?php if ($content_attributes): ?><div<?php print $content_attributes; ?>><?php endif; ?>
     <?php print render($page['page']['highlighted']); ?>
     <a id="main-content"></a>
-    <?php print render($page['title_prefix']); ?>
-
-    <?php if (!empty($page['title']) && !isset($page['page']['term_is_top'])): ?>
-      <h1 class="page-header region-<?php print $region; ?>"><?php print $page['title']; ?></h1>
-    <?php endif; ?>
-
-    <?php print render($page['title_suffix']); ?>
     <?php print render($page['messages']); ?>
     <?php print render($page['tabs']); ?>
     <?php print render($page['page']['help']); ?>

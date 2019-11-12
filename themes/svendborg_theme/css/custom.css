@@ -53,3 +53,13 @@
 #footer-contacts .footer-address a {
   color: #026b9e;
 }
+#block-block-cittaslow a {
+  color: #026b9e;
+  text-decoration: underline;
+}
+
+.region-content .taxonomy-term-description a,
+.region-content .field-name-body a {
+  color: #026b9e;
+  text-decoration: underline;
+}
