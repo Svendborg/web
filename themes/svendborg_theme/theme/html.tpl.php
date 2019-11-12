@@ -7,8 +7,6 @@
 <html class="not-ie no-js" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?>>
 <!--<![endif]-->
 <head>
-
-    <title><?php print $head_title; ?></title>
     <meta http-equiv="content-language" content="da,en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
