@@ -21,3 +21,15 @@ function svendborg_search_form_alter(&$form, &$form_state, $form_id) {
     $form['submit']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function svendborg_search_preprocess_field(&$variables) {
+   $field_name = $variables['element']['#field_name'];
+   if ($field_name == 'field_os2web_paragraphs') {
+    foreach ($variables['items'] as $key => $item) {
+      $variables['items'][$key]['#attributes']['id'] =  'fc_' . $variables['element']['#object']->field_os2web_paragraphs['und'][$key]['value'];
+    }
+  }
+}

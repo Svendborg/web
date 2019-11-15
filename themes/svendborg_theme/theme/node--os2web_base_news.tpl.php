@@ -29,7 +29,7 @@
       hide($content['field_svendborg_hide_sidebar']);
       hide($content['field_svendborg_hide_contact']);
       hide($content['field_os2web_base_field_hidlinks']);
-
+      hide($content['field_os2web_base_field_media']);
       print render($content['field_os2web_base_field_summary']);
 
       print render($content['body']);
@@ -40,7 +40,9 @@
 
       
       print render($content);
-
+      print "<a name='bilags'>";
+      print render($content['field_os2web_base_field_media']);
+      print "</a>";
       print $author_node_info;
 
     ?>
