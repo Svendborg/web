@@ -122,7 +122,6 @@
                     }, 10);
           }
           if(anchor.indexOf('fc') == 0) {
-            alert('#'+ anchor);
             var offset = $('#'+ anchor).offset().top;
              $('html, body').animate({
                         scrollTop: offset - 90

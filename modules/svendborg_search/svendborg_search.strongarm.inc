@@ -91,6 +91,9 @@ function svendborg_search_strongarm() {
     'svendborg_multi_index' => array(
       'search_api_views:svendborg_elastic_search:page' => 'search_api_views:svendborg_elastic_search:page',
     ),
+    'svendborg_meeting_index' => array(
+      'search_api_views:svendborg_elasticsearch_meetings_search:page' => 'search_api_views:svendborg_elasticsearch_meetings_search:page',
+    ),
   );
   $export['search_api_facets_search_ids'] = $strongarm;
 

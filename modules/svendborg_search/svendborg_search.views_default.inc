@@ -161,6 +161,9 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['field_collection_item_item_id']['label'] = '';
   $handler->display->display_options['fields']['field_collection_item_item_id']['element_type'] = 'h3';
   $handler->display->display_options['fields']['field_collection_item_item_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_collection_item_item_id']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_collection_item_item_id']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_collection_item_item_id']['separator'] = '';
   $handler->display->display_options['fields']['field_collection_item_item_id']['link_to_entity'] = 0;
   /* Felt: Søg: Excerpt */
   $handler->display->display_options['fields']['search_api_excerpt']['id'] = 'search_api_excerpt';
@@ -243,12 +246,116 @@ function svendborg_search_views_default_views() {
 </ul>'),
     t('Page'),
     t('.'),
-    t(','),
     t('Content pane'),
     t('View panes'),
     t('Content pane 2'),
   );
   $export['svendborg_elastic_search'] = $view;
+
+  $view = new view();
+  $view->name = 'svendborg_elasticsearch_meetings_search';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'search_api_index_svendborg_meeting_index';
+  $view->human_name = 'Svendborg Elasticsearch meetings search';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Meetings search';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mere';
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Søg';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ forrige';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'næste ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Felt: Indexed Indholdselement: Titel */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_svendborg_meeting_index';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_type'] = 'h3';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  /* Felt: Søg: Excerpt */
+  $handler->display->display_options['fields']['search_api_excerpt']['id'] = 'search_api_excerpt';
+  $handler->display->display_options['fields']['search_api_excerpt']['table'] = 'search_api_index_svendborg_meeting_index';
+  $handler->display->display_options['fields']['search_api_excerpt']['field'] = 'search_api_excerpt';
+  $handler->display->display_options['fields']['search_api_excerpt']['label'] = '';
+  $handler->display->display_options['fields']['search_api_excerpt']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['search_api_excerpt']['alter']['preserve_tags'] = '<strong>';
+  $handler->display->display_options['fields']['search_api_excerpt']['element_type'] = 'p';
+  $handler->display->display_options['fields']['search_api_excerpt']['element_class'] = 'indhold';
+  $handler->display->display_options['fields']['search_api_excerpt']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_excerpt']['element_wrapper_class'] = 'search-snippet-info';
+  $handler->display->display_options['fields']['search_api_excerpt']['link_to_entity'] = 0;
+  /* Felt: Indexed Indholdselement: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_svendborg_meeting_index';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['element_type'] = 'p';
+  $handler->display->display_options['fields']['url']['element_class'] = 'url';
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['element_wrapper_class'] = 'search-snippet-url';
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  /* Sorteringskriterie: Søg: Relevance */
+  $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
+  $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_svendborg_meeting_index';
+  $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
+  $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
+  /* Filterkriterie: Søg: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_svendborg_meeting_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'meetings_search';
+  $translatables['svendborg_elasticsearch_meetings_search'] = array(
+    t('Master'),
+    t('Meetings search'),
+    t('mere'),
+    t('Søg'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Stigende'),
+    t('Faldende'),
+    t('Antal elementer'),
+    t('- Alle -'),
+    t('Forskydning'),
+    t('« første'),
+    t('‹ forrige'),
+    t('næste ›'),
+    t('sidste »'),
+    t('Page'),
+  );
+  $export['svendborg_elasticsearch_meetings_search'] = $view;
 
   return $export;
 }
