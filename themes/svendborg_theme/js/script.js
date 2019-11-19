@@ -121,13 +121,6 @@
                         scrollTop: offset - 90
                     }, 10);
           }
-          if(anchor.indexOf('fc') == 0) {
-            var offset = $('#'+ anchor).offset().top;
-             $('html, body').animate({
-                        scrollTop: offset - 90
-                    }, 10);
-             $('#'+anchor).find('.panel-title').click();
-          }
         }
 
       });

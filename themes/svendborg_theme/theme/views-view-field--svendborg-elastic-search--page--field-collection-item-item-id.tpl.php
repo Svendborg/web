@@ -28,8 +28,13 @@ $fc_id = (int) $output;
 if ($fc_id) {
   $fc = array_pop(entity_load('field_collection_item', array($fc_id)));
   if ($node = $fc->hostEntity()) {
+    foreach($node->field_os2web_paragraphs['und'] as $key => $value) {
+      if ($value['value'] == $fc_id) {
+        $delta = ($key==1)? '' : '--'. (string)($key+1);
+      }
+    }
     $url = url(drupal_get_path_alias('node/' . $node->nid), array('absolute' => true, 'alias' => true ));
-    print (l($node->title, url(drupal_get_path_alias('node/' . $node->nid) , array('absolute' => true, 'alias' => true )) . '#fc_'.$fc_id ));
+    print (l($node->title, url(drupal_get_path_alias('node/' . $node->nid) , array('absolute' => true, 'alias' => true )) . '#bootstrap-panel'.$delta ));
   }
 }
 ?>
