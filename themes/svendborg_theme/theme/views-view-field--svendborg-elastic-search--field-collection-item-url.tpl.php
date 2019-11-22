@@ -24,17 +24,17 @@
 ?>
 
 <?php
-$fc_id = (int) $output;
-if ($fc_id) {
+dpm($output);
+$path = parse_url($output, PHP_URL_PATH);
+$path = explode('/', $path);
+$fc_id = end($path);
+if ((int) $fc_id) {
   $fc = array_pop(entity_load('field_collection_item', array($fc_id)));
-  $fc_title = $fc->field_os2web_paragraph_title['und'][0]['value'];
   if ($node = $fc->hostEntity()) {
-    foreach($node->field_os2web_paragraphs['und'] as $key => $value) {
-      if ($value['value'] == $fc_id) {
-        $delta = ($key == 0)? '' : '--'. (string)($key+1);
-      }
-    }
-    print (l($node->title . ': ' . $fc_title, url(drupal_get_path_alias('node/' . $node->nid ) , array('absolute' => true, 'alias' => true )) . '#bootstrap-panel'.$delta ));
+    $url = url(drupal_get_path_alias('node/' . $node->nid), array('absolute' => true, 'alias' => true ));
+    print (l($url, $url));
+
+
   }
 }
 ?>
