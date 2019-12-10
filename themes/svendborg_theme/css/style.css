@@ -8666,6 +8666,9 @@ body.page-taxonomy-term.term-is-not-top .region-content.col-md-6 div.node-os2web
   margin-top: -135px;
   display: block;
 }
+.view-nypostliste.view-id-nypostliste {
+  overflow-x: auto;
+}
 .view-nypostliste .view-grouping-header {
   display: none;
 }

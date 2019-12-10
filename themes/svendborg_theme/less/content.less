@@ -373,7 +373,14 @@ body.page-taxonomy-term.term-is-not-top {
   margin-top: -135px;
   display: block;
 }
-.view-nypostliste .view-grouping-header { display: none}
+.view-nypostliste {
+  &.view-id-nypostliste {
+    overflow-x: auto;
+  }
+  .view-grouping-header {
+    display: none
+  }
+}
 
 #borger_dk-body {
   h2,
