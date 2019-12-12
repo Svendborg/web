@@ -59,7 +59,7 @@
       <?php if ($page['logo']): ?>
         <a class="logo navbar-btn pull-left" href="<?php print $page['front_page']; ?>" title="<?php print t('Home'); ?>">
           <?php if ($is_front): ?>
-            <img id="front-logo" src="/<?php print drupal_get_path('theme','svendborg_theme'); ?>/images/footer_logo.png" title="<?php print t('Home') ?>" />
+            <img id="front-logo" src="/<?php print drupal_get_path('theme','svendborg_theme'); ?>/images/footer_logo.png" alt="<?php print t('Home') ?>" />
           <?php else: ?>
             <img src="<?php print $page['logo']; ?>" alt="<?php print t('Home'); ?>" />
           <?php endif; ?>
