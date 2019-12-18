@@ -28,6 +28,24 @@ function svendborg_search_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_node_info().
+ */
+function svendborg_search_node_info() {
+  $items = array(
+    'os2search_dokument' => array(
+      'name' => t('Bilag og dokumenter'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+  );
+  drupal_alter('node_info', $items);
+  return $items;
+}
+
+/**
  * Implements hook_default_search_api_index().
  */
 function svendborg_search_default_search_api_index() {
@@ -55,7 +73,6 @@ function svendborg_search_default_search_api_index() {
         "attachments_field_os2web_meetings_enclosures" : { "type" : "text" },
         "attachments_field_os2web_meetings_full_doc" : { "type" : "text" },
         "attachments_field_os2web_spotbox_file" : { "type" : "text" },
-        "bellcom_elasticsearch_multi_index_files" : { "type" : "text" },
         "field_os2web_meetings_attach" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_os2web_meetings_bullets" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_os2web_meetings_bullets:field_os2web_meetings_attach" : {
@@ -279,6 +296,9 @@ function svendborg_search_default_search_api_index() {
         "file:name" : { "type" : "text" },
         "node" : { "type" : "integer", "entity_type" : "node" },
         "node:body:value" : { "type" : "text", "boost" : "0.8" },
+        "node:field_os2web_base_field_summary:summary" : { "type" : "text" },
+        "node:field_os2web_base_field_summary:value" : { "type" : "text" },
+        "node:field_os2web_base_field_text" : { "type" : "text" },
         "node:field_os2web_paragraphs" : {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"
@@ -456,7 +476,6 @@ function svendborg_search_default_search_api_index() {
       "log_only_not_found" : 0,
       "index_statistics_ttl" : "365d",
       "fields" : {
-        "bellcom_elasticsearch_multi_index_files" : { "type" : "text", "boost" : "0.1" },
         "node" : { "type" : "integer", "entity_type" : "node" },
         "node:body:value" : { "type" : "text" },
         "node:field_os2web_base_field_edi_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },

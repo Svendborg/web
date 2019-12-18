@@ -47,7 +47,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* No results behavior: Global: Text area */
+  /* Opførsel ved ingen resultater: Global: Tekstområde */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -58,7 +58,7 @@ function svendborg_search_views_default_views() {
 <li>Du kan forlange eller ekskludere termer med  + og -: <em>big +blue drop</em> kræver at <em>blue</em> findes, mens <em>big blue -drop</em> ekskluderer resultater som indeholder <em>drop</em>.</li>
 </ul>';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Field: Node: Title (indexed) */
+  /* Felt: Indholdselement: Titel (indexed) */
   $handler->display->display_options['fields']['node_title']['id'] = 'node_title';
   $handler->display->display_options['fields']['node_title']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['node_title']['field'] = 'node_title';
@@ -67,7 +67,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['node_title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['node_title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['node_title']['link_to_entity'] = 1;
-  /* Field: Taxonomy term: Name (indexed) */
+  /* Felt: Ord i ordforråd: Navn (indexed) */
   $handler->display->display_options['fields']['taxonomy_term_name']['id'] = 'taxonomy_term_name';
   $handler->display->display_options['fields']['taxonomy_term_name']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['taxonomy_term_name']['field'] = 'taxonomy_term_name';
@@ -75,7 +75,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['taxonomy_term_name']['element_type'] = 'h3';
   $handler->display->display_options['fields']['taxonomy_term_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['taxonomy_term_name']['link_to_entity'] = 1;
-  /* Field: File: File name (indexed) */
+  /* Felt: Fil: Filnavn (indexed) */
   $handler->display->display_options['fields']['file_name']['id'] = 'file_name';
   $handler->display->display_options['fields']['file_name']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['file_name']['field'] = 'file_name';
@@ -83,19 +83,19 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['file_name']['element_type'] = 'h3';
   $handler->display->display_options['fields']['file_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['file_name']['link_to_entity'] = 1;
-  /* Field: Search: Excerpt */
+  /* Felt: Søg: Excerpt */
   $handler->display->display_options['fields']['search_api_excerpt']['id'] = 'search_api_excerpt';
   $handler->display->display_options['fields']['search_api_excerpt']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['search_api_excerpt']['field'] = 'search_api_excerpt';
   $handler->display->display_options['fields']['search_api_excerpt']['label'] = '';
   $handler->display->display_options['fields']['search_api_excerpt']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_excerpt']['link_to_entity'] = 0;
-  /* Sort criterion: Search: Relevance */
+  /* Sorteringskriterie: Søg: Relevance */
   $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
-  /* Filter criterion: Search: Fulltext search */
+  /* Filterkriterie: Søg: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
@@ -112,7 +112,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: File: File ID (indexed) */
+  /* Felt: Fil: Fil-ID (indexed) */
   $handler->display->display_options['fields']['file_fid']['id'] = 'file_fid';
   $handler->display->display_options['fields']['file_fid']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['file_fid']['field'] = 'file_fid';
@@ -123,7 +123,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['file_fid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['file_fid']['separator'] = '';
   $handler->display->display_options['fields']['file_fid']['link_to_entity'] = 0;
-  /* Field: Taxonomy term: Name (indexed) */
+  /* Felt: Ord i ordforråd: Navn (indexed) */
   $handler->display->display_options['fields']['taxonomy_term_name']['id'] = 'taxonomy_term_name';
   $handler->display->display_options['fields']['taxonomy_term_name']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['taxonomy_term_name']['field'] = 'taxonomy_term_name';
@@ -131,7 +131,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['taxonomy_term_name']['element_type'] = 'h3';
   $handler->display->display_options['fields']['taxonomy_term_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['taxonomy_term_name']['link_to_entity'] = 1;
-  /* Field: Node: Title (indexed) */
+  /* Felt: Indholdselement: Titel (indexed) */
   $handler->display->display_options['fields']['node_title']['id'] = 'node_title';
   $handler->display->display_options['fields']['node_title']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['node_title']['field'] = 'node_title';
@@ -141,7 +141,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['node_title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['node_title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['node_title']['link_to_entity'] = 1;
-  /* Field: Field collection item: Field collection item ID (indexed) */
+  /* Felt: Field collection item: Field collection item ID (indexed) */
   $handler->display->display_options['fields']['field_collection_item_item_id']['id'] = 'field_collection_item_item_id';
   $handler->display->display_options['fields']['field_collection_item_item_id']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['field_collection_item_item_id']['field'] = 'field_collection_item_item_id';
@@ -152,7 +152,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['field_collection_item_item_id']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_collection_item_item_id']['separator'] = '';
   $handler->display->display_options['fields']['field_collection_item_item_id']['link_to_entity'] = 0;
-  /* Field: Search: Excerpt */
+  /* Felt: Søg: Excerpt */
   $handler->display->display_options['fields']['search_api_excerpt']['id'] = 'search_api_excerpt';
   $handler->display->display_options['fields']['search_api_excerpt']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['search_api_excerpt']['field'] = 'search_api_excerpt';
@@ -165,7 +165,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_excerpt']['element_wrapper_class'] = 'search-snippet-info';
   $handler->display->display_options['fields']['search_api_excerpt']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['search_api_excerpt']['link_to_entity'] = 0;
-  /* Field: Indexed Multiple types: File */
+  /* Felt: Indexed Multiple types: Fil */
   $handler->display->display_options['fields']['file']['id'] = 'file';
   $handler->display->display_options['fields']['file']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['file']['field'] = 'file';
@@ -175,7 +175,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['file']['display'] = 'view';
   $handler->display->display_options['fields']['file']['view_mode'] = 'teaser';
   $handler->display->display_options['fields']['file']['bypass_access'] = 0;
-  /* Field: Node: URL (indexed) */
+  /* Felt: Indholdselement: URL (indexed) */
   $handler->display->display_options['fields']['node_url']['id'] = 'node_url';
   $handler->display->display_options['fields']['node_url']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['node_url']['field'] = 'node_url';
@@ -185,7 +185,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['node_url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['node_url']['element_wrapper_class'] = 'search-snippet-info';
   $handler->display->display_options['fields']['node_url']['link_to_entity'] = 0;
-  /* Field: Field collection item: URL (indexed) */
+  /* Felt: Field collection item: URL (indexed) */
   $handler->display->display_options['fields']['field_collection_item_url']['id'] = 'field_collection_item_url';
   $handler->display->display_options['fields']['field_collection_item_url']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['fields']['field_collection_item_url']['field'] = 'field_collection_item_url';
@@ -198,7 +198,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['field_collection_item_url']['link_to_entity'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Search: Fulltext search */
+  /* Filterkriterie: Søg: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
@@ -221,7 +221,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Search: Spellcheck */
+  /* Overskrift: Søg: Spellcheck */
   $handler->display->display_options['header']['search_api_spellcheck']['id'] = 'search_api_spellcheck';
   $handler->display->display_options['header']['search_api_spellcheck']['table'] = 'search_api_index_svendborg_multi_index';
   $handler->display->display_options['header']['search_api_spellcheck']['field'] = 'search_api_spellcheck';
@@ -261,7 +261,6 @@ function svendborg_search_views_default_views() {
 <li>Du kan forlange eller ekskludere termer med  + og -: <em>big +blue drop</em> kræver at <em>blue</em> findes, mens <em>big blue -drop</em> ekskluderer resultater som indeholder <em>drop</em>.</li>
 </ul>'),
     t('Page'),
-    t('more'),
     t('.'),
     t('Content pane'),
     t('Spell'),
@@ -305,7 +304,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Indexed Node: Title */
+  /* Felt: Indexed Indholdselement: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_svendborg_meeting_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -313,7 +312,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['title']['element_type'] = 'h3';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Search: Excerpt */
+  /* Felt: Søg: Excerpt */
   $handler->display->display_options['fields']['search_api_excerpt']['id'] = 'search_api_excerpt';
   $handler->display->display_options['fields']['search_api_excerpt']['table'] = 'search_api_index_svendborg_meeting_index';
   $handler->display->display_options['fields']['search_api_excerpt']['field'] = 'search_api_excerpt';
@@ -325,7 +324,7 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_excerpt']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_excerpt']['element_wrapper_class'] = 'search-snippet-info';
   $handler->display->display_options['fields']['search_api_excerpt']['link_to_entity'] = 0;
-  /* Field: Indexed Node: URL */
+  /* Felt: Indexed Indholdselement: URL */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_svendborg_meeting_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
@@ -335,12 +334,12 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['element_wrapper_class'] = 'search-snippet-url';
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
-  /* Sort criterion: Search: Relevance */
+  /* Sorteringskriterie: Søg: Relevance */
   $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_svendborg_meeting_index';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
-  /* Filter criterion: Search: Fulltext search */
+  /* Filterkriterie: Søg: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_svendborg_meeting_index';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
@@ -372,7 +371,6 @@ function svendborg_search_views_default_views() {
     t('næste ›'),
     t('sidste »'),
     t('Page'),
-    t('more'),
   );
   $export['svendborg_elasticsearch_meetings_search'] = $view;
 
