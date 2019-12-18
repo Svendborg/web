@@ -24,16 +24,16 @@
 ?>
 
 <?php
-$fid = (int) $output;
-if ($fid) {
-  $file = file_load($fid);
-  $usages = file_usage_list($file);
-  if (isset($usages['file']['node'])) {
-    foreach ($usages['file']['node'] as $nid => $count) {
-      $node = node_load($nid);
-      $url = url(drupal_get_path_alias('node/' . $nid), array('absolute' => true, 'alias' => true ));
-        print (l($node->title, url(drupal_get_path_alias('node/' . $nid) , array('absolute' => true, 'alias' => true )) . '#bilags'));
-    }
+$path = parse_url($output, PHP_URL_PATH);
+$path = explode('/', $path);
+$fc_id = end($path);
+if ((int) $fc_id) {
+  $fc = array_pop(entity_load('field_collection_item', array($fc_id)));
+  if ($node = $fc->hostEntity()) {
+    $url = url(drupal_get_path_alias('node/' . $node->nid), array('absolute' => true, 'alias' => true ));
+    print (l($url, $url));
+
+
   }
 }
 ?>
