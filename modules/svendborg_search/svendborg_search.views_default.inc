@@ -196,12 +196,6 @@ function svendborg_search_views_default_views() {
   $handler->display->display_options['fields']['field_collection_item_url']['element_wrapper_class'] = 'search-snippet-info';
   $handler->display->display_options['fields']['field_collection_item_url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['field_collection_item_url']['link_to_entity'] = 0;
-  /* Field: Search: Relevance */
-  $handler->display->display_options['fields']['search_api_relevance']['id'] = 'search_api_relevance';
-  $handler->display->display_options['fields']['search_api_relevance']['table'] = 'search_api_index_svendborg_multi_index';
-  $handler->display->display_options['fields']['search_api_relevance']['field'] = 'search_api_relevance';
-  $handler->display->display_options['fields']['search_api_relevance']['precision'] = '0';
-  $handler->display->display_options['fields']['search_api_relevance']['link_to_entity'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Search: Fulltext search */
@@ -269,8 +263,6 @@ function svendborg_search_views_default_views() {
     t('Page'),
     t('more'),
     t('.'),
-    t('Relevance'),
-    t(','),
     t('Content pane'),
     t('Spell'),
     t('View panes'),
