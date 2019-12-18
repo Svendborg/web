@@ -24,7 +24,6 @@
 ?>
 
 <?php
-dpm($output);
 $path = parse_url($output, PHP_URL_PATH);
 $path = explode('/', $path);
 $fc_id = end($path);
