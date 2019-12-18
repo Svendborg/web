@@ -86,8 +86,7 @@ function svendborg_search_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'search_api_facets_search_ids';
   $strongarm->value = array(
-    'svendborg_public' => array(
-    ),
+    'svendborg_public' => array(),
     'svendborg_multi_index' => array(
       'search_api_views:svendborg_elastic_search:page' => 'search_api_views:svendborg_elastic_search:page',
     ),
