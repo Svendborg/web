@@ -28,24 +28,6 @@ function svendborg_search_views_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_node_info().
- */
-function svendborg_search_node_info() {
-  $items = array(
-    'os2search_dokument' => array(
-      'name' => t('Bilag og dokumenter'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-  );
-  drupal_alter('node_info', $items);
-  return $items;
-}
-
-/**
  * Implements hook_default_search_api_index().
  */
 function svendborg_search_default_search_api_index() {
@@ -286,11 +268,7 @@ function svendborg_search_default_search_api_index() {
       "log_only_not_found" : 0,
       "index_statistics_ttl" : "365d",
       "fields" : {
-        "attachments_content" : { "type" : "text" },
-        "attachments_field_os2search_file_ref" : { "type" : "text", "boost" : "3.0" },
-        "attachments_field_os2web_base_field_fil_link" : { "type" : "text" },
-        "attachments_field_os2web_base_field_media" : { "type" : "text" },
-        "attachments_field_os2web_spotbox_file" : { "type" : "text" },
+        "bellcom_elasticsearch_multi_index_file_entity_content" : { "type" : "text" },
         "field_collection_item" : { "type" : "integer", "entity_type" : "field_collection_item" },
         "field_collection_item:field_os2web_paragraph_text:value" : { "type" : "text", "boost" : "8.0" },
         "field_collection_item:field_os2web_paragraph_title" : { "type" : "text" },
@@ -337,22 +315,6 @@ function svendborg_search_default_search_api_index() {
             }
           }
         },
-        "bellcom_elasticsearch_exclude_unpublished_content_alter_settings" : {
-          "status" : 1,
-          "weight" : "0",
-          "settings" : {
-            "exclude_nodes" : 1,
-            "exclude_field_collection_item" : 1,
-            "exclude_files" : 1,
-            "index_file_default" : "0",
-            "index_file_bundles" : {
-              "os2search_dokument" : "os2search_dokument",
-              "os2web_base_contentpage" : "os2web_base_contentpage",
-              "borger_dk_article" : "borger_dk_article",
-              "os2web_base_news" : "os2web_base_news"
-            }
-          }
-        },
         "bellcom_elasticsearch_multi_index_files_alter_settings" : {
           "status" : 0,
           "weight" : "0",
@@ -362,17 +324,14 @@ function svendborg_search_default_search_api_index() {
             "fields_extract" : "field_os2search_file_ref"
           }
         },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_attachments_alter_settings" : {
+        "bellcom_elasticsearch_multi_index_file_content_alter_settings" : {
           "status" : 1,
           "weight" : "0",
           "settings" : {
             "excluded_extensions" : "aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv",
             "number_indexed" : "0",
             "max_file_size" : "0",
-            "excluded_private" : 0,
+            "excluded_private" : 1,
             "excluded_file_entity_bundles" : {
               "application" : "application",
               "image" : "image",
@@ -381,14 +340,22 @@ function svendborg_search_default_search_api_index() {
             }
           }
         },
-        "search_api_attachments_entityreference_alter_settings" : {
-          "status" : 1,
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
+        "search_api_alter_language_control" : {
+          "status" : 0,
+          "weight" : "0",
+          "settings" : { "lang_field" : "", "languages" : [] }
+        },
+        "search_api_attachments_alter_settings" : {
+          "status" : 0,
           "weight" : "0",
           "settings" : {
             "excluded_extensions" : "aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv",
             "number_indexed" : "0",
             "max_file_size" : "0",
-            "excluded_private" : 1,
+            "excluded_private" : 0,
             "excluded_file_entity_bundles" : {
               "application" : "application",
               "image" : "image",
@@ -468,8 +435,7 @@ function svendborg_search_default_search_api_index() {
             "highlight_partial" : 0
           }
         }
-      },
-      "additional fields" : { "node:field_os2web_meetings_bpa_file" : "node:field_os2web_meetings_bpa_file" }
+      }
     },
     "enabled" : "1",
     "read_only" : "0",
