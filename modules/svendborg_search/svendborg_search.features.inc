@@ -335,6 +335,17 @@ function svendborg_search_default_search_api_index() {
             }
           }
         },
+        "bellcom_elasticsearch_exclude_unpublished_content_alter_settings" : {
+          "status" : 0,
+          "weight" : "0",
+          "settings" : {
+            "exclude_nodes" : 0,
+            "exclude_field_collection_item" : 0,
+            "exclude_files" : 0,
+            "index_file_default" : "1",
+            "index_file_bundles" : []
+          }
+        },
         "bellcom_elasticsearch_multi_index_files_alter_settings" : {
           "status" : 0,
           "weight" : "0",
@@ -363,11 +374,6 @@ function svendborg_search_default_search_api_index() {
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_alter_language_control" : {
-          "status" : 0,
-          "weight" : "0",
-          "settings" : { "lang_field" : "", "languages" : [] }
-        },
         "search_api_attachments_alter_settings" : {
           "status" : 0,
           "weight" : "0",
@@ -382,6 +388,17 @@ function svendborg_search_default_search_api_index() {
               "video" : "video",
               "audio" : "audio"
             }
+          }
+        },
+        "search_api_attachments_entityreference_alter_settings" : {
+          "status" : 0,
+          "weight" : "0",
+          "settings" : {
+            "excluded_extensions" : "aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv",
+            "number_indexed" : "0",
+            "max_file_size" : "0",
+            "excluded_private" : 1,
+            "excluded_file_entity_bundles" : []
           }
         }
       },
@@ -429,10 +446,19 @@ function svendborg_search_default_search_api_index() {
           "status" : 1,
           "weight" : "-44",
           "settings" : { "fields" : {
-              "attachments_content" : true,
+              "bellcom_elasticsearch_multi_index_file_entity_content" : true,
+              "field_collection_item:field_os2web_paragraph_title" : true,
+              "node:title" : true,
+              "node:field_os2web_paragraphs" : true,
+              "node:field_os2web_base_field_text" : true,
+              "file:name" : true,
+              "taxonomy_term:name" : true,
               "taxonomy_term:description" : true,
               "field_collection_item:field_os2web_paragraph_text:value" : true,
               "node:body:value" : true,
+              "node:field_os2web_base_field_summary:value" : true,
+              "node:field_os2web_base_field_summary:summary" : true,
+              "node:field_os2web_paragraphs:field_os2web_paragraph_title" : true,
               "node:field_os2web_paragraphs:field_os2web_paragraph_text:value" : true
             }
           }
