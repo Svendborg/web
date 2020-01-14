@@ -11,7 +11,7 @@ function manage_menu_additional_items_form_node_form_alter(&$form, &$form_state,
     $form['menu']['link']['options']['roles_for_menu']['#collapsed'] = TRUE;
   }
    if (isset($form['menu']['link'])) {  
-   
+
    $form['menu']['link']['options']['hide_from_left_menu'] = array(
       '#type' => 'checkbox',
       '#title' => t('Hide from left menu'),
@@ -41,7 +41,7 @@ function manage_menu_additional_items_module_implements_alter(&$implementations,
 }
 
 function manage_menu_additional_items_form_menu_edit_item_alter(&$form, &$form_state, $form_id) {
-  
+   unset($form['options']['#value']['hide_from_left_menu']);
    $form['options']['hide_from_left_menu'] = array(
       '#type' => 'checkbox',
       '#title' => t('Hide from left menu'),
