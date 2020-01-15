@@ -5,7 +5,6 @@
         var button_normal = "btn-blacknblue";
         var $container = $("#nyheder-content-isotoper .view-content");
         check_button(button);
-
         function check_button(button) {
             $('.filter-link').removeClass(button_class);
             $('.filter-link').addClass(button_normal);
@@ -114,7 +113,17 @@
                 $(this).addClass('link_here');
             }
         });
-    });
+        var anchor = $(location).attr('hash').substring(1);
+        if (anchor.length) {
+          if (anchor == 'bilags'){
+            var offset = $('a[name ="'+anchor +'"]').offset().top;
+             $('html, body').animate({
+                        scrollTop: offset - 90
+                    }, 10);
+          }
+        }
+
+      });
 
     // Collapsible panel behaviour
     Drupal.behaviors.collapsible_panel = {

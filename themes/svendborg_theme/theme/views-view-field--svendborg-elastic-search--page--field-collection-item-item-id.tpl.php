@@ -24,16 +24,17 @@
 ?>
 
 <?php
-$fid = (int) $output;
-if ($fid) {
-  $file = file_load($fid);
-  $usages = file_usage_list($file);
-  if (isset($usages['file']['node'])) {
-    foreach ($usages['file']['node'] as $nid => $count) {
-      $node = node_load($nid);
-      $url = url(drupal_get_path_alias('node/' . $nid), array('absolute' => true, 'alias' => true ));
-        print (l($node->title, url(drupal_get_path_alias('node/' . $nid) , array('absolute' => true, 'alias' => true )) . '#bilags'));
+$fc_id = (int) $output;
+if ($fc_id) {
+  $fc = array_pop(entity_load('field_collection_item', array($fc_id)));
+  $fc_title = $fc->field_os2web_paragraph_title['und'][0]['value'];
+  if ($node = $fc->hostEntity()) {
+    foreach($node->field_os2web_paragraphs['und'] as $key => $value) {
+      if ($value['value'] == $fc_id) {
+        $delta = ($key == 0)? '' : '--'. (string)($key+1);
+      }
     }
+    print (l($node->title . ': ' . $fc_title, url(drupal_get_path_alias('node/' . $node->nid ) , array('absolute' => true, 'alias' => true )) . '#bootstrap-panel'.$delta ));
   }
 }
 ?>
