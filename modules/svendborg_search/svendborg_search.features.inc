@@ -336,15 +336,9 @@ function svendborg_search_default_search_api_index() {
           }
         },
         "bellcom_elasticsearch_exclude_unpublished_content_alter_settings" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "0",
-          "settings" : {
-            "exclude_nodes" : 0,
-            "exclude_field_collection_item" : 0,
-            "exclude_files" : 0,
-            "index_file_default" : "1",
-            "index_file_bundles" : []
-          }
+          "settings" : { "exclude_nodes" : 1, "exclude_field_collection_item" : 1 }
         },
         "bellcom_elasticsearch_multi_index_files_alter_settings" : {
           "status" : 0,
@@ -368,7 +362,9 @@ function svendborg_search_default_search_api_index() {
               "image" : "image",
               "video" : "video",
               "audio" : "audio"
-            }
+            },
+            "exclude_empty_media_folders" : 1,
+            "exclude_files_attached_to_unpublished_content" : 1
           }
         },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
@@ -451,9 +447,9 @@ function svendborg_search_default_search_api_index() {
               "node:title" : true,
               "node:field_os2web_paragraphs" : true,
               "node:field_os2web_base_field_text" : true,
-              "file:name" : true,
               "taxonomy_term:name" : true,
               "taxonomy_term:description" : true,
+              "file:name" : true,
               "field_collection_item:field_os2web_paragraph_text:value" : true,
               "node:body:value" : true,
               "node:field_os2web_base_field_summary:value" : true,
