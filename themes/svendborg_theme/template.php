@@ -477,6 +477,21 @@ function svendborg_theme_preprocess_node(&$vars) {
       }
     }
   }
+
+  if ($vars['type'] == 'os2web_meetings_bullet'){
+    if($vars['field_os2web_meetings_bul_closed'][LANGUAGE_NONE][0]['value'] == 1) {
+      $vars['enclousers']= array();
+      foreach($vars['field_os2web_meetings_attach'] as $key => $os2web_meetings_attach) {
+        $bpa = $os2web_meetings_attach['entity'];
+        if ($bpa->field_os2web_meetings_bpa_bilag[LANGUAGE_NONE][0]['value']) {
+           $vars['enclousers'][]= node_view($bpa);
+           unset($vars['content']['field_os2web_meetings_attach'][$key]);
+
+        }
+      }
+
+    }
+  }
 }
 /**
  * Retrieve the top term tid for node class array.
