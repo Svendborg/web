@@ -197,11 +197,13 @@ function os2web_related_links_get_links($entity, $entity_type) {
   // 4. External related links.
   if ($ext_links) {
     foreach ($ext_links as $link) {
-      $related_links[] = array(
-        'url' => $link['url'],
-        'title' => $link['title'],
-        'class' => 'ext-link',
-      );
+      if (!empty($link['url'])) {
+        $related_links[] = array(
+          'url' => $link['url'],
+          'title' => $link['title'],
+          'class' => 'ext-link',
+        );
+      }
     }    
   }
   
