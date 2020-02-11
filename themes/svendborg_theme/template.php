@@ -226,7 +226,7 @@ function svendborg_theme_preprocess_page(&$variables) {
 
   // On taxonomy pages, add a news list in second sidebar.
   if ($term) {
-    $dont_render_on_these_tids = array(4067);
+    $dont_render_on_these_tids = array(4067, 4079, 4087);
 
     if (!in_array($term->tid, $dont_render_on_these_tids)) {
       $view = views_get_view('os2web_news_lists');
