@@ -21,6 +21,7 @@
             jQuery.get("/aktulet_news/ajax/view/" + filterValue + '/' + 20, function (data) {
                 $('#nyheder-content-isotoper').html(data);
                 load_content();
+                $('#block-views-news-filter-block a.rss-icon').attr('href', '/nyheder/' + filterValue + '/all/rss.xml');
             });
         });
 
