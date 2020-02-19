@@ -79,6 +79,7 @@
  * @ingroup themeable
  */
 ?>
+<?php if (!$node->field_os2web_meetings_bpa_bilag['und'][0]['value']) :?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
   <?php if (!$page && !empty($title)): ?>
@@ -99,3 +100,15 @@
     </footer>
   <?php endif; ?>
 </article>
+<?php else:
+   if (!empty($content['field_os2web_meetings_bpa_file'])) :
+     print render($content['field_os2web_meetings_bpa_file']);
+   else: ?>
+<div>
+  <span class="file">
+    <img class="file-icon" alt="PDF-ikon" title="application/pdf" src="/modules/file/icons/application-pdf.png">
+    <?php print $title ?>
+  </span></div>
+   <?php endif;
+
+  endif ?>

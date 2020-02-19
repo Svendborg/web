@@ -90,11 +90,17 @@
   <a href="/dagsorden_punkt/<?php print $node->nid?>/send_to_friend_form" class="email-icon" rel="lightframe"></a>
   <a href="/print/dagsorden_punkt/<?php print $node->nid?>/print" class="print-icon" <?php variable_get('print_html_windowclose', PRINT_HTML_WINDOWCLOSE_DEFAULT) ? print 'target = "_blank"' : ''?> ></a>
   <div class="collapsible-panel-content" style="display: none;">
-  <?php if ($node->field_os2web_meetings_bul_closed['und'][0]['value'] == '1') :
-    print t('Dagsordenpunktets indhold er skjult fordi dagsordenspunktet er lukket.');
-  else:
-    print render($content);
-  endif;
+  <?php
+    if (($node->field_os2web_meetings_bul_closed['und'][0]['value'] == '1') && empty($node->field_os2web_meetings_attach[LANGUAGE_NONE])) :
+      print t('Dagsordenpunktets indhold er skjult fordi dagsordenspunktet er lukket.');
+    else:
+      print render($content);
+      if (isset($enclousers) && !empty($enclousers)) : ?>
+       <div class="field-label">Bilag:</div>
+      <?php print render($enclousers);
+      endif;
+    endif;
+
   ?>
 
   </div>
