@@ -9217,6 +9217,7 @@ h2.menu-footer a.Kommunen {
 }
 #footer-contacts .footer-address {
   margin-top: 50px;
+  display: inline-block;
 }
 #footer-contacts .footer-address span {
   margin-left: 70px;
@@ -9225,6 +9226,9 @@ h2.menu-footer a.Kommunen {
 #footer-contacts .footer-address a {
   font-size: 14px;
   color: #026b9e;
+}
+#footer-contacts .accessibility-link {
+  text-align: right;
 }
 @media all and (max-width: 1200px) and (min-width: 970px) {
   #footer-contacts .container {

@@ -75,9 +75,12 @@ print "<h2 class='menu-footer " . $menu_item['link']['link_title']. "'>
 
           </div>
         </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 footer-address">
-          <span>Ramsherred 5 ∙ 5700 Svendborg ∙ Telefon 62 23 30 00 ∙ </span>
-          <a href="/kontakt" title="Kontakt kommunen">Se kontakt og åbningstider her</a>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="footer-address">
+            <span>Ramsherred 5 ∙ 5700 Svendborg ∙ Telefon 62 23 30 00 ∙ </span>
+            <a href="/kontakt" title="Kontakt kommunen">Se kontakt og åbningstider her</a>
+            <div class ="accessibility-link"> <a href="https://www.was.digst.dk/svendborg-dk" target="_blank">Webtilgængelighedserklæring </a></div>
+            </div>
         </div>
         </div>
       </div>
