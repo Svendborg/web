@@ -8653,6 +8653,7 @@ body.page-taxonomy-term.term-is-not-top .region-content.col-md-6 div.node-os2web
 }
 .wrap img {
   max-width: 100%;
+  height: auto;
 }
 .wrap hr {
   border-color: #30353c;
