@@ -73,7 +73,9 @@
           <?php foreach ($page['page']['related_links'] as $link) : ?>
             <li>
               <?php if (isset($link['url'])): ?>
-                <?php print l($link['title'], $link['url'], array('attributes' => array('class' => $link['class']))); ?>
+                <a href="<?=$link['url']?>" class="<?=$link['class']?>">
+                  <?=$link['title']?>
+                </a>
               <?php else: ?>
                 <?php print l($link['title'], drupal_get_path_alias('node/' . $link['nid']), array('attributes' => array('class' => $link['class']))); ?>
               <?php endif; ?>
