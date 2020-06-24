@@ -109,7 +109,7 @@ function os2web_related_links_get_links($entity, $entity_type) {
 
       // 4. External related links.
       $ext_links = field_get_items('node', $entity, 'field_os2web_base_field_ext_link');
- 
+
       // 5. links to files.
       $file_links = field_get_items('node', $entity, 'field_os2web_base_field_fil_link');
       break;
@@ -199,23 +199,23 @@ function os2web_related_links_get_links($entity, $entity_type) {
     foreach ($ext_links as $link) {
       if (!empty($link['url'])) {
         $related_links[] = array(
-          'url' => $link['url'],
+          'url' => url($link['url'], array('query' => $link['query'])),
           'title' => $link['title'],
           'class' => 'ext-link',
         );
       }
-    }    
+    }
   }
-  
+
   // 5. File links.
-  if (isset($file_links) && !empty($file_links)) {    
+  if (isset($file_links) && !empty($file_links)) {
     foreach ($file_links as $file) {
       $related_links[] = array(
         'url' => file_create_url($file['uri']),
         'title' => !empty($file['description']) ? $file['description'] : $file['filename'],
         'class' => 'ext-link',
       );
-    }    
+    }
   }
   return $related_links;
 }
