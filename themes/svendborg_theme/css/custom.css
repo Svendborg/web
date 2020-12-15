@@ -87,3 +87,13 @@ body .popup-banner__page-footer button {
 body .popup-banner-consent-group {
     margin-left: 20px;
 }
+
+body .popup-banner-consent-field label {
+    font-weight: normal;
+}
+
+body .popup-banner-consent-field input,
+body .popup-banner-consent-field label {
+    vertical-align: middle;
+    margin: 0;
+}
