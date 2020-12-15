@@ -68,3 +68,22 @@
   color: #026b9e;
   text-decoration: underline;
 }
+
+body #popupOverlay .eucc-button__accept {
+    background-image: linear-gradient(to bottom, #85c500 0%, #589000 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85c500', endColorstr='#ff589000', GradientType=0);
+    border: none;
+}
+
+body .popup-banner__page-footer {
+    padding: 20px;
+}
+
+body .popup-banner__page-footer button {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+body .popup-banner-consent-group {
+    margin-left: 20px;
+}
