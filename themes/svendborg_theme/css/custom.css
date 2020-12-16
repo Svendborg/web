@@ -76,6 +76,10 @@ body #popupOverlay .eucc-button__accept {
     border: none;
 }
 
+body #popupOverlay .eucc-button__accept:hover {
+    background-image: linear-gradient(to bottom, #589000 0%, #85c500 100%);
+}
+
 body .popup-banner__page-footer {
     padding: 20px;
 }
@@ -96,4 +100,14 @@ body .popup-banner-consent-field input,
 body .popup-banner-consent-field label {
     vertical-align: middle;
     margin: 0;
+}
+
+body.eu-cookie-compliance-popup-closed .sliding-popup-popup .eu-cookie-withdraw-tab {
+    top: 550px;
+    right: 14px;
+    z-index: 950;
+    position: fixed;
+    left: auto;
+    height: 35px;
+    transform: translate(50%) rotate(-90deg);
 }
