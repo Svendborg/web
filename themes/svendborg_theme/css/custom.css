@@ -108,6 +108,6 @@ body.eu-cookie-compliance-popup-closed .sliding-popup-popup .eu-cookie-withdraw-
     z-index: 950;
     position: fixed;
     left: auto;
-    height: 35px;
+    height: 30px;
     transform: translate(50%) rotate(-90deg);
 }
