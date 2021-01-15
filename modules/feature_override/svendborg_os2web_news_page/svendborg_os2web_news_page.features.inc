@@ -1,8 +1,18 @@
 <?php
+
 /**
  * @file
  * svendborg_os2web_news_page.features.inc
  */
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function svendborg_os2web_news_page_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
+}
 
 /**
  * Implements hook_field_default_field_bases_alter().
@@ -42,7 +52,7 @@ function svendborg_os2web_news_page_field_default_field_instances_alter(&$data) 
   }
   if (isset($data['node-os2web_base_news-field_os2web_base_hide_contact'])) {
     $data['node-os2web_base_news-field_os2web_base_hide_contact']['display']['default']['type'] = 'hidden'; /* WAS: 'list_default' */
-    $data['node-os2web_base_news-field_os2web_base_hide_contact']['display']['default']['weight'] = 9; /* WAS: 23 */
+    $data['node-os2web_base_news-field_os2web_base_hide_contact']['display']['default']['weight'] = 10; /* WAS: 23 */
     $data['node-os2web_base_news-field_os2web_base_hide_contact']['display']['spotbox'] = array(
       'label' => 'above',
       'settings' => array(),
@@ -53,7 +63,7 @@ function svendborg_os2web_news_page_field_default_field_instances_alter(&$data) 
   }
   if (isset($data['node-os2web_base_news-field_os2web_base_hide_sidebar'])) {
     $data['node-os2web_base_news-field_os2web_base_hide_sidebar']['display']['default']['type'] = 'hidden'; /* WAS: 'list_default' */
-    $data['node-os2web_base_news-field_os2web_base_hide_sidebar']['display']['default']['weight'] = 14; /* WAS: 22 */
+    $data['node-os2web_base_news-field_os2web_base_hide_sidebar']['display']['default']['weight'] = 11; /* WAS: 22 */
     $data['node-os2web_base_news-field_os2web_base_hide_sidebar']['display']['spotbox'] = array(
       'label' => 'above',
       'settings' => array(),
@@ -64,7 +74,7 @@ function svendborg_os2web_news_page_field_default_field_instances_alter(&$data) 
   }
   if (isset($data['node-os2web_base_news-field_os2web_news_date_end'])) {
     $data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['type'] = 'hidden'; /* WAS: 'date_default' */
-    $data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['weight'] = 6; /* WAS: 21 */
+    $data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['weight'] = 9; /* WAS: 21 */
     unset($data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['module']);
     unset($data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['settings']['format_type']);
     unset($data['node-os2web_base_news-field_os2web_news_date_end']['display']['default']['settings']['fromto']);
@@ -74,7 +84,7 @@ function svendborg_os2web_news_page_field_default_field_instances_alter(&$data) 
   }
   if (isset($data['node-os2web_base_news-field_os2web_news_date_start'])) {
     $data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['type'] = 'hidden'; /* WAS: 'date_default' */
-    $data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['weight'] = 5; /* WAS: 20 */
+    $data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['weight'] = 8; /* WAS: 20 */
     unset($data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['module']);
     unset($data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['settings']['format_type']);
     unset($data['node-os2web_base_news-field_os2web_news_date_start']['display']['default']['settings']['fromto']);
@@ -96,11 +106,6 @@ function svendborg_os2web_news_page_views_default_views_alter(&$data) {
       'description' => '',
     ); /* WAS: '' */
     $data['os2web_news_lists']->display['panel_pane_1']->display_options['row_plugin'] = 'views_bootstrap_carousel_plugin_rows'; /* WAS: 'fields' */
-    $data['os2web_news_lists']->display['panel_pane_1']->display_options['style_options'] = array(
-      'navigation' => 1,
-      'indicators' => 1,
-      'pause' => 0,
-    ); /* WAS: '' */
     $data['os2web_news_lists']->display['panel_pane_1']->display_options['style_plugin'] = 'views_bootstrap_carousel_plugin_style'; /* WAS: 'default' */
   }
 }
