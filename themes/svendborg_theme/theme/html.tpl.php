@@ -65,9 +65,11 @@
             }
         }
 
-        if (!hasAgreed()) {
-            window.setInterval(deleteAllCookies, 1500);
-        }
+        window.setInterval(function() {
+            if (!hasAgreed()) {
+                deleteAllCookies();
+            }
+        }, 5000);
     })();
 </script>
 </body>
