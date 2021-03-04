@@ -72,7 +72,7 @@
         if (!hasAgreed()) {
             console.log('Have not agreed - delete all');
 
-            window.setTimeout(deleteAllCookies, 1500);
+            window.setInterval(deleteAllCookies, 1500);
         }
     })();
 </script>
