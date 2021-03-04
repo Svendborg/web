@@ -48,7 +48,7 @@
             }
 
             // Cookie exists, but the user didnt agree.
-            if (cookie === 0 || cookie === '0') {
+            if (cookie === 0 || cookie === '0' || cookie === '') {
                 return false;
             }
 
@@ -56,6 +56,7 @@
         }
 
         function deleteAllCookies() {
+            console.log('Delete all cookies function')
             var cookies = document.cookie.split(";");
 
             for (var i = 0; i < cookies.length; i++) {
@@ -71,7 +72,7 @@
         if (!hasAgreed()) {
             console.log('Have not agreed - delete all');
 
-            deleteAllCookies();
+            window.setTimeout(deleteAllCookies, 3000);
         }
     })();
 </script>
