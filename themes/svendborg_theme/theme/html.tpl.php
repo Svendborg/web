@@ -38,9 +38,7 @@
         }
 
         function hasAgreed() {
-            console.log('Has agreed function');
             var cookie = getCookie('cookie-agreed');
-            console.log('Cookie value', cookie);
 
             // Cookie doesnt exist.
             if (cookie === null) {
@@ -56,7 +54,6 @@
         }
 
         function deleteAllCookies() {
-            console.log('Delete all cookies function')
             var cookies = document.cookie.split(";");
 
             for (var i = 0; i < cookies.length; i++) {
@@ -64,14 +61,11 @@
                 var eqPos = cookie.indexOf("=");
                 var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
 
-                console.log({cookie, eqPos, name});
                 document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
             }
         }
 
         if (!hasAgreed()) {
-            console.log('Have not agreed - delete all');
-
             window.setInterval(deleteAllCookies, 1500);
         }
     })();
